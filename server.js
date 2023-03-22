@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-connectDB();
+//connectDB();
 
 app.use(express.json({ extend: false }));
 

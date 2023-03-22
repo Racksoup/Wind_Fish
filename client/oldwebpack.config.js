@@ -51,16 +51,32 @@ module.exports = (env, argv) => {
         { test: /\.(js|jsx)$/, exclude: /node_modules/, use: { loader: 'babel-loader' } },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          use: ['style-loader'],
+        },
+        {
+          test: /\.css$/,
+          loader: 'css-loader',
         },
         {
           test: /\.scss$/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
-        {
-          test: /\.png|jpg|gif$/,
+        // {
+        //   test: /\.png|jpg|gif$/,
 
-          use: ['file-loader'],
+        //   use: ['file-loader'],
+        // },
+        {
+          test: /\.(png|jpg|gif)$/i,
+          dependency: { not: ['url'] },
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 8192,
+              },
+            },
+          ],
         },
         {
           test: /\.svg$/,

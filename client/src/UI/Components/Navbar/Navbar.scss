@@ -1,0 +1,66 @@
+//@import '../../../App.scss';
+
+.Navbar {
+  position: fixed;
+  width: 100vw;
+  height: 2.9rem;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  * {
+    color: white;
+  }
+
+  .Content {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      font-family: SSP1;
+      font-size: 1.6rem;
+      margin-left: 4rem;
+      margin-right: 4rem;
+    }
+
+    .Nav {
+      width: 36rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        font-family: SSP0;
+        font-size: 0.85rem;
+      }
+    }
+
+    .EndNav {
+      width: 14.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .Login {
+        width: 4.7rem;
+        height: 1.6rem;
+        background-color: #78e7ff;
+        border-radius: 0.25rem;
+        font-size: 0.85rem;
+        color: black;
+      }
+
+      .Stream {
+        margin-right: 0.6rem;
+        width: 7rem;
+        height: 2rem;
+        background-color: #ffa1a1;
+      }
+    }
+  }
+}
