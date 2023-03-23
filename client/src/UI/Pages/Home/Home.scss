@@ -12,16 +12,16 @@
   align-items: center;
 
   .Content {
-    margin-top: 10rem;
+    margin-top: 6.5rem;
     width: 1260px;
-    height: 77vh;
+    height: 41rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
     .Top {
-      height: 18.5rem;
+      height: 18.2rem;
       width: 100%;
       display: flex;
       align-items: center;
@@ -36,7 +36,7 @@
         justify-content: space-between;
 
         .Videos {
-          height: 63%;
+          height: 66%;
           width: 100%;
           display: flex;
           align-items: center;
@@ -47,6 +47,75 @@
             width: 48.5%;
             background-color: black;
             border-radius: 0.7rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+
+            * {
+              cursor: pointer;
+            }
+
+            &-Right {
+              &:hover {
+                margin-right: 0.25rem;
+                margin-top: -0.25rem;
+                // rotate: -2.5deg;
+              }
+            }
+
+            &-Left {
+              &:hover {
+                margin-left: -0.25rem;
+                margin-top: -0.25rem;
+                // rotate: -2.5deg;
+              }
+            }
+
+            img {
+              margin-top: 0.5rem;
+              width: 13.1rem;
+              height: 7.36875rem;
+              background-color: grey;
+              border-radius: 0.5rem;
+              border: none;
+            }
+
+            .Info {
+              margin-top: 0.4rem;
+              width: 100%;
+              height: 3.1rem;
+              padding: 0 0.7rem;
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+              justify-content: space-between;
+
+              h4 {
+                font-size: 0.8rem;
+                color: white;
+                max-height: 2rem;
+                overflow: hidden;
+              }
+
+              .Misc {
+                display: flex;
+                align-items: center;
+
+                .Dot {
+                  margin: 0 0.5rem;
+                  height: 0.15rem;
+                  width: 0.15rem;
+                  border-radius: 1rem;
+                  background-color: #747474;
+                }
+
+                p {
+                  font-size: 0.65rem;
+                  color: #747474;
+                }
+              }
+            }
           }
 
           .History {
@@ -60,9 +129,14 @@
 
         .Blog {
           width: 100%;
-          height: 29%;
+          height: 25%;
           background-color: black;
           border-radius: 5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.6rem 1.5rem;
 
           &-History {
             border: solid 0.1rem #7a5800;
@@ -70,6 +144,24 @@
 
           &-Dev {
             border: solid #00736c 0.1rem;
+          }
+
+          h4 {
+            font-family: Marck;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            color: rgb(225, 225, 225);
+            cursor: pointer;
+          }
+
+          p {
+            font-family: SSP0;
+            width: 98%;
+            height: 2rem;
+            overflow: hidden;
+            line-height: 1rem;
+            color: rgb(225, 225, 225);
+            font-size: 0.7rem;
           }
         }
       }
@@ -84,13 +176,35 @@
 
       .Section {
         height: 100%;
-        width: 25%;
+        width: 26%;
         background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        padding: 0.5rem 1.8rem;
+
+        h4 {
+          margin-bottom: 0.4rem;
+          font-size: 1rem;
+          color: white;
+          font-family: Frag;
+        }
+
+        p {
+          margin-top: 0.3rem;
+          width: 100%;
+          padding: 0 0.2rem;
+          font-size: 0.8rem;
+          color: black;
+          background-color: #e5e5e5;
+          font-family: Frag;
+        }
       }
     }
 
     .Bottom {
-      height: 9rem;
+      height: 7rem;
       width: 100%;
     }
   }

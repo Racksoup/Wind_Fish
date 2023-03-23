@@ -26,17 +26,80 @@
       font-size: 1.6rem;
       margin-left: 4rem;
       margin-right: 4rem;
+      cursor: pointer;
     }
 
     .Nav {
-      width: 36rem;
+      width: 34rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
 
-      p {
-        font-family: SSP0;
-        font-size: 0.85rem;
+      .Item {
+        position: relative;
+        height: 0.9rem;
+
+        .DropOuter {
+          position: absolute;
+
+          &:hover {
+            .Drop {
+              position: initial !important;
+            }
+          }
+          .Drop {
+            width: 5rem;
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+            background-color: black;
+            padding: 0.1rem;
+
+            p {
+              padding: 0.1rem 0;
+            }
+          }
+        }
+
+        p {
+          font-family: SSP0;
+          font-size: 0.85rem;
+          cursor: pointer;
+
+          &:hover {
+            color: #e5ff00;
+          }
+        }
+
+        &-History {
+          width: 2.4rem;
+
+          p {
+            &:hover {
+              color: #ffb800;
+            }
+          }
+        }
+
+        &-Dev {
+          width: 1.4rem;
+
+          p {
+            &:hover {
+              color: #00fff0;
+            }
+          }
+        }
+
+        &-Profile {
+          width: 2.3rem;
+
+          p {
+            &:hover {
+              color: #bc74ff;
+            }
+          }
+        }
       }
     }
 
@@ -53,6 +116,11 @@
         border-radius: 0.25rem;
         font-size: 0.85rem;
         color: black;
+
+        &:hover {
+          color: rgb(192, 109, 0);
+          border: rgb(192, 109, 0) 0.1rem solid;
+        }
       }
 
       .Stream {

@@ -21,9 +21,9 @@ module.exports = {
     new EnvironmentPlugin({
       newEnvVar: 'FirstEnvVar!',
     }),
-    new Dotenv({
-      path: '../.env',
-    }),
+    // new Dotenv({
+    //   path: '../.env',
+    // }),
   ],
   // optimization: {
   //   splitChunks: {

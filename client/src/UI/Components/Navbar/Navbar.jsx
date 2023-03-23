@@ -30,13 +30,46 @@ const Navbar = () => {
         <div className='Content'>
           <h1>WIND FISH</h1>
           <div className='Nav'>
-            <p>Dev</p>
-            <p>History</p>
-            <p>Schedule</p>
-            <p>Book Club</p>
-            <p>Ideo-Form</p>
-            <p>Profile</p>
-            <p>Merch</p>
+            <div className='Item Item-Dev'>
+              <div className='DropOuter'>
+                <p>Dev</p>
+                <div className='Drop'>
+                  <p>fdsfds</p>
+                  <p>fdsfds</p>
+                  <p>fdsfds</p>
+                </div>
+              </div>
+            </div>
+            <div className='Item Item-History'>
+              <div className='DropOuter'>
+                <p>History</p>
+                <div className='Drop'>
+                  <p>fdsfds</p>
+                  <p>fdsfds</p>
+                  <p>fdsfds</p>
+                </div>
+              </div>
+            </div>
+            <div className='Item'>
+              <p>Schedule</p>
+            </div>
+            <div className='Item'>
+              <p>Book Club</p>
+            </div>
+            <div className='Item'>
+              <p>Code Contests</p>
+            </div>
+            <div className='Item Item-Profile'>
+              <div className='DropOuter'>
+                <p>Profile</p>
+                <div className='Drop'>
+                  <p>Ideo-Form</p>
+                </div>
+              </div>
+            </div>
+            <div className='Item'>
+              <p>Merch</p>
+            </div>
           </div>
           <div className='EndNav'>
             <button className='Login'>Login</button>
