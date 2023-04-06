@@ -31,7 +31,9 @@ const Navbar = () => {
     return (
       <div className='Navbar'>
         <div className='Inner'>
-          <h1>WIND FISH</h1>
+          <Link to='/'>
+            <h1>WIND FISH</h1>
+          </Link>
           <div className='Nav'>
             <div className='Item Item-Dev'>
               <div className='DropOuter'>
@@ -64,7 +66,9 @@ const Navbar = () => {
             </div>
             <div className='Item Item-Profile'>
               <div className='DropOuter'>
-                <p>Profile</p>
+                <Link to='portfolio'>
+                  <p>Profile</p>
+                </Link>
                 <div className='Drop'>
                   <p>Ideo-Form</p>
                 </div>
