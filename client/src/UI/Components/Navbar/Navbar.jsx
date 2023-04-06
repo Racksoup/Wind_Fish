@@ -66,7 +66,7 @@ const Navbar = () => {
             </div>
             <div className='Item Item-Profile'>
               <div className='DropOuter'>
-                <Link to='portfolio'>
+                <Link to='/portfolio'>
                   <p>Profile</p>
                 </Link>
                 <div className='Drop'>
