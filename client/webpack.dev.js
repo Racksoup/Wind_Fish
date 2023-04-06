@@ -7,6 +7,7 @@ const devConfig = {
   devServer: {
     static: './dist',
     hot: true,
+    historyApiFallback: true,
     proxy: {
       '/api': {
         target: 'http://localhost:8080',

@@ -3,7 +3,7 @@
 .Navbar {
   position: fixed;
   width: 100vw;
-  height: 2.9rem;
+  height: 3.1rem;
   background-color: rgba(0, 0, 0, 1);
   display: flex;
   align-items: center;
@@ -14,30 +14,31 @@
     color: white;
   }
 
-  .Content {
+  .Inner {
     width: 100%;
     max-width: 1440px;
+    height: 3.1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     h1 {
       font-family: SSP1;
-      font-size: 1.6rem;
+      font-size: 1.75rem;
       margin-left: 4rem;
-      margin-right: 4rem;
+      margin-right: 10rem;
       cursor: pointer;
     }
 
     .Nav {
-      width: 34rem;
+      width: 37rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
 
       .Item {
         position: relative;
-        height: 0.9rem;
+        height: 1.2rem;
 
         .DropOuter {
           position: absolute;
@@ -63,7 +64,7 @@
 
         p {
           font-family: SSP0;
-          font-size: 0.85rem;
+          font-size: 1rem;
           cursor: pointer;
 
           &:hover {
@@ -110,6 +111,7 @@
       align-items: center;
 
       .Login {
+        font-family: SSP;
         width: 4.7rem;
         height: 1.6rem;
         background-color: #78e7ff;

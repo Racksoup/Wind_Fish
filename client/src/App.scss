@@ -21,9 +21,6 @@ body {
   background: none;
   color: black;
   box-sizing: border-box;
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-family: SSP;
 }
 
 ::-webkit-scrollbar {
@@ -56,6 +53,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.2rem;
 }
 
 @font-face {
@@ -82,7 +80,6 @@ button {
   font-family: 'SSP';
   src: url('fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
 }
-
 @font-face {
   font-family: 'SSP0';
   src: url('fonts/Source_Sans_Pro/SourceSansPro-Light.ttf');

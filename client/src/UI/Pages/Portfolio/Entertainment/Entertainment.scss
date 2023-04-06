@@ -1,0 +1,308 @@
+.Entertainment {
+  height: 1920px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+
+  .Container {
+    height: 100%;
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 9.1rem;
+    z-index: 1;
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: 9rem;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-top: 0.6rem;
+    }
+
+    .Content {
+      width: 100%;
+      height: 20.7rem;
+      margin-top: 3.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: -1;
+
+      .Img-1 {
+        position: absolute;
+        z-index: -1;
+        margin-left: -1.1rem;
+        margin-top: -5.5rem;
+      }
+
+      .Img-2 {
+        position: absolute;
+        z-index: -1;
+        margin-left: 32.6rem;
+        margin-top: -2rem;
+      }
+
+      .FlavorText {
+        width: 37rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h5 {
+          text-align: center;
+          font-size: 1.5rem;
+          font-weight: 400;
+          line-height: 2.2rem;
+        }
+
+        button {
+          height: 3.2rem;
+          width: 11rem;
+          margin-top: 1.9rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 1.5rem;
+          font-weight: 400;
+          border-radius: 0.4rem;
+        }
+
+        a {
+        }
+        .Twitch {
+          background-color: #8000ff;
+        }
+        .Youtube {
+          background-color: #ff0000;
+        }
+      }
+    }
+
+    .Blogs {
+      width: 100%;
+      margin-top: 3.7rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      z-index: -1;
+
+      .Vector {
+        position: absolute;
+        z-index: -1;
+        margin-left: 0rem;
+        margin-top: -13.5rem;
+        height: 43rem;
+      }
+
+      .Blogsx {
+        width: 45rem;
+        height: 18rem;
+        display: flex;
+        justify-content: space-between;
+
+        .Blog {
+          width: 17rem;
+          height: 100%;
+          background-color: grey;
+        }
+      }
+
+      .Reddit {
+        margin-top: 4.8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .Label {
+          margin-right: 1.2rem;
+        }
+        p {
+          font-size: 1.1rem;
+          font-weight: 300;
+        }
+
+        .Img {
+          width: 1.8rem;
+          cursor: pointer;
+        }
+
+        button {
+          width: 8rem;
+          height: 2.6rem;
+          border: 0.1rem solid #ff0000;
+          border-radius: 0.4rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          padding: 0 0.7rem;
+
+          p {
+            cursor: pointer;
+          }
+        }
+      }
+      .Discord {
+        margin-top: 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .Label {
+          margin-left: 1.2rem;
+        }
+
+        p {
+          font-size: 1.1rem;
+          font-weight: 300;
+        }
+
+        .Img {
+          cursor: pointer;
+          width: 1.8rem;
+        }
+
+        button {
+          width: 8rem;
+          height: 2.6rem;
+          border: 0.1rem solid #8c00ff;
+          border-radius: 0.4rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          padding: 0 0.7rem;
+
+          p {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Card {
+  height: 19.2rem;
+  width: 19rem;
+  background-color: white;
+  border: 0.5rem solid black;
+  box-shadow: 0.5rem 0.5rem 0 black;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  &:hover {
+    .CardContent {
+      background-color: black;
+
+      .TimeRow {
+        .Icon {
+          svg {
+            color: white;
+          }
+          path {
+            color: white;
+          }
+        }
+      }
+      p {
+        color: white;
+      }
+      h4 {
+        color: white;
+      }
+      .Desc {
+        color: white;
+      }
+      .Text {
+        color: white;
+      }
+    }
+  }
+
+  .CardHeader {
+    width: 100%;
+    height: 4rem;
+    background-color: rgb(0, 83, 0);
+    padding: 0 1.9rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5rem solid black;
+    cursor: pointer;
+    justify-content: center;
+
+    h4 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: white;
+      margin-top: 0;
+    }
+
+    &-1 {
+      background-color: rgb(0, 73, 78);
+    }
+    &-2 {
+      background-color: rgb(71, 58, 0);
+    }
+  }
+
+  img {
+    width: 100%;
+    border-bottom: 0.5rem solid black;
+    cursor: pointer;
+    height: 10rem;
+  }
+
+  .CardContent {
+    padding: 0.7rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    overflow-y: hidden;
+
+    .TimeRow {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .Icon {
+        height: 1.3rem;
+        width: 1.3rem;
+        cursor: pointer;
+
+        svg {
+          color: black;
+        }
+        path {
+          color: black;
+        }
+      }
+
+      p {
+        font-size: 0.7rem;
+        color: black;
+        margin-left: 0.15rem;
+        cursor: pointer;
+      }
+    }
+
+    h4 {
+      font-size: 1.4rem;
+      color: black;
+      cursor: pointer;
+      margin-top: 0.3rem;
+    }
+  }
+}

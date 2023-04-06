@@ -12,7 +12,10 @@ const Navbar = () => {
   //     if (window.scrollY > window.innerHeight) {
   //       toggleNav(true);
   //     }
-  //     if (window.scrollY <= window.innerHeight) {
+  //     if (
+  //       window.scrollY <= window.innerHeight &&
+  //       window.location.href !== 'http://localhost:8080/'
+  //     ) {
   //       toggleNav(false);
   //     }
   //   };
@@ -27,7 +30,7 @@ const Navbar = () => {
   if (nav) {
     return (
       <div className='Navbar'>
-        <div className='Content'>
+        <div className='Inner'>
           <h1>WIND FISH</h1>
           <div className='Nav'>
             <div className='Item Item-Dev'>

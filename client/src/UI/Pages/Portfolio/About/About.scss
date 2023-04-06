@@ -1,0 +1,119 @@
+.About {
+  height: 1080px;
+  width: 100vw;
+  background-color: #505050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .Container {
+    height: 100%;
+    width: 1440px;
+    padding: 5.2rem 6.1rem 7.3rem 6.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .Header {
+      height: 14.1rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+
+      .Center {
+        height: 100%;
+        justify-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        h4 {
+          font-size: 2.3rem;
+          font-weight: 600;
+          color: #ff9616;
+          text-shadow: 2px 2px black;
+        }
+
+        .Underline {
+          width: 32rem;
+          height: 0.15rem;
+          background-color: #ff9616;
+          box-shadow: 2px 2px;
+        }
+
+        img {
+          width: 38rem;
+          object-fit: cover;
+        }
+      }
+
+      .Pastel {
+        align-self: start;
+        justify-self: end;
+        margin-top: -1.6rem;
+        width: 8.6rem;
+      }
+    }
+
+    .Content {
+      width: 100%;
+      height: 36.2rem;
+      display: flex;
+      justify-content: space-between;
+
+      .Left {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        .Top {
+          height: 13.2rem;
+          width: 39.2rem;
+          background-color: #181818;
+          border-radius: 0.5rem;
+          padding: 0 2.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          img {
+            width: 9.7rem;
+            object-fit: cover;
+          }
+
+          .Hype {
+            height: 8rem;
+            width: 21rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+        }
+
+        .Dogs {
+          margin-left: 1.7rem;
+        }
+      }
+
+      .Right {
+        width: 30rem;
+        height: 37rem;
+        background-color: #181818;
+        border-radius: 0.5rem;
+        padding: 1rem 1.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+}

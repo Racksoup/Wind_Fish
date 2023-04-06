@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './Home.scss';
 import { selectVideos, getYoutube } from '../../../Redux/youtubeSlice';
 import { useSelector, useDispatch } from 'react-redux';
+
+import Navbar from '../../Components/Navbar/Navbar.jsx';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,6 +15,7 @@ const Home = () => {
 
   return (
     <div className='Home'>
+      <Navbar />
       <div className='Content'>
         <div className='Top'>
           <div className='Section'>

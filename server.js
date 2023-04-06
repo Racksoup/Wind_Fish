@@ -27,4 +27,4 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
-axios.get(`http://localhost:${PORT}/api/youtubev3`);
+// axios.get(`http://localhost:${PORT}/api/youtubev3`);

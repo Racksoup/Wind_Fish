@@ -1,18 +1,24 @@
 import React from 'react';
 import './App.scss';
 import Home from './UI/Pages/Home/Home.jsx';
-import Navbar from './UI/Components/Navbar/Navbar.jsx';
+import Portfolio from './UI/Pages/Portfolio/Portfolio.jsx';
+import { store } from './Redux/store';
 
-import { Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div className='App'>
-      <Navbar />
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-      </Routes>
-    </div>
+    <Router>
+      <div className='App'>
+        <Provider store={store}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/portfolio' element={<Portfolio />} />
+          </Routes>
+        </Provider>
+      </div>
+    </Router>
   );
 };
 
