@@ -1,0 +1,223 @@
+@import '../../../App.scss';
+
+.Dashboard {
+  @include Section;
+
+  .HeaderTitle {
+    font-size: 2rem;
+    margin-top: 4rem;
+  }
+
+  .Logout {
+    position: absolute;
+    margin: 4rem 0 0 20rem;
+
+    @media (max-width: $lowerBreak) {
+      margin: 2rem 0 0 10rem;
+    }
+  }
+
+  .Link {
+    &:hover {
+      color: orange;
+    }
+  }
+  .Back {
+    position: absolute;
+    margin: 4rem 0 0 -20rem;
+
+    @media (max-width: $lowerBreak) {
+      margin: 2rem 0 0 -10rem;
+    }
+  }
+
+  .Title {
+    font-size: 1.6rem;
+  }
+
+  .Nav {
+    width: 18rem;
+    margin-top: 3rem;
+    display: flex;
+    border-bottom: solid 0.1rem rgba(255, 255, 255, 0.8);
+    justify-content: space-around;
+
+    .NavItem {
+      cursor: pointer;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .Selected {
+      background-color: $pineGreen;
+      border-top-left-radius: 0.6rem;
+      border-top-right-radius: 0.6rem;
+    }
+  }
+
+  .Settings {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 33rem;
+
+    @media (max-width: $lowerBreak) {
+      width: 18rem;
+    }
+
+    .Item {
+      margin-top: 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .Label {
+        font-size: 1.2rem;
+      }
+
+      .Delete {
+        background-color: red;
+      }
+
+      .Btn {
+        width: 4rem;
+      }
+
+      .Input {
+        width: 15rem;
+        height: 2.4rem;
+        border: solid 0.1rem black;
+        outline: none;
+        border-radius: 0.3rem;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+
+        @media (max-width: $lowerBreak) {
+          width: 7rem;
+          margin: 0 0.5rem;
+        }
+      }
+    }
+  }
+
+  .CommentsBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+
+    .AllComments {
+      width: 40rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.5rem;
+      border: solid rgba(255, 255, 255, 0.5) 0.1rem;
+      border-radius: 0.5rem;
+
+      .Btn {
+        width: 4rem;
+        font-size: 1.2rem;
+        margin-top: 0.4rem;
+      }
+
+      @media (max-width: $lowerBreak) {
+        width: 18rem;
+      }
+
+      .Comment {
+        width: 100%;
+        min-height: 6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+
+        .Border {
+          position: absolute;
+          width: 37.8rem;
+          margin: 5.5rem 0 0 0;
+          border-bottom: solid rgba(255, 255, 255, 0.5) 0.1rem;
+        }
+
+        .Info {
+          display: flex;
+          flex-direction: column;
+          align-self: start;
+          padding-right: 0.5rem;
+
+          .BlogName {
+            font-size: 1.2rem;
+          }
+
+          .Text {
+            margin: 0.4rem 0 0 0.3rem;
+          }
+        }
+
+        .Btns {
+          width: 14.7rem;
+          display: flex;
+          justify-content: space-between;
+
+          @media (max-width: $lowerBreak) {
+            flex-direction: column;
+            width: auto;
+          }
+
+          .Update {
+            background-color: $pineGreen;
+          }
+
+          .Delete {
+            background-color: rgb(114, 0, 0);
+          }
+        }
+      }
+    }
+  }
+
+  .LikesBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+    width: 40rem;
+
+    @media (max-width: $lowerBreak) {
+      width: 18rem;
+    }
+
+    .AllLikes {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      .Like {
+        border-radius: 0.5rem;
+        border: solid rgba(255, 255, 255, 0.5) 0.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.7rem;
+
+        .BlogName {
+          font-size: 1.2rem;
+        }
+
+        .Btn {
+          width: 4rem;
+        }
+
+        .Delete {
+          margin-top: 0.5rem;
+          background-color: rgb(114, 0, 0);
+        }
+      }
+    }
+  }
+}

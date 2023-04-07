@@ -1,0 +1,78 @@
+@import './Btn.scss';
+$bgColor: rgba(18, 18, 18, 1);
+$cyanColor: rgb(0, 255, 234);
+$pineGreen: rgb(3, 121, 113);
+$lightSeaGreen: rgb(3, 181, 170);
+$tiffanyBlue: rgb(0, 191, 179);
+$persianGreen: rgb(4, 154, 143);
+$cyanColorTran: rgba(0, 255, 234, 0.788);
+$pineGreenTran: rgba(3, 121, 113, 0.8);
+$lightSeaGreenTran: rgba(3, 181, 170, 0.8);
+$tiffanyBlueTran: rgba(0, 191, 179, 0.8);
+$persianGreenTran: rgb(4, 154, 143, 0.8);
+$upperBreak: 1150px;
+$lowerBreak: 767px;
+
+a {
+  color: black;
+
+  &:active {
+    color: black;
+  }
+}
+
+.App-Background {
+  background-color: $bgColor;
+  position: fixed;
+  z-index: -4;
+  height: 100%;
+  width: 100%;
+}
+
+.App-Main {
+  width: 100%;
+  color: white;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  background-color: $bgColor;
+}
+
+.Link {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+@mixin Section {
+  width: 70rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 767px) and (max-width: 1150px) {
+    width: 40rem;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0;
+  margin: 0;
+  font-family: Oswald;
+  font-weight: 400;
+}
+
+.Btn {
+  cursor: pointer;
+}

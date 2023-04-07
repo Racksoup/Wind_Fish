@@ -1,0 +1,151 @@
+@import '../../DevBlogMain';
+
+.Footer {
+  width: 100vw;
+  padding: 3.5rem 0 1rem 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $lowerBreak) {
+    padding: 1.5rem 0;
+  }
+
+  .EndBG {
+    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    z-index: -1;
+    position: fixed;
+  }
+
+  &Content {
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+
+    @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+      width: 40rem;
+    }
+
+    @media (max-width: $lowerBreak) {
+      justify-content: center;
+    }
+
+    .QuickLinks {
+      width: 44%;
+      display: flex;
+      justify-content: space-between;
+      @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+        width: 48%;
+      }
+      @media (max-width: $lowerBreak) {
+        display: none;
+      }
+
+      .Column {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+          width: 30%;
+        }
+
+        .Link {
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .Newsletter {
+      width: 37%;
+      display: flex;
+      flex-direction: column;
+      @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+        width: 48%;
+
+        .NewsText {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: $lowerBreak) {
+        width: 90%;
+      }
+
+      .InputBox {
+        margin-top: 1rem;
+        width: 90%;
+        display: flex;
+        height: 2rem;
+        font-size: 1rem;
+        @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+          width: 100%;
+        }
+
+        .Input {
+          height: 100%;
+          width: 80%;
+          padding-left: 0.8rem;
+          background-color: rgba(24, 24, 24, 0.8);
+          border-top-left-radius: 0.3rem;
+          border-bottom-left-radius: 0.3rem;
+          border: none;
+          outline: none;
+          color: white;
+        }
+
+        .InputBtn {
+          height: 100%;
+          width: 20%;
+          background-color: $persianGreenTran;
+          border: none;
+          border-top-right-radius: 0.3rem;
+          border-bottom-right-radius: 0.3rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .Title {
+      font-size: 1rem;
+      color: white;
+
+      @media (max-width: $lowerBreak) {
+        font-size: 1.4rem;
+      }
+    }
+
+    hr {
+      margin-top: 1.7rem;
+      margin-bottom: 1rem;
+      width: 5.6rem;
+      height: 0.05rem;
+      background-color: rgba(100, 100, 100, 0.3);
+      border: none;
+    }
+
+    .Text {
+      color: rgba(100, 100, 100, 1);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .NewsText {
+      width: 50%;
+
+      @media (max-width: $lowerBreak) {
+        width: 100%;
+      }
+    }
+  }
+}

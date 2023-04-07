@@ -1,0 +1,129 @@
+@import '../../DevBlogMain';
+
+.Blogs {
+  width: 67%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  @media (max-width: $upperBreak) {
+    width: 100%;
+  }
+
+  .Blog {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-bottom: 2.5rem;
+
+    .Link {
+      width: 100%;
+    }
+
+    .Image {
+      width: 100%;
+      height: 25rem;
+      object-fit: cover;
+      cursor: pointer;
+      @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+        height: 20rem;
+      }
+      @media (max-width: $lowerBreak) {
+        height: 15rem;
+      }
+    }
+
+    .TopBox {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-top: 1.3rem;
+
+      .Category {
+        padding: 0.3rem 0.6rem;
+        height: 2.1rem;
+        font-size: 1.3rem;
+        color: black;
+        font-weight: 500;
+        background-color: $tiffanyBlue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .BlogLinks {
+        display: flex;
+        width: 8.5em;
+        justify-content: space-between;
+
+        .ShareBox {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+
+          .Icon {
+            cursor: pointer;
+
+            path {
+              cursor: pointer;
+            }
+          }
+        }
+
+        .HeartBox {
+          display: flex;
+          align-items: center;
+        }
+
+        .BlogLinkText {
+          margin: 0 0 0 0.3rem;
+        }
+      }
+    }
+
+    .Date {
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      color: rgba(100, 100, 100, 0.8);
+      font-style: italic;
+    }
+
+    .Title {
+      margin-top: 0.6rem;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .Text {
+      max-height: 8rem;
+      margin: 0.8rem 0 0.9rem 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+      color: white;
+
+      .TextSegment {
+        font-size: 1.1rem;
+        color: white;
+      }
+    }
+
+    .Readmore {
+      width: 9rem;
+      height: 2.8rem;
+      border: solid 0.05rem $persianGreen;
+      color: $persianGreen;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(100, 100, 100, 0.1);
+      cursor: pointer;
+    }
+  }
+}

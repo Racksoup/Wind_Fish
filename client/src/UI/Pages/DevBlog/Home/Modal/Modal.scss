@@ -1,0 +1,33 @@
+@import '../../DevBlogMain';
+
+.Contact-Modal-Background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+}
+
+.Contact-Modal {
+  position: absolute;
+  margin: 10rem auto 0 auto;
+  border: solid 0.3rem cyan;
+  border-radius: 1rem;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  .Title {
+    margin-top: 0px;
+  }
+
+  @media (max-width: $lowerBreak) {
+    padding: 0.8rem;
+  }
+}

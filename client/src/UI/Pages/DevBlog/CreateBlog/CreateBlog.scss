@@ -1,0 +1,163 @@
+@import '../../../App.scss';
+
+.CreateBlog {
+  display: flex;
+  width: 70rem;
+  margin: 1rem auto 0 auto;
+  border: solid 0.3rem cyan;
+  border-radius: 1rem;
+  background-color: white;
+  color: black;
+  justify-content: space-around;
+
+  .BlogInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .Link {
+      position: absolute;
+      margin: -1rem 0 0 -60rem;
+    }
+
+    .Title {
+      padding: 0;
+      margin: 1rem 0 0 0;
+    }
+    .InputGroup {
+      display: flex;
+      width: 34rem;
+      justify-content: space-between;
+      align-items: end;
+
+      .Btn {
+        position: absolute;
+        margin: 0 0 0.2rem 35rem;
+      }
+    }
+    .Label {
+      font-size: 1.6rem;
+    }
+
+    .TagsDrop {
+      height: 2.4rem;
+      margin: 1rem 0 0 0;
+      width: 25rem;
+      font-size: 1.4rem;
+      border-radius: 0.5rem;
+      border: solid 0.1rem rgba(0, 0, 0, 0.4);
+      padding: 0 0 0 1rem;
+      display: flex;
+      justify-content: start;
+
+      &Tag {
+        margin-right: 0.5rem;
+      }
+    }
+
+    .TagsDropDisplay {
+      background-color: white;
+      position: absolute;
+      margin-bottom: -4rem;
+      margin-left: 9rem;
+      font-size: 1.4rem;
+      width: 25rem;
+      min-height: 3rem;
+      max-height: 8rem;
+      overflow-y: scroll;
+      border-radius: 0.5rem;
+      border: solid 0.15rem $persianGreen;
+      display: flex;
+      justify-content: start;
+
+      .Tag {
+        padding: 0.6rem;
+        line-height: 1.2rem;
+        border-radius: 1.1rem;
+        border: solid 0.13rem $cyanColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0.6rem;
+      }
+
+      .TagActive {
+        background-color: $cyanColorTran;
+      }
+    }
+
+    .Input {
+      margin: 1rem 0 0 0;
+      width: 25rem;
+      height: 2.4rem;
+      font-size: 1.4rem;
+      border-radius: 0.5rem;
+      border: solid 0.1rem rgba(0, 0, 0, 0.4);
+      padding: 0 0 0 1rem;
+
+      &:focus {
+        border: solid 0.2rem rgb(255, 115, 0);
+        outline: none;
+      }
+    }
+
+    .ContentInput {
+      width: 50rem;
+      height: 26rem;
+      resize: none;
+    }
+
+    .Btn {
+      margin: 1rem 0 1rem 0;
+
+      &-Del {
+        background-color: rgb(180, 0, 0);
+      }
+    }
+  }
+
+  .Img {
+    &Info {
+      margin: 4rem 0;
+      overflow-y: scroll;
+      overflow-y: overlay;
+      width: 15rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: solid 0.2rem rgba(0, 0, 0, 0.3);
+
+      .Title {
+        font-size: 2rem;
+      }
+
+      .Btn-Del {
+        height: 1rem;
+        margin: 0 0 0.3rem 0;
+      }
+    }
+
+    &Name {
+      margin: 0 0 0.1rem 0;
+      width: 8rem;
+    }
+
+    &Comp {
+      width: 100%;
+      padding: 0.8rem 0 0 0;
+      border-top: 1px solid grey;
+    }
+
+    &TitleBox {
+      display: flex;
+      justify-content: space-around;
+      align-items: end;
+    }
+
+    &Holder {
+      object-fit: cover;
+      width: 100%;
+      height: 9rem;
+    }
+  }
+}
