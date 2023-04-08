@@ -1,0 +1,453 @@
+@import '../../DevBlogMain';
+
+$mobileIconHeight: 1.8rem;
+
+.Blog-Navbar {
+  margin-top: 4.5rem;
+  width: 100%;
+  height: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: $lowerBreak) {
+    height: 6rem;
+  }
+  .TopBar {
+    width: 100%;
+    height: 60%;
+    border-bottom: rgba(255, 255, 255, 0.2) 0.05rem solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+
+    @media (max-width: $lowerBreak) {
+      display: flex;
+      height: 50%;
+      justify-content: space-between;
+    }
+
+    .SocialLinks {
+      display: flex;
+      width: 6rem;
+      justify-content: space-between;
+      justify-self: start;
+
+      .SocialLink {
+        font-size: 1.4rem;
+        cursor: pointer;
+
+        .Icon {
+          cursor: pointer;
+        }
+
+        path {
+          cursor: pointer;
+        }
+
+        &:hover {
+          filter: brightness(50%);
+        }
+      }
+
+      .Twitter {
+        color: rgba(29, 161, 242, 1);
+      }
+      .Facebook {
+        color: rgba(66, 103, 178, 1);
+      }
+      .Github {
+        color: white;
+      }
+      .Pinterest {
+        color: rgba(230, 0, 35, 1);
+      }
+    }
+
+    .Link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 14rem;
+      place-self: center;
+
+      &:hover {
+        .Title {
+          color: $cyanColor;
+        }
+      }
+    }
+
+    .Title {
+      justify-self: center;
+      font-size: 2.5rem;
+      color: white;
+
+      @media (max-width: $lowerBreak) {
+        margin-left: 1rem;
+        font-size: 2rem;
+      }
+    }
+  }
+  .SearchBox {
+    display: flex;
+    justify-self: end;
+    align-items: end;
+
+    @media (max-width: $lowerBreak) {
+      width: 100%;
+      justify-self: center;
+      justify-content: space-around;
+    }
+
+    .AccountLink {
+      cursor: pointer;
+      margin: 0 0 0 0.6rem;
+      font-size: 2.5rem;
+
+      .Icon {
+        cursor: pointer;
+      }
+
+      path {
+        cursor: pointer;
+        stroke: white;
+        stroke-width: 5;
+      }
+
+      &:hover {
+        filter: brightness(50%);
+      }
+    }
+
+    .Link {
+      margin: 1.8rem 0.2rem 0 0.6rem;
+      font-size: 2rem;
+      cursor: pointer;
+
+      @media (max-width: $lowerBreak) {
+        margin: 0 0.2rem 0 0rem;
+      }
+
+      .Icon {
+        cursor: pointer;
+      }
+
+      path {
+        cursor: pointer;
+        stroke: white;
+        stroke-width: 5;
+      }
+
+      &:hover {
+        filter: brightness(50%);
+      }
+    }
+    .Pink {
+      cursor: pointer;
+      width: 5rem;
+      height: 3.6rem;
+      @media (max-width: $lowerBreak) {
+        margin: 0 0 0 0;
+        height: $mobileIconHeight;
+      }
+
+      .Icon {
+        width: 5rem;
+        height: 3.6rem;
+        cursor: pointer;
+        @media (max-width: $lowerBreak) {
+          height: $mobileIconHeight;
+        }
+      }
+
+      path {
+        cursor: pointer;
+        stroke: white;
+        stroke-width: 5;
+      }
+
+      &:hover {
+        filter: brightness(50%);
+      }
+    }
+  }
+  .search {
+    margin: -0.2rem 0.6rem 0 0;
+
+    @media (max-width: $lowerBreak) {
+      margin: 15px 15px 13px 15px;
+    }
+  }
+
+  .search > h3 {
+    font-weight: normal;
+  }
+
+  .search > h1,
+  .search > h3 {
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 0 1px #0091c2;
+  }
+
+  .search > div {
+    display: inline-block;
+    position: relative;
+    filter: drop-shadow(0 1px #0091c2);
+  }
+
+  .search > div:after {
+    content: '';
+    background: $cyanColor;
+    width: 3px;
+    height: 20px;
+    position: absolute;
+    top: 19px;
+    right: -3px;
+    transform: rotate(135deg);
+    cursor: pointer;
+
+    @media (max-width: $lowerBreak) {
+      top: 18px;
+      right: -5px;
+      height: 14px;
+    }
+  }
+
+  .search > div > input {
+    color: $cyanColor;
+    font-size: 16px;
+    background: transparent;
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+    border: solid 3px $cyanColor;
+    outline: none;
+    border-radius: 35px;
+    transition: width 0.5s;
+    cursor: pointer;
+
+    @media (max-width: $lowerBreak) {
+      font-size: 0.8rem;
+      width: 20px;
+      height: 20px;
+      padding: 5px;
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  .search > div > input::placeholder {
+    color: #efefef;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+
+  .search > div > input:focus::placeholder {
+    opacity: 1;
+  }
+
+  .search > div > input:focus,
+  .search > div > input:not(:placeholder-shown) {
+    width: 220px;
+    @media (max-width: $lowerBreak) {
+      width: 190px;
+    }
+  }
+
+  .BottomBar {
+    width: 1000px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .Left {
+      width: 2.6rem;
+    }
+
+    .Center {
+      width: 68%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      justify-items: center;
+      align-items: center;
+      font-size: 1.2rem;
+
+      @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+        width: 90%;
+      }
+
+      @media (max-width: $lowerBreak) {
+        width: 100%;
+        align-items: center;
+        display: flex;
+        height: 50%;
+        justify-content: end;
+      }
+    }
+
+    .LinkText {
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        color: $cyanColor;
+      }
+    }
+
+    .LinkTextActive {
+      color: grey;
+    }
+  }
+  .Dropdown {
+    &:hover {
+      color: grey;
+    }
+
+    &:hover .DropdownBox {
+      display: flex;
+    }
+
+    .DropdownBox {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      background-color: $bgColor;
+
+      .DropLink {
+        cursor: pointer;
+        color: white;
+        height: 3rem;
+        padding: 0.1rem;
+        font-size: 1.6rem;
+        &:hover {
+          color: $cyanColor;
+        }
+      }
+    }
+  }
+
+  .Hamburger {
+    display: flex;
+    justify-content: center;
+    width: 5rem;
+    height: $mobileIconHeight;
+    &:hover {
+      color: grey;
+    }
+
+    .SocialLink {
+      font-size: 1.4rem;
+      cursor: pointer;
+
+      path {
+        cursor: pointer;
+      }
+
+      &:hover {
+        filter: brightness(50%);
+      }
+    }
+
+    .Icon {
+      width: 5rem;
+      cursor: pointer;
+      height: $mobileIconHeight;
+    }
+
+    .Twitter {
+      color: rgba(29, 161, 242, 1);
+    }
+    .Facebook {
+      color: rgba(66, 103, 178, 1);
+    }
+    .Github {
+      color: white;
+    }
+    .Pinterest {
+      color: rgba(230, 0, 35, 1);
+    }
+
+    .LinkText {
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        color: $cyanColor;
+      }
+    }
+
+    &:hover .DropdownBox {
+      display: flex;
+    }
+    &:hover .SocialDrop {
+      display: flex;
+    }
+
+    .DropLink {
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: white;
+      width: 10.9rem;
+      margin: 0 0.2rem 0 1.4rem;
+      height: 2.2rem;
+
+      &:hover {
+        color: $cyanColor;
+      }
+    }
+    .DropdownBox {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      background-color: $bgColor;
+      margin: 2.1rem 0 0 1rem;
+    }
+    .SocialDrop {
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      background-color: $bgColor;
+      margin: 2.1rem 0 0 0rem;
+    }
+  }
+
+  .HamburgerCategories {
+    background-color: $bgColor;
+    width: 7rem;
+    margin: 0 0 0 0rem;
+    &:hover {
+      color: grey;
+    }
+
+    &:hover .DropdownBoxCategories {
+      display: flex;
+    }
+
+    .DropdownBoxCategories {
+      margin: -2.7rem 0 0 -12.6rem;
+      display: none;
+      position: absolute;
+      flex-direction: column;
+      background-color: $bgColor;
+    }
+
+    .DropLinkCategories {
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: white;
+      width: 10.9rem;
+      margin: 0 0.2rem 0 1.4rem;
+      height: 2.2rem;
+
+      &:hover {
+        color: $cyanColor;
+      }
+    }
+  }
+
+  .White {
+    color: white;
+  }
+}

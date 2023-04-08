@@ -37,7 +37,9 @@ const Navbar = () => {
           <div className='Nav'>
             <div className='Item Item-Dev'>
               <div className='DropOuter'>
-                <p>Dev</p>
+                <Link to='/dev-blog'>
+                  <p>Dev</p>
+                </Link>
                 <div className='Drop'>
                   <p>fdsfds</p>
                   <p>fdsfds</p>

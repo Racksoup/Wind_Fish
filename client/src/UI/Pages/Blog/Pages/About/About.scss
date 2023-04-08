@@ -1,0 +1,139 @@
+@import '../../DevBlogMain.scss';
+
+.About {
+  @include Section;
+  background-color: $bgColor;
+  font-family: Oswald;
+  font-weight: 400;
+
+  * {
+    color: white;
+  }
+
+  .Content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .Title {
+      margin-top: 2.3rem;
+      font-size: 2.5rem;
+
+      @media (max-width: $lowerBreak) {
+        margin-top: 1rem;
+      }
+    }
+
+    .Top {
+      margin-top: 4rem;
+      width: 81%;
+      display: flex;
+      justify-content: space-between;
+      height: 30rem;
+
+      @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+        width: 100%;
+      }
+
+      @media (max-width: $lowerBreak) {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        height: auto;
+        margin-top: 2rem;
+      }
+
+      .Img {
+        width: 38%;
+        height: 100%;
+        object-fit: cover;
+
+        @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+          width: 48%;
+        }
+        @media (max-width: $lowerBreak) {
+          width: 100%;
+          height: 50%;
+        }
+      }
+
+      .Right {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: $lowerBreak) {
+          width: 80%;
+        }
+      }
+
+      &Title {
+        font-size: 2rem;
+        text-align: center;
+        width: 100%;
+        @media (max-width: $lowerBreak) {
+          margin-top: 1.5rem;
+        }
+      }
+
+      &Text {
+        margin-top: 1.1rem;
+        text-align: center;
+        width: 100%;
+        font-size: 1.6rem;
+      }
+    }
+
+    .Images {
+      width: 100vw;
+      height: 16rem;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+
+      @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      @media (max-width: $lowerBreak) {
+        height: 30rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+      }
+
+      .Img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    hr {
+      border: none;
+      background-color: rgba(75, 75, 75, 0.8);
+      height: 0.15rem;
+      width: 100%;
+      margin: 6rem 0;
+
+      @media (max-width: $lowerBreak) {
+        margin: 3rem 0;
+      }
+    }
+
+    .Text {
+      margin: 1rem 0 4rem 0;
+      text-align: center;
+      width: 50%;
+      font-size: 1.6rem;
+    }
+
+    .Titlex {
+      margin: 4rem 0 1rem 0;
+      font-size: 2rem;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
