@@ -3,8 +3,13 @@
 .DevBlog {
   @include Section;
   background-color: $bgColor;
+  
   font-family: Oswald;
   font-weight: 400;
+  * {
+    font-family: Oswald;
+    font-weight: 400;
+  }
 
   .Content {
     width: 100%;

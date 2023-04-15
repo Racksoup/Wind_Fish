@@ -3,9 +3,9 @@ import './Footer.scss';
 
 const Footer = () => {
   return (
-    <div className='Footer'>
+    <div className='Portfolio-Footer'>
       <div className='Content'>
-        <div className='Contact'>
+        <div className='Portfolio-Contact'>
           <div>
             <h6>Contact</h6>
             <div className='Underline' />

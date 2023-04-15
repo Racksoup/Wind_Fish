@@ -7,7 +7,7 @@ import SelfieCircle from '../../../../images/SelfieCircle.png';
 
 const About = () => {
   return (
-    <div className='About' id='About'>
+    <div className='Portfolio-About' id='About'>
       <div className='Container'>
         <div className='Header'>
           <div />

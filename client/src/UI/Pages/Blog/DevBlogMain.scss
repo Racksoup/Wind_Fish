@@ -36,6 +36,9 @@ a {
   display: flex;
   justify-content: center;
   background-color: $bgColor;
+
+  * {     font-family: Oswald;
+    font-weight: 400;}
 }
 
 .Link {
