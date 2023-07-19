@@ -1,30 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CreateBlog.scss';
-import { createBlog } from '../../../Redux/Actions/blogs.js';
-import { getCategories } from '../../../Redux/Actions/blogCategory.js';
-import { getTags, addTag } from '../../../Redux/Actions/tag.js';
-import { loadUser } from '../../../Redux/Actions/auth';
+import { createBlog } from '../../../../../Redux/Blog/blogSlice.js';
+import { getCategories, selectCategories } from '../../../../../Redux/Blog/categorySlice.js';
+import { getTags, addTag, selectTags } from '../../../../../Redux/Blog/tagSlice.js';
+import {
+  loadUser,
+  selectIsAuthenticated,
+  selectLoading,
+} from '../../../../../Redux/Blog/adminSlice.js';
 import ImageModal from '../AdminDashboard/Modal/ImageModal.jsx';
 import Modal from '../BlogDetails/Modal/Modal.jsx';
 
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';
 
-const CreateBlog = ({
-  createBlog,
-  categories,
-  tags,
-  loadUser,
-  getCategories,
-  getTags,
-  isAuthenticated,
-  loading,
-  addTag,
-}) => {
+const CreateBlog = () => {
+  const dispatch = useDispatch();
+  const tags = useSelector(selectTags);
+  const categories = useSelector(selectCategories);
+  const loading = useSelector(selectLoading);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
   useEffect(() => {
-    loadUser();
-    getCategories();
-    getTags();
+    dispatch(loadUser());
+    dispatch(getCategories());
+    dispatch(getTags());
   }, []);
 
   const [item, setItem] = useState({
@@ -88,7 +88,7 @@ const CreateBlog = ({
       }
       isFirstRender.current = false;
     } else {
-      createBlog(item, file, contentFiles);
+      dispatch(createBlog(item, file, contentFiles));
     }
   }, [submitWasClicked]);
 
@@ -330,13 +330,4 @@ const CreateBlog = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  loading: state.auth.loading,
-  categories: state.blogCategory.categories,
-  tags: state.tag.tags,
-});
-
-export default connect(mapStateToProps, { createBlog, loadUser, getCategories, getTags, addTag })(
-  CreateBlog
-);
+export default CreateBlog;

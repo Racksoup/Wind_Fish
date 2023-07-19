@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Modal';
+import './Modal.scss';
 
 const Modal = ({ toggleModal, Func, title, placeHolder, type }) => {
   const [item, setItem] = useState('');

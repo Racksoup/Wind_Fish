@@ -12,6 +12,7 @@ import Blogs from './UI/Pages/Blog/Pages/Blogs/Blogs.jsx';
 import Admin from './UI/Pages/Blog/Pages/Admin/Admin.jsx';
 import Navbar from './UI/Components/Navbar/Navbar.jsx';
 import AdminDashboard from './UI/Pages/Blog/Pages/AdminDashboard/AdminDashboard.jsx';
+import CreateBlog from './UI/Pages/Blog/Pages/CreateBlog/CreateBlog.jsx';
 
 import { Provider } from 'react-redux';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
@@ -33,6 +34,7 @@ const App = () => {
             <Route path='/dev-blog/contact' element={<Contact />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/admin-dashboard' element={<AdminDashboard />} />
+            <Route path='/create-blog' element={<CreateBlog />} />
           </Routes>
         </Provider>
       </div>
