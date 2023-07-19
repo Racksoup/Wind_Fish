@@ -14,6 +14,7 @@ import Navbar from './UI/Components/Navbar/Navbar.jsx';
 import AdminDashboard from './UI/Pages/Blog/Pages/AdminDashboard/AdminDashboard.jsx';
 import CreateBlog from './UI/Pages/Blog/Pages/CreateBlog/CreateBlog.jsx';
 import UpdateBlog from './UI/Pages/Blog/Pages/UpdateBlog/UpdateBlog.jsx';
+import BlogDetails from './UI/Pages/Blog/Pages/BlogDetails/BlogDetails.jsx';
 
 import { Provider } from 'react-redux';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
@@ -37,6 +38,7 @@ const App = () => {
             <Route path='/admin-dashboard' element={<AdminDashboard />} />
             <Route path='/create-blog' element={<CreateBlog />} />
             <Route path='/update-blog' element={<UpdateBlog />} />
+            <Route path='/update-blog-details' element={<BlogDetails />} />
           </Routes>
         </Provider>
       </div>
