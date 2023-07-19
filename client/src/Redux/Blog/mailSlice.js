@@ -33,7 +33,7 @@ export const subToNewsletter = (email, name) => async (dispatch) => {
   };
   const body = JSON.stringify({ email, name });
   try {
-    const res = await axios.post('/api/mailing/member', body, config);
+    const res = await axios.post('/api/backend-blog/mailing/member', body, config);
     dispatch(subscribed(res.data));
   } catch (error) {
     console.log(error);
@@ -53,7 +53,7 @@ export const sendNewsletter = (newsletter) => async (dispatch) => {
   const { text, link } = newsletter;
   const body = JSON.stringify({ text, link });
   try {
-    const res = await axios.post('api/mailing/new-email', body, config);
+    const res = await axios.post('api/backend-blog/mailing/new-email', body, config);
     dispatch(newsletterSent(res.data));
   } catch (error) {
     console.log(error);
