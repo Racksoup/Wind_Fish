@@ -76,6 +76,10 @@ export const blogSlice = createSlice({
     gotThreeBlogs: (state, action) => {
       state.blogs = action.payload;
     },
+    hasSetCurrBlog: (state, action) => {
+      state.blog = action.payload;
+      state.contentImagesLoaded = false;
+    },
   },
 });
 
@@ -314,6 +318,11 @@ export const searchBlogs = (search) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const setCurrBlog = (blog) => (dispatch) => {
+  localStorage.setItem('blogID', blog._id);
+  dispatch(blogSet(res.data));
 };
 
 export const {

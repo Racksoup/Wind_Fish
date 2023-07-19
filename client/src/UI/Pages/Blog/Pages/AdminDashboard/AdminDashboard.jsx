@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import './AdminDashboard.scss';
 import { loadUser, logout, selectIsAuthenticated } from '../../../../../Redux/Blog/adminSlice.js';
-import AdminBlogs from './AdminBlogs/AdminBlogs';
+import AdminBlogs from './AdminBlogs/AdminBlogs.jsx';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
