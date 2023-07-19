@@ -6,34 +6,32 @@ import {
   deleteContentImage,
   createContentImage,
   updateImageName,
-} from '../../../Redux/Actions/blogs.js';
-import { loadUser } from '../../../Redux/Actions/auth.js';
-import CreateImageModal from '../AdminDashboard/Modal/CreateImageModal';
-import { getTags, addTag } from '../../../Redux/Actions/tag.js';
-import { getCategories } from '../../../Redux/Actions/blogCategory';
-import Modal from '../BlogDetails/Modal/Modal';
+  selectBlog,
+  selectContentImages,
+  selectContentImagesLoaded,
+} from '../../../../../Redux/Blog/blogSlice.js';
+import {
+  loadUser,
+  selectIsAuthenticated,
+  selectLoading,
+} from '../../../../../Redux/Blog/adminSlice.js';
+import { getTags, addTag, selectTags } from '../../../../../Redux/Blog/tagSlice.js';
+import { selectCategories, getCategories } from '../../../../../Redux/Blog/categorySlice.js';
+import Modal from '../BlogDetails/Modal/Modal.jsx';
+import CreateImageModal from '../AdminDashboard/Modal/CreateImageModal.jsx';
 
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';
 
-const UpdateBlog = ({
-  blog,
-  tags,
-  categories,
-  contentImages,
-  contentImagesLoaded,
-  getCurrBlog,
-  updateBlog,
-  loadUser,
-  isAuthenticated,
-  loading,
-  deleteContentImage,
-  createContentImage,
-  updateImageName,
-  getTags,
-  addTag,
-  getCategories,
-}) => {
+const UpdateBlog = () => {
+  const dispatch = useDispatch();
+  const blog = useSelector(selectBlog);
+  const tags = useSelector(selectTags);
+  const categories = useSelector(selectCategories);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const loading = useSelector(selectLoading);
+  const contentImages = useSelector(selectContentImages);
+  const contentImagesLoaded = useSelector(selectContentImagesLoaded);
   const [modal, toggleModal] = useState(false);
   const [tagsDisplay, setTagsDisplay] = useState(false);
   const [imageModal, toggleImageModal] = useState(false);
@@ -43,18 +41,16 @@ const UpdateBlog = ({
   const [imgName, setImgName] = useState([]);
   // loads user and current blog
   useEffect(() => {
-    loadUser();
-    getCurrBlog();
-    getTags();
-    getCategories();
+    dispatch(loadUser());
+    dispatch(getCurrBlog());
+    dispatch(getTags());
+    dispatch(getCategories());
   }, []);
   // sets item after current blog is returned
   useEffect(() => {
-    setItem(blog);
     if (blog !== null) {
-      const newBlog = blog;
-      newBlog.date = new Date(blog.date).toISOString().split('T')[0];
-      setItem(newBlog);
+      const newDate = new Date(blog.date).toISOString().split('T')[0];
+      setItem({ ...item, date: newDate });
     }
     let x = [];
     if (blog) {
@@ -115,7 +111,7 @@ const UpdateBlog = ({
       }
       isFirstRender.current = false;
     } else {
-      updateBlog(item, file);
+      dispatch(updateBlog(item, file));
     }
   }, [submitWasClicked]);
 
@@ -145,7 +141,7 @@ const UpdateBlog = ({
 
   const imgNameEnter = (e, file, name, blog) => {
     if (e.keyCode === 13) {
-      updateImageName(file, name, blog._id, file.metadata.link, file.metadata.caption);
+      dispatch(updateImageName(file, name, blog._id, file.metadata.link, file.metadata.caption));
     }
   };
 
@@ -371,12 +367,12 @@ const UpdateBlog = ({
                       onChange={(e) => imgNameChanged(e)}
                       onKeyDown={(e) => imgNameEnter(e, file, v, item)}
                     />
-                    <div className='Btn-2' onClick={() => deleteContentImage(file)}>
+                    <div className='Btn-2' onClick={() => dispatch(deleteContentImage(file))}>
                       Del
                     </div>
                   </div>
                   <img
-                    src={`/api/blogs/content-image/${file.filename}`}
+                    src={`/api/backend-blog/blogs/content-image/${file.filename}`}
                     alt='Img'
                     className='ImgHolder'
                   />
@@ -389,24 +385,4 @@ const UpdateBlog = ({
   }
 };
 
-const mapStateToProps = (state) => ({
-  blog: state.blogs.blog,
-  contentImages: state.blogs.contentImages,
-  contentImagesLoaded: state.blogs.contentImagesLoaded,
-  isAuthenticated: state.auth.isAuthenticated,
-  loading: state.auth.loading,
-  tags: state.tag.tags,
-  categories: state.blogCategory.categories,
-});
-
-export default connect(mapStateToProps, {
-  updateBlog,
-  loadUser,
-  getCurrBlog,
-  deleteContentImage,
-  createContentImage,
-  updateImageName,
-  getTags,
-  addTag,
-  getCategories,
-})(UpdateBlog);
+export default UpdateBlog;

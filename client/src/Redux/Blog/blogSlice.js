@@ -76,7 +76,7 @@ export const blogSlice = createSlice({
     gotThreeBlogs: (state, action) => {
       state.blogs = action.payload;
     },
-    hasSetCurrBlog: (state, action) => {
+    blogSet: (state, action) => {
       state.blog = action.payload;
       state.contentImagesLoaded = false;
     },
@@ -322,7 +322,7 @@ export const searchBlogs = (search) => async (dispatch) => {
 
 export const setCurrBlog = (blog) => (dispatch) => {
   localStorage.setItem('blogID', blog._id);
-  dispatch(blogSet(res.data));
+  dispatch(blogSet(blog));
 };
 
 export const {
@@ -339,5 +339,6 @@ export const {
   createdBlog,
   gotOneBlog,
   gotThreeBlogs,
+  blogSet,
 } = blogSlice.actions;
 export default blogSlice.reducer;
