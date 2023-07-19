@@ -9,7 +9,7 @@ import useWindowDimensions from '../../useWindowDimensions';
 import { selectBlogs, setCurrentBlog } from '../../../../../Redux/Blog/blogSlice';
 
 import { Link } from 'react-router-dom';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Blogs = (
   {

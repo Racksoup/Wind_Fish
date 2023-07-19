@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './Admin.scss';
-import { login, loadUser } from '../../../Redux/Actions/auth.js';
+import { login, selectUser, loadUser } from '../../../../../Redux/Blog/adminSlice';
 
-import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Admin = ({ login, user, loadUser }) => {
+const Admin = (
+  {
+    // login, user, loadUser
+  }
+) => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
   const [formInput, setFormInput] = useState({
     username: '',
     password: '',
   });
   const { username, password } = formInput;
   useEffect(() => {
-    loadUser();
+    dispatch(loadUser());
   }, []);
 
   const onChange = (e) => {
@@ -27,7 +33,7 @@ const Admin = ({ login, user, loadUser }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(username, password);
+    dispatch(login(username, password));
   };
 
   if (user) {
@@ -35,7 +41,7 @@ const Admin = ({ login, user, loadUser }) => {
   }
 
   return (
-    <div className='Login'>
+    <div className='Loginx'>
       <div className='Form'>
         <div className='Label'>Login</div>
         <input
@@ -62,8 +68,4 @@ const Admin = ({ login, user, loadUser }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.auth.user,
-});
-
-export default connect(mapStateToProps, { login, loadUser })(Admin);
+export default Admin;

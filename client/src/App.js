@@ -9,7 +9,9 @@ import About from './UI/Pages/Blog/Pages/About/About.jsx';
 import Contact from './UI/Pages/Blog/Pages/Contact/Contact.jsx';
 import SingleBlog from './UI/Pages/Blog/Pages/SingleBlog/SingleBlog.jsx';
 import Blogs from './UI/Pages/Blog/Pages/Blogs/Blogs.jsx';
+import Admin from './UI/Pages/Blog/Pages/Admin/Admin.jsx';
 import Navbar from './UI/Components/Navbar/Navbar.jsx';
+import AdminDashboard from './UI/Pages/Blog/Pages/AdminDashboard/AdminDashboard.jsx';
 
 import { Provider } from 'react-redux';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
@@ -29,6 +31,8 @@ const App = () => {
             <Route path='/dev-blog/blogs' element={<Blogs />} />
             <Route path='/dev-blog/about' element={<About />} />
             <Route path='/dev-blog/contact' element={<Contact />} />
+            <Route path='/admin' element={<Admin />} />
+            <Route path='/admin-dashboard' element={<AdminDashboard />} />
           </Routes>
         </Provider>
       </div>

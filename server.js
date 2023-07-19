@@ -20,6 +20,7 @@ app.use('/api/backend-blog/blog-category', require('./routes/api/blog/blogCatego
 // app.use('/api/backend-blog/accounts', require('./routes/api/blog/accounts'));
 app.use('/api/backend-blog/likes', require('./routes/api/blog/likes'));
 app.use('/api/backend-blog/comments', require('./routes/api/blog/comments'));
+app.use('/api/backend-blog/auth', require('./routes/api/blog/auth'));
 
 // app.use(express.static(path.join(__dirname, './routes/api/blog/blogs/image')));
 

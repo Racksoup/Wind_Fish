@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './AdminDashboard.scss';
-import { loadUser, logout } from '../../../Redux/Actions/auth.js';
+import { loadUser, logout, selectIsAuthenticated } from '../../../../../Redux/Blog/adminSlice.js';
 import AdminBlogs from './AdminBlogs/AdminBlogs';
 
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 
-const AdminDashboard = ({ isAuthenticated, logout, loadUser }) => {
+const AdminDashboard = () => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   useEffect(() => {
-    loadUser();
+    dispatch(loadUser());
   }, []);
 
   if (!isAuthenticated) return <Navigate to='/admin' />;
 
   return (
     <>
+      {console.log('here')}
       <div className='AdminDashboard'>
         <div className='TitleBox'>
           <div />
           <div className='Title'>Admin Dashboard</div>
           <Link className='Link' to='/admin'>
-            <div className='Btn' onClick={() => logout()}>
+            <div className='Btn' onClick={() => dispatch(logout())}>
               Logout
             </div>
           </Link>
@@ -39,12 +42,4 @@ const AdminDashboard = ({ isAuthenticated, logout, loadUser }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  isLoading: state.auth.isLoading,
-});
-
-export default connect(mapStateToProps, {
-  loadUser,
-  logout,
-})(AdminDashboard);
+export default AdminDashboard;

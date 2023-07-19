@@ -5,6 +5,7 @@ import tagReducer from './Blog/tagSlice';
 import categoryReducer from './Blog/categorySlice';
 import likesReducer from './Blog/likesSlice';
 import commentsReducer from './Blog/commentsSlice';
+import adminReducer from './Blog/adminSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     category: categoryReducer,
     likes: likesReducer,
     comments: commentsReducer,
+    admin: adminReducer,
   },
 });
