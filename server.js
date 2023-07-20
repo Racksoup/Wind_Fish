@@ -2,7 +2,6 @@ const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const path = require('path');
-const axios = require('axios');
 
 dotenv.config();
 

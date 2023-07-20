@@ -15,6 +15,8 @@ import AdminDashboard from './UI/Pages/Blog/Pages/AdminDashboard/AdminDashboard.
 import CreateBlog from './UI/Pages/Blog/Pages/CreateBlog/CreateBlog.jsx';
 import UpdateBlog from './UI/Pages/Blog/Pages/UpdateBlog/UpdateBlog.jsx';
 import BlogDetails from './UI/Pages/Blog/Pages/BlogDetails/BlogDetails.jsx';
+import EditBlogs from './UI/Pages/Blog/Pages/AdminDashboard/EditBlogs/EditBlogs.jsx';
+import BlogPortal from './UI/Pages/Blog/Pages/AdminDashboard/BlogPortal/BlogPortal.jsx';
 
 import { Provider } from 'react-redux';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
@@ -28,17 +30,18 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/portfolio' element={<Portfolio />} />
-
             <Route path='/dev-blog' element={<BlogHome />} />
             <Route path='/dev-blog/single-blog/:id' element={<SingleBlog />} />
             <Route path='/dev-blog/blogs' element={<Blogs />} />
             <Route path='/dev-blog/about' element={<About />} />
             <Route path='/dev-blog/contact' element={<Contact />} />
-            <Route path='/admin' element={<Admin />} />
-            <Route path='/admin-dashboard' element={<AdminDashboard />} />
-            <Route path='/create-blog' element={<CreateBlog />} />
-            <Route path='/update-blog' element={<UpdateBlog />} />
-            <Route path='/update-blog-details' element={<BlogDetails />} />
+            <Route path='/admin' element={<AdminDashboard />} />
+            <Route path='/login-admin' element={<Admin />} />
+            <Route path='/admin/blogs' element={<EditBlogs />} />
+            <Route path='/admin/blogs-portal' element={<BlogPortal />} />
+            <Route path='/admin/blogs/create-blog' element={<CreateBlog />} />
+            <Route path='/admin/blogs/update-blog' element={<UpdateBlog />} />
+            <Route path='/admin/blogs/update-blog-details' element={<BlogDetails />} />
           </Routes>
         </Provider>
       </div>

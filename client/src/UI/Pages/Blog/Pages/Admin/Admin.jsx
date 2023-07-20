@@ -5,11 +5,7 @@ import { login, selectUser, loadUser } from '../../../../../Redux/Blog/adminSlic
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Admin = (
-  {
-    // login, user, loadUser
-  }
-) => {
+const Admin = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [formInput, setFormInput] = useState({
@@ -37,7 +33,7 @@ const Admin = (
   };
 
   if (user) {
-    return <Navigate to='/admin-dashboard' />;
+    return <Navigate to='/admin' />;
   }
 
   return (

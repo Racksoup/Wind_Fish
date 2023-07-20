@@ -21,6 +21,18 @@ a {
   }
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a {
+  color: white;
+}
+
 .App-Background {
   background-color: $bgColor;
   position: fixed;
@@ -37,8 +49,10 @@ a {
   justify-content: center;
   background-color: $bgColor;
 
-  * {     font-family: Oswald;
-    font-weight: 400;}
+  * {
+    font-family: Oswald;
+    font-weight: 400;
+  }
 }
 
 .Link {
@@ -78,4 +92,33 @@ button {
 
 .Btn {
   cursor: pointer;
+}
+
+.TitleBox2 {
+  width: 100%;
+  margin-bottom: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  align-items: center;
+  justify-items: center;
+
+  .Link {
+    width: 4rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 0.3rem;
+    cursor: pointer;
+
+    &:hover {
+      border: solid 1px rgba(255, 255, 255, 1);
+    }
+
+    p {
+      cursor: pointer;
+    }
+  }
 }

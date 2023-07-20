@@ -1,38 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './BlogDetails.scss';
-// import { getCategories, addCategory, deleteCategory } from '../../../Redux/Actions/blogCategory.js';
-// import { sendNewsletter } from '../../../Redux/Actions/mail';
-import Modal from './Modal/Modal.jsx';
 import { selectTags, getTags, addTag, deleteTag } from '../../../../../Redux/Blog/tagSlice';
+import { selectIsAuthenticated, loadUser } from '../../../../../Redux/Blog/adminSlice';
 import {
   selectCategories,
   getCategories,
   addCategory,
   deleteCategory,
 } from '../../../../../Redux/Blog/categorySlice';
-import { selectIsAuthenticated, loadUser } from '../../../../../Redux/Blog/adminSlice';
+import Modal from './Modal/Modal.jsx';
+import DeleteModal from '../AdminDashboard/Modal/DeleteModal.jsx';
 
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
-import DeleteModal from '../AdminDashboard/Modal/DeleteModal.jsx';
 
-const BlogDetails = (
-  {
-    // categories,
-    // tags,
-    // isAuthenticated,
-    // loadUser,
-    // getCategories,
-    // addCategory,
-    // deleteCategory,
-    // addTag,
-    // deleteTag,
-    // getTags,
-    // sendNewsletter,
-  }
-) => {
+const BlogDetails = () => {
   const dispatch = useDispatch();
   const tags = useSelector(selectTags);
   const categories = useSelector(selectCategories);

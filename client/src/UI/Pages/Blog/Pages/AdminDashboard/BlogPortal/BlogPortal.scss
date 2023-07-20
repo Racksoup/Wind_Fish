@@ -1,24 +1,11 @@
-@import '../../DevBlogMain.scss';
+@import '../../../DevBlogMain.scss';
 
-.AdminDashboard {
-  width: 50rem;
+.BlogPortal {
   margin: 6rem 0 0 0;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .TitleBox {
-    margin-bottom: 4rem;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: end;
-    justify-items: center;
-
-    .Link {
-      justify-self: end;
-    }
-  }
 
   .Selection {
     margin: 0;

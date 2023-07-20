@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './AdminBlogs.scss';
-// import { getAllBlogs, removeBlog, setCurrBlog } from '../../../../Redux/Actions/blogs.js';
 import {
   selectBlogs,
   getAllBlogs,
@@ -12,11 +11,7 @@ import DeleteModal from '../Modal/DeleteModal.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const AdminBlogs = (
-  {
-    // blogs, getAllBlogs, removeBlog, setCurrBlog
-  }
-) => {
+const AdminBlogs = () => {
   const dispatch = useDispatch();
   const blogs = useSelector(selectBlogs);
   const [thisBlog, setThisBlog] = useState('');
@@ -53,7 +48,7 @@ const AdminBlogs = (
               {blog.favorite && <div className='Favorite'>Fav</div>}
             </div>
             <div className='Btns'>
-              <Link to='/update-blog' className='Link'>
+              <Link to='/admin/blogs/update-blog' className='Link'>
                 <div className='Btn' onClick={() => dispatch(setCurrBlog(blog))}>
                   Update
                 </div>
