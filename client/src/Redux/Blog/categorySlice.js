@@ -23,12 +23,13 @@ export const categorySlice = createSlice({
   },
 });
 
-export const addCategory = (category, file) => async (dispatch) => {
+export const addCategory = (category, blogType, file) => async (dispatch) => {
   let data = new FormData();
   if (file) {
     data.append('file', file);
   }
   data.append('category', category);
+  data.append('blogType', blogType);
   const config = {
     headers: {
       accept: 'application/json',
@@ -54,9 +55,9 @@ export const deleteCategory = (category) => async (dispatch) => {
   }
 };
 
-export const getCategories = () => async (dispatch) => {
+export const getCategories = (blogType) => async (dispatch) => {
   try {
-    const res = await axios.get('/api/backend-blog/blog-category');
+    const res = await axios.get(`/api/backend-blog/blog-category/${blogType}`);
     dispatch(gotCategories(res.data));
   } catch (error) {
     console.log(error);

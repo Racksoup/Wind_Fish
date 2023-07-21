@@ -5,8 +5,8 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', auth, async (req, res) => {
-  const { tag } = req.body;
-  const postItem = { tag };
+  const { tag, blogType } = req.body;
+  const postItem = { tag, blogType };
 
   try {
     const item = new Tag(postItem);
@@ -27,9 +27,9 @@ router.delete('/:_id', auth, async (req, res) => {
 });
 
 // @desc    Get all tags
-router.get('/', async (req, res) => {
+router.get('/:blogType', async (req, res) => {
   try {
-    const tags = await Tag.find();
+    const tags = await Tag.find({ blogType: req.params.blogType });
     res.json(tags);
   } catch (error) {
     console.log(error);

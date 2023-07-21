@@ -37,6 +37,10 @@ const BlogSchema = new mongoose.Schema({
   caption: {
     type: String,
   },
+  blogtype: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = Blog = mongoose.model('blog', BlogSchema);

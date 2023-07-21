@@ -9,6 +9,10 @@ const BlogCategorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  blogType: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = BlogCategory = mongoose.model('blogCategory', BlogCategorySchema);

@@ -5,6 +5,10 @@ const TagSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  blogType: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = Tag = mongoose.model('tag', TagSchema);

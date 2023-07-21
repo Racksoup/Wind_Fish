@@ -11,6 +11,7 @@ const initialState = {
   searchedBlogs: null,
   contentImages: null,
   contentImagesLoaded: false,
+  blogType: localStorage.getItem('blogType'),
 };
 
 export const selectRecentBlogs = (state) => state.blog.recentBlogs;
@@ -19,6 +20,7 @@ export const selectBlog = (state) => state.blog.blog;
 export const selectSearchedBlogs = (state) => state.blog.searchedBlogs;
 export const selectContentImages = (state) => state.blog.contentImages;
 export const selectContentImagesLoaded = (state) => state.blog.contentImagesLoaded;
+export const selectBlogType = (state) => state.blog.blogType;
 
 export const blogSlice = createSlice({
   name: 'blog',
@@ -80,21 +82,25 @@ export const blogSlice = createSlice({
       state.blog = action.payload;
       state.contentImagesLoaded = false;
     },
+    blogTypeChanged: (state, action) => {
+      state.blogType = action.payload;
+      localStorage.setItem('blogType', action.payload);
+    },
   },
 });
 
-export const getThreeBlogs = () => async (dispatch) => {
+export const getThreeBlogs = (blogType) => async (dispatch) => {
   try {
-    const res = await axios.get('/api/backend-blog/blogs/get-three');
+    const res = await axios.get(`/api/backend-blog/blogs/get-three/${blogType}`);
     dispatch(gotThreeBlogs(res.data));
   } catch (err) {
     console.log(err);
   }
 };
 
-export const getRecentBlogs = () => async (dispatch) => {
+export const getRecentBlogs = (blogType) => async (dispatch) => {
   try {
-    const res = await axios.get('/api/backend-blog/blogs/recent-blogs');
+    const res = await axios.get(`/api/backend-blog/blogs/recent-blogs/${blogType}`);
     dispatch(gotRecentBlogs(res.data));
   } catch (error) {
     console.log(error);
@@ -341,5 +347,6 @@ export const {
   gotOneBlog,
   gotThreeBlogs,
   blogSet,
+  blogTypeChanged,
 } = blogSlice.actions;
 export default blogSlice.reducer;

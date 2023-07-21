@@ -24,15 +24,16 @@ import {
   selectContentImagesLoaded,
   selectRecentBlogs,
   selectSearchedBlogs,
+  selectBlogType,
   getThreeBlogs,
   getRecentBlogs,
   setCurrentBlog,
+  searchBlogs,
 } from '../../../../../Redux/Blog/blogSlice';
 import { selectTags, getTags } from '../../../../../Redux/Blog/tagSlice';
 import { selectCategories, getCategories } from '../../../../../Redux/Blog/categorySlice';
 
 import { Navigate, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -63,6 +64,7 @@ const BlogHome = (
   const searchedBlogs = useSelector(selectSearchedBlogs);
   const tags = useSelector(selectTags);
   const categories = useSelector(selectCategories);
+  const blogType = useSelector(selectBlogType);
 
   const { height, width } = useWindowDimensions();
   const [subValue, setSubValue] = useState('');
@@ -73,10 +75,10 @@ const BlogHome = (
   const [subscribed, setSubcribed] = useState(false);
 
   useEffect(() => {
-    dispatch(getThreeBlogs());
-    dispatch(getRecentBlogs());
-    dispatch(getCategories());
-    dispatch(getTags());
+    dispatch(getThreeBlogs(blogType));
+    dispatch(getRecentBlogs(blogType));
+    dispatch(getCategories(blogType));
+    dispatch(getTags(blogType));
     // setView('home');
   }, []);
 
@@ -121,7 +123,7 @@ const BlogHome = (
   }
 
   return (
-    <div className='DevBlog'>
+    <div className='BlogMain'>
       <div className='App-Background'></div>
       {modal && <Modal toggleModal={toggleModal} text={modalText} />}
       {searched && <Navigate to='/blogs' />}

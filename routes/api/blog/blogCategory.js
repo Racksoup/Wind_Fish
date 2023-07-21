@@ -43,8 +43,8 @@ connect.once('open', () => {
 
 //  desc    Create Category
 router.post('/', [auth, categoryUpload.single('file')], async (req, res) => {
-  const { category } = req.body;
-  const postItem = { category, image_filename: req.file.filename };
+  const { category, blogType } = req.body;
+  const postItem = { category, blogType, image_filename: req.file.filename };
 
   try {
     const item = new BlogCategory(postItem);
@@ -68,9 +68,9 @@ router.delete('/:_id', auth, async (req, res) => {
 });
 
 // @desc    Get all categories
-router.get('/', async (req, res) => {
+router.get('/:blogType', async (req, res) => {
   try {
-    const categories = await BlogCategory.find();
+    const categories = await BlogCategory.find({ blogType: req.params.blogType });
     res.json(categories);
   } catch (error) {
     console.log(error);

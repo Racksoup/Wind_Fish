@@ -86,9 +86,9 @@ router.get('/search/:search', async (req, res) => {
 });
 
 // @desc    Get 10 most recent blogs
-router.get('/recent-blogs', async (req, res) => {
+router.get('/recent-blogs/:blogType', async (req, res) => {
   try {
-    const blogs = await Blog.find().sort({ date: 1 }).limit(10);
+    const blogs = await Blog.find({ blogType: req.params.blogType }).sort({ date: 1 }).limit(10);
     res.json(blogs);
   } catch (error) {
     console.log(error);
@@ -99,7 +99,7 @@ router.get('/recent-blogs', async (req, res) => {
 // @desc    Post blog
 // @access  Private
 router.post('/', [auth, headerUpload.single('file')], async (req, res) => {
-  const { title, poster, category, date, text, favorite, tags, link, caption } = req.body;
+  const { title, poster, category, date, text, favorite, tags, link, caption, blogType } = req.body;
   const postItem = {
     title,
     poster,
@@ -108,6 +108,7 @@ router.post('/', [auth, headerUpload.single('file')], async (req, res) => {
     favorite,
     link,
     caption,
+    blogType,
     image_filename: req.file.filename,
   };
   postItem.text = JSON.parse(text);
@@ -139,6 +140,7 @@ router.put('/:_id', [auth, headerUpload.single('file')], async (req, res) => {
     tags,
     link,
     caption,
+    blogType,
   } = req.body;
   const postItem = {
     _id,
@@ -150,6 +152,7 @@ router.put('/:_id', [auth, headerUpload.single('file')], async (req, res) => {
     image_filename,
     link,
     caption,
+    blogType,
   };
   if (req.file) {
     postItem.image_filename = req.file.filename;
@@ -196,9 +199,9 @@ router.delete('/:_id', auth, async (req, res) => {
 // @route   GET api/blogs
 // @desc    Get All Blog
 // @access  Public
-router.get('/', async (req, res) => {
+router.get('/:blogType', async (req, res) => {
   try {
-    const items = await Blog.find().sort({ date: 1 });
+    const items = await Blog.find({ blogType: req.params.blogType }).sort({ date: 1 });
     res.json(items);
   } catch (err) {
     console.error(err.message);
@@ -209,9 +212,11 @@ router.get('/', async (req, res) => {
 // @route   GET api/blogs/get-three
 // @desc    Get 3 blogs by most recent
 // @access  Public
-router.get('/get-three', async (req, res) => {
+router.get('/get-three/:blogType', async (req, res) => {
   try {
-    const items = await Blog.find({ favorite: true }).sort({ date: 1 }).limit(3);
+    const items = await Blog.find({ favorite: true, blogType: req.params.blogType })
+      .sort({ date: 1 })
+      .limit(3);
     res.json(items);
   } catch (err) {
     console.error(err.message);

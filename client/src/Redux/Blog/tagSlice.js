@@ -23,13 +23,13 @@ export const tagSlice = createSlice({
   },
 });
 
-export const addTag = (tag) => async (dispatch) => {
+export const addTag = (tag, blogType) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
-  const body = JSON.stringify({ tag });
+  const body = JSON.stringify({ tag, blogType });
 
   try {
     const res = await axios.post('/api/backend-blog/tag', body, config);
@@ -48,9 +48,9 @@ export const deleteTag = (tag) => async (dispatch) => {
   }
 };
 
-export const getTags = () => async (dispatch) => {
+export const getTags = (blogType) => async (dispatch) => {
   try {
-    const res = await axios.get('/api/backend-blog/tag');
+    const res = await axios.get(`/api/backend-blog/tag/${blogType}`);
     dispatch(gotTags(res.data));
   } catch (error) {
     console.log(error);

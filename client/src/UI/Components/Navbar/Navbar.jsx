@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
+import { blogTypeChanged } from '../../../Redux/Blog/blogSlice';
+
+import { useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [nav, toggleNav] = useState(true);
 
   // useEffect(() => {
@@ -27,6 +31,16 @@ const Navbar = () => {
   //   };
   // }, []);
 
+  const pathname = window.location.pathname.split('/');
+  pathname.map((x) => {
+    if (x == 'dev-blog') {
+      dispatch(blogTypeChanged('dev'));
+    }
+    if (x == 'history-blog') {
+      dispatch(blogTypeChanged('history'));
+    }
+  });
+
   if (nav) {
     return (
       <div className='Navbar'>
@@ -37,7 +51,12 @@ const Navbar = () => {
           <div className='Nav'>
             <div className='Item Item-Dev'>
               <div className='DropOuter'>
-                <Link to='/dev-blog'>
+                <Link
+                  to='/dev-blog'
+                  onClick={() => {
+                    dispatch(blogTypeChanged('dev'));
+                  }}
+                >
                   <p>Dev</p>
                 </Link>
                 <div className='Drop'>
@@ -49,7 +68,14 @@ const Navbar = () => {
             </div>
             <div className='Item Item-History'>
               <div className='DropOuter'>
-                <p>History</p>
+                <Link
+                  to='/history-blog'
+                  onClick={() => {
+                    dispatch(blogTypeChanged('history'));
+                  }}
+                >
+                  <p>History</p>
+                </Link>
                 <div className='Drop'>
                   <p>fdsfds</p>
                   <p>fdsfds</p>
