@@ -40,7 +40,7 @@ const AdminBlogs = () => {
         <div className='Title'>Blogs</div>
         {blogs.map((blog) => (
           <div className='Blog' key={blog._id}>
-            <img className='Img' alt='dick' src={`api/blogs/image/${blog.image_filename}`} />
+            <img className='Img' alt='dick' src={`/api/blogs/image/${blog.image_filename}`} />
             <div className='Info'>
               <div className='BlogTitle'>Title: {blog.title}</div>
               <div className='Category'>Category: {blog.category}</div>

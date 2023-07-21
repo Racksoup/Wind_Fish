@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CreateBlog.scss';
-import { createBlog } from '../../../../../Redux/Blog/blogSlice.js';
-import { getCategories, selectCategories } from '../../../../../Redux/Blog/categorySlice.js';
-import { getTags, addTag, selectTags } from '../../../../../Redux/Blog/tagSlice.js';
+import { createBlog } from '../../../../../../Redux/Blog/blogSlice.js';
+import { getCategories, selectCategories } from '../../../../../../Redux/Blog/categorySlice.js';
+import { getTags, addTag, selectTags } from '../../../../../../Redux/Blog/tagSlice.js';
 import {
   loadUser,
   selectIsAuthenticated,
   selectLoading,
-} from '../../../../../Redux/Blog/adminSlice.js';
-import ImageModal from '../AdminDashboard/Modal/ImageModal.jsx';
-import Modal from '../BlogDetails/Modal/Modal.jsx';
+} from '../../../../../../Redux/Blog/adminSlice.js';
+import ImageModal from '../Modal/ImageModal.jsx';
+import Modal from '../../BlogDetails/Modal/Modal.jsx';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';
@@ -155,7 +155,7 @@ const CreateBlog = () => {
         />
       )}
       <div className='BlogInfo' onClick={() => setTagsDisplay(false)}>
-        <Link className='Link' to='/admin-dashboard'>
+        <Link className='Link' to='/admin/blogs'>
           <div className='Btn'>Back</div>
         </Link>
         <h2 className='Title'>Create New Blog</h2>

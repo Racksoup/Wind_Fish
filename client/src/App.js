@@ -3,7 +3,6 @@ import './App.scss';
 import { store } from './Redux/store';
 import Home from './UI/Pages/Home/Home.jsx';
 import Portfolio from './UI/Pages/Portfolio/Portfolio.jsx';
-
 import BlogHome from './UI/Pages/Blog/Pages/Home/BlogHome.jsx';
 import About from './UI/Pages/Blog/Pages/About/About.jsx';
 import Contact from './UI/Pages/Blog/Pages/Contact/Contact.jsx';
@@ -12,8 +11,8 @@ import Blogs from './UI/Pages/Blog/Pages/Blogs/Blogs.jsx';
 import Admin from './UI/Pages/Blog/Pages/Admin/Admin.jsx';
 import Navbar from './UI/Components/Navbar/Navbar.jsx';
 import AdminDashboard from './UI/Pages/Blog/Pages/AdminDashboard/AdminDashboard.jsx';
-import CreateBlog from './UI/Pages/Blog/Pages/CreateBlog/CreateBlog.jsx';
-import UpdateBlog from './UI/Pages/Blog/Pages/UpdateBlog/UpdateBlog.jsx';
+import CreateBlog from './UI/Pages/Blog/Pages/AdminDashboard/CreateBlog/CreateBlog.jsx';
+import UpdateBlog from './UI/Pages/Blog/Pages/AdminDashboard/UpdateBlog/UpdateBlog.jsx';
 import BlogDetails from './UI/Pages/Blog/Pages/BlogDetails/BlogDetails.jsx';
 import EditBlogs from './UI/Pages/Blog/Pages/AdminDashboard/EditBlogs/EditBlogs.jsx';
 import BlogPortal from './UI/Pages/Blog/Pages/AdminDashboard/BlogPortal/BlogPortal.jsx';

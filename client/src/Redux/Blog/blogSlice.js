@@ -64,7 +64,7 @@ export const blogSlice = createSlice({
       state.blog = action.payload;
       state.contentImagesLoaded = false;
     },
-    removedBlog: (state, aciton) => {
+    removedBlog: (state, action) => {
       state.blogs = state.blogs.filter((item) => item._id !== action.payload._id);
     },
     createdBlog: (state, action) => {
@@ -85,7 +85,7 @@ export const blogSlice = createSlice({
 
 export const getThreeBlogs = () => async (dispatch) => {
   try {
-    const res = await axios.get('api/backend-blog/blogs/get-three');
+    const res = await axios.get('/api/backend-blog/blogs/get-three');
     dispatch(gotThreeBlogs(res.data));
   } catch (err) {
     console.log(err);
@@ -181,7 +181,7 @@ export const removeBlog = (item) => async (dispatch) => {
     const res = await axios.delete(`/api/backend-blog/blogs/${item._id}`);
     dispatch(deleteBlogLikes(item._id));
     dispatch(deleteBlogComments(item._id));
-    dispatch(removeBlog(res.data));
+    dispatch(removedBlog(res.data));
   } catch (err) {
     console.log(err);
   }
@@ -210,11 +210,12 @@ export const createBlog = (item, file, files) => async (dispatch) => {
         'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
       },
     };
-    const res = await axios.post('api/backend-blog/blogs', data, config);
+    const res = await axios.post('/api/backend-blog/blogs', data, config);
+    console.log(res.data);
     dispatch(createContentImages(files, res.data));
     dispatch(createBlogLikes(res.data._id, res.data.title));
     dispatch(createBlogComments(res.data._id, res.data.title));
-    dispatch(createBlog(res.data));
+    dispatch(createdBlog(res.data));
   } catch (err) {
     console.log(err);
   }
@@ -238,7 +239,7 @@ export const createContentImages = (files, blog) => async (dispatch) => {
   };
 
   try {
-    await axios.post(`api/backend-blog/blogs/content-images/${blog._id}`, data, config);
+    await axios.post(`/api/backend-blog/blogs/content-images/${blog._id}`, data, config);
   } catch (error) {
     console.log(error);
   }

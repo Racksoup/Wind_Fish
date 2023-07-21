@@ -124,7 +124,7 @@ export const updateAccountLikes = (blogId) => async (dispatch) => {
 export const deleteBlogLikes = (blogId) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/backend-blog/likes/${blogId}`);
-    dispatch(deleteBlogLikes(res.data));
+    dispatch(deletedBlogLikes(res.data));
   } catch (error) {
     console.log(error);
   }

@@ -1,10 +1,13 @@
 import React from 'react';
 import './Modal.scss';
 
+import { useDispatch } from 'react-redux';
+
 const DeleteModal = ({ toggleModal, Func, State, title }) => {
+  const dispatch = useDispatch();
   const submitClicked = (e) => {
     e.stopPropagation();
-    Func(State);
+    dispatch(Func(State));
     toggleModal(false);
   };
 

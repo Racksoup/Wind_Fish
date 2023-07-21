@@ -9,16 +9,16 @@ import {
   selectBlog,
   selectContentImages,
   selectContentImagesLoaded,
-} from '../../../../../Redux/Blog/blogSlice.js';
+} from '../../../../../../Redux/Blog/blogSlice.js';
 import {
   loadUser,
   selectIsAuthenticated,
   selectLoading,
-} from '../../../../../Redux/Blog/adminSlice.js';
-import { getTags, addTag, selectTags } from '../../../../../Redux/Blog/tagSlice.js';
-import { selectCategories, getCategories } from '../../../../../Redux/Blog/categorySlice.js';
-import Modal from '../BlogDetails/Modal/Modal.jsx';
-import CreateImageModal from '../AdminDashboard/Modal/CreateImageModal.jsx';
+} from '../../../../../../Redux/Blog/adminSlice.js';
+import { getTags, addTag, selectTags } from '../../../../../../Redux/Blog/tagSlice.js';
+import { selectCategories, getCategories } from '../../../../../../Redux/Blog/categorySlice.js';
+import Modal from '../../BlogDetails/Modal/Modal.jsx';
+import CreateImageModal from '../Modal/CreateImageModal.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';
@@ -188,7 +188,7 @@ const UpdateBlog = () => {
           />
         )}
         <div className='BlogInfo'>
-          <Link className='Link' to='/admin-dashboard'>
+          <Link className='Link' to='/admin/blogs'>
             <div className='Btn'>Back</div>
           </Link>
           <h2 className='Title'>Update Blog</h2>

@@ -46,7 +46,7 @@ const BlogDetails = () => {
     toggleDeleteTagModal(true);
   };
 
-  if (!isAuthenticated) return <Navigate to='/admin' />;
+  if (!isAuthenticated) return <Navigate to='/login-admin' />;
 
   return (
     <div className='BlogDetails'>
@@ -92,7 +92,7 @@ const BlogDetails = () => {
           State={newsletter}
         />
       )}
-      <Link className='Link LinkBack' to='/admin-dashboard'>
+      <Link className='Link LinkBack' to='/admin'>
         <div className='Btn '>Back</div>
       </Link>
       <div className='NewsletterBox'>
