@@ -9,7 +9,7 @@ import {
   selectLoading,
 } from '../../../../../Redux/Blog/adminSlice.js';
 import ImageModal from '../Modal/ImageModal.jsx';
-import Modal from '../../Dev/BlogDetails/Modal/Modal.jsx';
+import Modal from '../Modal/TagModal.jsx';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate, Link } from 'react-router-dom';

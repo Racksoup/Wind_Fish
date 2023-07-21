@@ -17,7 +17,7 @@ import {
 } from '../../../../../Redux/Blog/adminSlice.js';
 import { getTags, addTag, selectTags } from '../../../../../Redux/Blog/tagSlice.js';
 import { selectCategories, getCategories } from '../../../../../Redux/Blog/categorySlice.js';
-import Modal from '../../Dev/BlogDetails/Modal/Modal.jsx';
+import Modal from '../Modal/TagModal.jsx';
 import CreateImageModal from '../Modal/CreateImageModal.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';

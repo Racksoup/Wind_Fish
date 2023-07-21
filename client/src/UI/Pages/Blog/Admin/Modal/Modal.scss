@@ -20,6 +20,10 @@
   flex-direction: column;
   align-items: center;
 
+  .FileInput {
+    display: flex;
+  }
+
   .Title {
     padding: 0;
     margin: 1rem 0 0 0;

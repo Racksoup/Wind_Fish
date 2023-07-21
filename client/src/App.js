@@ -13,7 +13,7 @@ import Navbar from './UI/Components/Navbar/Navbar.jsx';
 import AdminDashboard from './UI/Pages/Blog/Admin/AdminDashboard.jsx';
 import CreateBlog from './UI/Pages/Blog/Admin/CreateBlog/CreateBlog.jsx';
 import UpdateBlog from './UI/Pages/Blog/Admin/UpdateBlog/UpdateBlog.jsx';
-import BlogDetails from './UI/Pages/Blog/Dev/BlogDetails/BlogDetails.jsx';
+import BlogDetails from './UI/Pages/Blog/Admin/BlogDetails/BlogDetails.jsx';
 import EditBlogs from './UI/Pages/Blog/Admin/EditBlogs/EditBlogs.jsx';
 import BlogPortal from './UI/Pages/Blog/Admin/BlogPortal/BlogPortal.jsx';
 

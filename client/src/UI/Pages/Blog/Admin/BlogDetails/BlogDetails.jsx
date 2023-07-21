@@ -8,8 +8,8 @@ import {
   addCategory,
   deleteCategory,
 } from '../../../../../Redux/Blog/categorySlice';
-import Modal from './Modal/Modal.jsx';
-import DeleteModal from '../../Admin/Modal/DeleteModal.jsx';
+import Modal from '../Modal/TagModal.jsx';
+import DeleteModal from '../Modal/DeleteModal.jsx';
 
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
