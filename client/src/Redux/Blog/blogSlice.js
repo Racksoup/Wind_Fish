@@ -123,7 +123,7 @@ export const getAllBlogs = (blogType) => async (dispatch) => {
 
 export const getCurrBlog = () => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/backend-blog/blogs/${localStorage.blogID}`);
+    const res = await axios.get(`/api/backend-blog/blogs/one/${localStorage.blogID}`);
     dispatch(getBlogImages(localStorage.blogID));
     dispatch(gotOneBlog(res.data));
   } catch (err) {
@@ -134,14 +134,14 @@ export const getCurrBlog = () => async (dispatch) => {
 export const getSingleBlog = (blogID) => async (dispatch) => {
   try {
     let res;
-    res = await axios.get(`/api/backend-blog/blogs/${blogID}`);
+    res = await axios.get(`/api/backend-blog/blogs/one/${blogID}`);
     localStorage.setItem('blogID', blogID);
     // if (!localStorage.blogID) {
     // } else {
     //   res = await axios.get(`/api/backend-blog/blogs/${localStorage.blogID}`);
     // }
 
-    dispatch(getBlogImages(localStorage.blogID));
+    dispatch(getBlogImages(blogID));
     dispatch(gotOneBlog(res.data));
   } catch (err) {
     console.log(err);
@@ -286,7 +286,9 @@ export const createContentImage = (img, name, blogID, link, caption) => async (d
   };
 
   try {
+    console.log('1');
     const res = await axios.post(`/api/backend-blog/blogs/content-image/${blogID}`, data, config);
+    console.log(res.data);
     dispatch(createdContentImage(res.data));
   } catch (error) {
     console.log(error);

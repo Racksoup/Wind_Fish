@@ -209,6 +209,19 @@ router.get('/:blogType', async (req, res) => {
   }
 });
 
+// @route   GET api/blogs/:_id
+// @desc    Get One blog by id
+// @access  Public
+router.get('/one/:_id', async (req, res) => {
+  try {
+    const item = await Blog.findOne({ _id: req.params._id });
+    res.json(item);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send;
+  }
+});
+
 // @route   GET api/blogs/get-three
 // @desc    Get 3 blogs by most recent
 // @access  Public
@@ -221,19 +234,6 @@ router.get('/get-three/:blogType', async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
-  }
-});
-
-// @route   GET api/blogs/:_id
-// @desc    Get One blog by id
-// @access  Public
-router.get('/:_id', async (req, res) => {
-  try {
-    const item = await Blog.findOne({ _id: req.params._id });
-    res.json(item);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send;
   }
 });
 
@@ -365,6 +365,7 @@ router.post(
   '/content-images/:blogID',
   [auth, contentUpload.array('file', 100)],
   async (req, res) => {
+    print('herex');
     res.json(req.files);
   }
 );

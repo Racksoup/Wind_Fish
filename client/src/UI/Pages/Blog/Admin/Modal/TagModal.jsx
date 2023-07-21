@@ -3,7 +3,7 @@ import './Modal.scss';
 
 import { useDispatch } from 'react-redux';
 
-const Modal = ({ toggleModal, Func, title, placeHolder, type }) => {
+const Modal = ({ toggleModal, Func, title, placeHolder, type, blogType }) => {
   const dispatch = useDispatch();
   const [item, setItem] = useState('');
   const [file, setFile] = useState('');
@@ -11,10 +11,10 @@ const Modal = ({ toggleModal, Func, title, placeHolder, type }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (type === 'tags') {
-      dispatch(Func(item));
+      dispatch(Func(item, blogType));
     }
     if (type === 'categories') {
-      dispatch(Func(item, file));
+      dispatch(Func(item, blogType, file));
     }
     toggleModal(false);
   };

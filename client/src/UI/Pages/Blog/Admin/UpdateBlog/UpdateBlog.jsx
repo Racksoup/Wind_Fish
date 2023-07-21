@@ -6,6 +6,7 @@ import {
   deleteContentImage,
   createContentImage,
   updateImageName,
+  getBlogImages,
   selectBlog,
   selectContentImages,
   selectContentImagesLoaded,
@@ -44,13 +45,12 @@ const UpdateBlog = () => {
   // loads user and current blog
   useEffect(() => {
     dispatch(loadUser());
-    // dispatch(getCurrBlog());
+    dispatch(getBlogImages(localStorage.blogID));
     dispatch(getTags(blogType));
     dispatch(getCategories(blogType));
   }, []);
   // sets item after current blog is returned
   useEffect(() => {
-    console.log(blog);
     if (blog !== null) {
       const newDate = new Date(blog.date).toISOString().split('T')[0];
       setItem({ ...item, date: newDate });

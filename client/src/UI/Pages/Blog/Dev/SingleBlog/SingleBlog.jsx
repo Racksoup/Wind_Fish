@@ -2,12 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './SingleBlog.scss';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
 // import Footer from '../../Components/Footer/Footer.jsx';
-// import { setView } from '../../../Redux/Actions/view.js';
-// import { getSingleBlog, getBlogImages } from '../../../Redux/Actions/blogs';
-// import { getBlogLikes, toggleLike } from '../../../Redux/Actions/likes';
-// import { loadAccount } from '../../../Redux/Actions/account';
-// import { getBlogComments, updateBlogComments } from '../../../Redux/Actions/comments';
-
 import {
   selectBlog,
   getSingleBlog,
@@ -21,29 +15,12 @@ import {
   updateBlogComments,
 } from '../../../../../Redux/Blog/commentsSlice';
 
-import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShare, faComment } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-const SingleBlog = (
-  {
-    // blog,
-    // contentImages,
-    // account,
-    // blogLikes,
-    // blogComments,
-    // getSingleBlog,
-    // setView,
-    // getBlogImages,
-    // getBlogLikes,
-    // toggleLike,
-    // loadAccount,
-    // updateBlogComments,
-    // getBlogComments,
-  }
-) => {
+const SingleBlog = () => {
   const dispatch = useDispatch();
   const blog = useSelector(selectBlog);
   const blogLikes = useSelector(selectBlogLikes);

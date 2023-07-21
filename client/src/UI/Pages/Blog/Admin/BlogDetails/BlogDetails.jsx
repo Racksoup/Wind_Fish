@@ -59,6 +59,7 @@ const BlogDetails = () => {
           title={'Add Category'}
           placeHolder={'Category'}
           type='categories'
+          blogType={blogType}
         />
       )}
       {tagModal && (
@@ -68,6 +69,7 @@ const BlogDetails = () => {
           title={'Add Tag'}
           placeHolder={'Tag'}
           type='tags'
+          blogType={blogType}
         />
       )}
       {deleteCategoryModal && (
