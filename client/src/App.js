@@ -8,7 +8,7 @@ import About from './UI/Pages/Blog/Dev/About/About.jsx';
 import Contact from './UI/Pages/Blog/Dev/Contact/Contact.jsx';
 import SingleBlog from './UI/Pages/Blog/Dev/SingleBlog/SingleBlog.jsx';
 import Blogs from './UI/Pages/Blog/Dev/Blogs/Blogs.jsx';
-import Admin from './UI/Pages/Blog/Dev/Admin/Admin.jsx';
+import LoginAdmin from './UI/Pages/Blog/Admin/LoginAdmin/LoginAdmin.jsx';
 import Navbar from './UI/Components/Navbar/Navbar.jsx';
 import AdminDashboard from './UI/Pages/Blog/Admin/AdminDashboard.jsx';
 import CreateBlog from './UI/Pages/Blog/Admin/CreateBlog/CreateBlog.jsx';
@@ -35,7 +35,7 @@ const App = () => {
             <Route path='/dev-blog/about' element={<About />} />
             <Route path='/dev-blog/contact' element={<Contact />} />
             <Route path='/admin' element={<AdminDashboard />} />
-            <Route path='/login-admin' element={<Admin />} />
+            <Route path='/login-admin' element={<LoginAdmin />} />
             <Route path='/admin/blogs' element={<EditBlogs />} />
             <Route path='/admin/blogs-portal' element={<BlogPortal />} />
             <Route path='/admin/blogs/create-blog' element={<CreateBlog />} />

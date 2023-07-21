@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './Admin.scss';
+import './LoginAdmin.scss';
 import { login, selectUser, loadUser } from '../../../../../Redux/Blog/adminSlice';
 
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Admin = () => {
+const LoginAdmin = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [formInput, setFormInput] = useState({
@@ -37,7 +37,7 @@ const Admin = () => {
   }
 
   return (
-    <div className='Loginx'>
+    <div className='LoginAdmin'>
       <div className='Form'>
         <div className='Label'>Login</div>
         <input
@@ -64,4 +64,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default LoginAdmin;
