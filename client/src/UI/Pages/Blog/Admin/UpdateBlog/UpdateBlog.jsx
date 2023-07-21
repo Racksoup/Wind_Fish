@@ -9,6 +9,7 @@ import {
   selectBlog,
   selectContentImages,
   selectContentImagesLoaded,
+  selectBlogType,
 } from '../../../../../Redux/Blog/blogSlice.js';
 import {
   loadUser,
@@ -32,6 +33,7 @@ const UpdateBlog = () => {
   const loading = useSelector(selectLoading);
   const contentImages = useSelector(selectContentImages);
   const contentImagesLoaded = useSelector(selectContentImagesLoaded);
+  const blogType = useSelector(selectBlogType);
   const [modal, toggleModal] = useState(false);
   const [tagsDisplay, setTagsDisplay] = useState(false);
   const [imageModal, toggleImageModal] = useState(false);
@@ -42,12 +44,13 @@ const UpdateBlog = () => {
   // loads user and current blog
   useEffect(() => {
     dispatch(loadUser());
-    dispatch(getCurrBlog());
-    dispatch(getTags());
-    dispatch(getCategories());
+    // dispatch(getCurrBlog());
+    dispatch(getTags(blogType));
+    dispatch(getCategories(blogType));
   }, []);
   // sets item after current blog is returned
   useEffect(() => {
+    console.log(blog);
     if (blog !== null) {
       const newDate = new Date(blog.date).toISOString().split('T')[0];
       setItem({ ...item, date: newDate });

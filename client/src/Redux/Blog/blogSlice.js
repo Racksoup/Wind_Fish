@@ -112,9 +112,9 @@ export const setCurrentBlog = (blog) => (dispatch) => {
   dispatch(gotCurrentBlog(blog));
 };
 
-export const getAllBlogs = () => async (dispatch) => {
+export const getAllBlogs = (blogType) => async (dispatch) => {
   try {
-    const res = await axios.get('/api/backend-blog/blogs/');
+    const res = await axios.get(`/api/backend-blog/blogs/${blogType}`);
     dispatch(gotAllBlogs(res.data));
   } catch (err) {
     console.log(err);

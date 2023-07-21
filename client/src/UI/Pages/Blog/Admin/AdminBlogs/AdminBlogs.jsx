@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AdminBlogs.scss';
 import {
   selectBlogs,
+  selectBlogType,
   getAllBlogs,
   removeBlog,
   setCurrBlog,
@@ -14,10 +15,11 @@ import { Link } from 'react-router-dom';
 const AdminBlogs = () => {
   const dispatch = useDispatch();
   const blogs = useSelector(selectBlogs);
+  const blogType = useSelector(selectBlogType);
   const [thisBlog, setThisBlog] = useState('');
   const [modal, toggleModal] = useState(false);
   useEffect(() => {
-    dispatch(getAllBlogs());
+    dispatch(getAllBlogs(blogType));
   }, []);
 
   const delClicked = (blog) => {

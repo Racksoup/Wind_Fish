@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CreateBlog.scss';
-import { createBlog } from '../../../../../Redux/Blog/blogSlice.js';
+import { selectBlogType, createBlog } from '../../../../../Redux/Blog/blogSlice.js';
 import { getCategories, selectCategories } from '../../../../../Redux/Blog/categorySlice.js';
 import { getTags, addTag, selectTags } from '../../../../../Redux/Blog/tagSlice.js';
 import {
@@ -20,11 +20,12 @@ const CreateBlog = () => {
   const categories = useSelector(selectCategories);
   const loading = useSelector(selectLoading);
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const blogType = useSelector(selectBlogType);
 
   useEffect(() => {
     dispatch(loadUser());
-    dispatch(getCategories());
-    dispatch(getTags());
+    dispatch(getCategories(blogType));
+    dispatch(getTags(blogType));
   }, []);
 
   const [item, setItem] = useState({
@@ -37,6 +38,7 @@ const CreateBlog = () => {
     favorite: false,
     link: '',
     caption: '',
+    blogType,
   });
   const [tagsDisplay, setTagsDisplay] = useState(false);
   const [imageModal, toggleImageModal] = useState(false);

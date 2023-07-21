@@ -37,7 +37,7 @@ const BlogSchema = new mongoose.Schema({
   caption: {
     type: String,
   },
-  blogtype: {
+  blogType: {
     type: String,
     required: true,
   },

@@ -80,7 +80,7 @@ const BlogHome = (
     dispatch(getCategories(blogType));
     dispatch(getTags(blogType));
     // setView('home');
-  }, []);
+  }, [blogType]);
 
   const searchChange = (e) => {
     setSearchText(e.target.value);
