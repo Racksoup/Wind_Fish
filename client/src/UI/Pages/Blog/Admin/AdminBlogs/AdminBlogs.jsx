@@ -5,7 +5,7 @@ import {
   getAllBlogs,
   removeBlog,
   setCurrBlog,
-} from '../../../../../../Redux/Blog/blogSlice';
+} from '../../../../../Redux/Blog/blogSlice';
 import DeleteModal from '../Modal/DeleteModal.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';

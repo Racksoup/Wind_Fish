@@ -9,7 +9,7 @@ import {
   deleteCategory,
 } from '../../../../../Redux/Blog/categorySlice';
 import Modal from './Modal/Modal.jsx';
-import DeleteModal from '../AdminDashboard/Modal/DeleteModal.jsx';
+import DeleteModal from '../../Admin/Modal/DeleteModal.jsx';
 
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
