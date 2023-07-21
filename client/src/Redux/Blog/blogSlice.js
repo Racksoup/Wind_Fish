@@ -201,6 +201,7 @@ export const createBlog = (item, file, files) => async (dispatch) => {
   data.append('poster', item.poster);
   data.append('date', item.date);
   data.append('favorite', item.favorite);
+  data.append('blogType', item.blogType);
   data.append('tags', JSON.stringify(item.tags));
   if (file) {
     data.append('link', item.link);

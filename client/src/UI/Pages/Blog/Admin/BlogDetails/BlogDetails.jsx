@@ -15,15 +15,17 @@ import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
+import { selectBlogType } from '../../../../../Redux/Blog/blogSlice';
 
 const BlogDetails = () => {
   const dispatch = useDispatch();
   const tags = useSelector(selectTags);
   const categories = useSelector(selectCategories);
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const blogType = useSelector(selectBlogType);
   useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getTags());
+    dispatch(getCategories(blogType));
+    dispatch(getTags(blogType));
     dispatch(loadUser());
   }, []);
   const [submitBlogModal, toggleSubmitBlogModal] = useState(false);
@@ -96,7 +98,7 @@ const BlogDetails = () => {
         <div className='Btn '>Back</div>
       </Link>
       <div className='NewsletterBox'>
-        <div className='Label'>Enter New Blog Link:</div>
+        <h4 className='Label'>Email Link of New Blog:</h4>
         <input
           type='text'
           className='Input'
@@ -125,7 +127,7 @@ const BlogDetails = () => {
             {categories.map((cat, i) => {
               return (
                 <div className='Category' key={i}>
-                  <div className='Name'>{cat.category}</div>
+                  <p className='Name'>{cat.category}</p>
                   <div className='Delete-Btn' onClick={() => deleteCategoryClicked(cat)}>
                     <FontAwesomeIcon className='Icon' icon={faX} />
                   </div>
@@ -143,10 +145,10 @@ const BlogDetails = () => {
             {tags.map((tag, i) => {
               return (
                 <div className='Category' key={i}>
-                  <div className='Name'>{tag.tag}</div>
-                  <div className='Delete-Btn' onClick={() => deleteTagClicked(tag)}>
+                  <p className='Name'>{tag.tag}</p>
+                  <p className='Delete-Btn' onClick={() => deleteTagClicked(tag)}>
                     <FontAwesomeIcon className='Icon' icon={faX} />
-                  </div>
+                  </p>
                 </div>
               );
             })}
