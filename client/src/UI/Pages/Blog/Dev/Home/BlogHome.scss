@@ -1,9 +1,9 @@
-@import '../../DevBlogMain.scss';
+@import '../../BlogMain.scss';
 
 .DevBlog {
   @include Section;
   background-color: $bgColor;
-  
+
   font-family: Oswald;
   font-weight: 400;
   * {
