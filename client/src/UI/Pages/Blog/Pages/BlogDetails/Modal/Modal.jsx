@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import './Modal.scss';
 
+import { useDispatch } from 'react-redux';
+
 const Modal = ({ toggleModal, Func, title, placeHolder, type }) => {
+  const dispatch = useDispatch();
   const [item, setItem] = useState('');
   const [file, setFile] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (type === 'tags') {
-      Func(item);
+      dispatch(Func(item));
     }
     if (type === 'categories') {
-      Func(item, file);
+      dispatch(Func(item, file));
     }
     toggleModal(false);
   };

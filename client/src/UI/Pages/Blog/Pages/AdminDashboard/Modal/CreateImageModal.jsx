@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import './Modal.scss';
 
+import { useDispatch } from 'react-redux';
+
 const CreateImageModal = ({ toggleModal, Func, blogID }) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState({ name: '', caption: '', link: '' });
   const [file, setFile] = useState('');
 
   const submitClicked = (e) => {
     e.stopPropagation();
-    Func(file, data.name, blogID, data.link, data.caption);
+    dispatch(Func(file, data.name, blogID, data.link, data.caption));
     toggleModal(false);
   };
 
