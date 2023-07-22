@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './Blogs.scss';
-// import { setCurrentBlog } from '../../../Redux/Actions/blogs';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
 // import Footer from '../../Components/Footer/Footer.jsx';
 import BlogsGrid from '../../Components/BlogsGrid/BlogsGrid.jsx';

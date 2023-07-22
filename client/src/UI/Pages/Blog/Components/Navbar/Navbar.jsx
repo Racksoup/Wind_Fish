@@ -36,14 +36,14 @@ const Navbar = () => {
   if (width > 767) {
     return (
       <div className='Blog-Navbar'>
-        {searched && <Navigate to='/dev-blog/blogs' />}
+        {searched && <Navigate to={`/${blogType}-blog/blogs`} />}
         <div className='BottomBar'>
           <div className='Left'></div>
           <div className='Center'>
             {screen === 'home' ? (
               <div className='LinkTextActive'>Home</div>
             ) : (
-              <Link className='Link' to='/dev-blog'>
+              <Link className='Link' to={`/${blogType}-blog`}>
                 <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
                   Home
                 </div>
@@ -59,7 +59,7 @@ const Navbar = () => {
               <div className='DropdownBox'>
                 {categories.map((cat, i) => {
                   return (
-                    <Link className='Link' to='/dev-blog/blogs' key={i}>
+                    <Link className='Link' to={`/${blogType}-blog/blogs`} key={i}>
                       <div
                         className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}
                         onClick={() => dispatch(searchBlogs(cat.category))}
@@ -75,14 +75,14 @@ const Navbar = () => {
             {screen === 'about' ? (
               <div className='LinkTextActive'>About</div>
             ) : (
-              <Link className='Link' to='/dev-blog/about'>
+              <Link className='Link' to={`/${blogType}-blog/about`}>
                 <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
                   About
                 </div>
               </Link>
             )}
 
-            <Link className='Link' to='/dev-blog/blogs'>
+            <Link className='Link' to={`/${blogType}-blog/blogs`}>
               <div
                 className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}
                 onClick={() => dispatch(getAllBlogs())}
@@ -94,7 +94,7 @@ const Navbar = () => {
             {screen === 'contact' ? (
               <div className='LinkTextActive'>Contact</div>
             ) : (
-              <Link className='Link' to='/dev-blog/contact'>
+              <Link className='Link' to={`/${blogType}-blog/contact`}>
                 <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
                   Contact
                 </div>
@@ -125,9 +125,9 @@ const Navbar = () => {
   if (width <= 767) {
     return (
       <div className='Navbar'>
-        {searched && <Navigate to='/dev-blog/blogs' />}
+        {searched && <Navigate to={`/${blogType}-blog/blogs`} />}
         <div className='TopBar'>
-          <Link className='Link White' to='/dev-blog/'>
+          <Link className='Link White' to={`/${blogType}-blog/`}>
             <div className={`${blogType == 'dev' ? 'Title-Dev' : 'Title-History'}`}>
               Software Dev
             </div>
@@ -146,7 +146,7 @@ const Navbar = () => {
         </div>
         <div className='BottomBar'>
           <div className='SearchBox'>
-            <Link to='/dev-blog/login' className='Pink'>
+            <Link to={`/${blogType}-blog/login`} className='Pink'>
               <FontAwesomeIcon icon={faUser} className='Icon' />
             </Link>
 
@@ -180,7 +180,7 @@ const Navbar = () => {
             <div className='Hamburger'>
               <FontAwesomeIcon icon={faHamburger} className='Icon' />
               <div className='DropdownBox'>
-                <Link className='Link' to='/dev-blog/'>
+                <Link className='Link' to={`/${blogType}-blog/`}>
                   <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
                     <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
                       Home
@@ -193,7 +193,7 @@ const Navbar = () => {
                   <div className='DropdownBoxCategories'>
                     {categories.map((cat, i) => {
                       return (
-                        <Link className='Link' to='/dev-blog/blogs' key={i}>
+                        <Link className='Link' to={`/${blogType}-blog/blogs`} key={i}>
                           <div
                             className='DropLinkCategories'
                             onClick={() => dispatch(searchBlogs(cat.category))}
@@ -206,7 +206,7 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                <Link className='Link' to='/dev-blog/about'>
+                <Link className='Link' to={`/${blogType}-blog/about`}>
                   <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
                     <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
                       About
@@ -214,7 +214,7 @@ const Navbar = () => {
                   </div>
                 </Link>
 
-                <Link className='Link' to='/dev-blog/blogs'>
+                <Link className='Link' to={`/${blogType}-blog/blogs`}>
                   <div
                     className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}
                     onClick={() => dispatch(getAllBlogs())}
@@ -225,7 +225,7 @@ const Navbar = () => {
                   </div>
                 </Link>
 
-                <Link className='Link' to='/dev-blog/contact'>
+                <Link className='Link' to={`/${blogType}-blog/contact`}>
                   <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
                     <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
                       Contact

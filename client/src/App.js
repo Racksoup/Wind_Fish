@@ -35,6 +35,10 @@ const App = () => {
             <Route path='/dev-blog/about' element={<About />} />
             <Route path='/dev-blog/contact' element={<Contact />} />
             <Route path='/history-blog' element={<BlogHome />} />
+            <Route path='/history-blog/single-blog/:id' element={<SingleBlog />} />
+            <Route path='/history-blog/blogs' element={<Blogs />} />
+            <Route path='/history-blog/about' element={<About />} />
+            <Route path='/history-blog/contact' element={<Contact />} />
             <Route path='/admin' element={<AdminDashboard />} />
             <Route path='/login-admin' element={<LoginAdmin />} />
             <Route path='/admin/blogs' element={<EditBlogs />} />
