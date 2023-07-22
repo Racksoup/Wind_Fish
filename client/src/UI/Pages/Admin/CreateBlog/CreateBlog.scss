@@ -1,4 +1,4 @@
-@import '../../BlogMain.scss';
+@import '../AdminDashboard.scss';
 
 .CreateBlog {
   display: flex;
@@ -66,7 +66,7 @@
       max-height: 8rem;
       overflow-y: scroll;
       border-radius: 0.5rem;
-      border: solid 0.15rem $persianGreen;
+      border: solid 0.15rem rgb(255, 115, 0);
       display: flex;
       justify-content: start;
 
@@ -74,7 +74,7 @@
         padding: 0.6rem;
         line-height: 1.2rem;
         border-radius: 1.1rem;
-        border: solid 0.13rem $cyanColor;
+        border: solid 0.13rem rgb(255, 208, 0);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -82,7 +82,7 @@
       }
 
       .TagActive {
-        background-color: $cyanColorTran;
+        background-color: rgb(255, 60, 0);
       }
     }
 

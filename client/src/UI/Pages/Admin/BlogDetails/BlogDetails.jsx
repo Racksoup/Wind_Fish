@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './BlogDetails.scss';
-import { selectTags, getTags, addTag, deleteTag } from '../../../../../Redux/Blog/tagSlice';
-import { selectIsAuthenticated, loadUser } from '../../../../../Redux/Blog/adminSlice';
+import { selectTags, getTags, addTag, deleteTag } from '../../../../Redux/Blog/tagSlice';
+import { selectIsAuthenticated, loadUser } from '../../../../Redux/Blog/adminSlice';
 import {
   selectCategories,
   getCategories,
   addCategory,
   deleteCategory,
-} from '../../../../../Redux/Blog/categorySlice';
+} from '../../../../Redux/Blog/categorySlice';
 import Modal from '../Modal/TagModal.jsx';
 import DeleteModal from '../Modal/DeleteModal.jsx';
 
@@ -15,7 +15,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
-import { selectBlogType } from '../../../../../Redux/Blog/blogSlice';
+import { selectBlogType } from '../../../../Redux/Blog/blogSlice';
 
 const BlogDetails = () => {
   const dispatch = useDispatch();

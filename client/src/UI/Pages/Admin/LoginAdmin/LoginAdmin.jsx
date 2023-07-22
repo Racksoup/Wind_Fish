@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './LoginAdmin.scss';
-import { login, selectUser, loadUser } from '../../../../../Redux/Blog/adminSlice';
+import { login, selectUser, loadUser } from '../../../../Redux/Blog/adminSlice';
 
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

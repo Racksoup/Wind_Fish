@@ -13,7 +13,7 @@ const BlogsGrid = ({ blogs, setCurrentBlog }) => {
     return (
       <div className={`${blogType == 'dev' ? 'Blog-Devx' : 'Blog-Historyx'}`} key={i}>
         {width > 475 ? (
-          <Link className='ImgLink' to={`/blog/${blog._id}`}>
+          <Link className='ImgLink' to={`/${blogType}-blog/single-blog/${blog._id}`}>
             {(i + 4) % 5 !== 0 && (
               <img
                 src={`http://localhost:5000/api/backend-blog/blogs/image/${blog.image_filename}`}
@@ -32,7 +32,7 @@ const BlogsGrid = ({ blogs, setCurrentBlog }) => {
             )}
           </Link>
         ) : (
-          <Link className='ImgLink' to={`/blog/${blog._id}`}>
+          <Link className='ImgLink' to={`/${blogType}-blog/single-blog/${blog._id}`}>
             <img
               src={`api/backend-blog/blogs/image/${blog.image_filename}`}
               alt='Blog Image'
@@ -48,7 +48,7 @@ const BlogsGrid = ({ blogs, setCurrentBlog }) => {
           <div className='BlogCategory'>{blog.category}</div>
         </div>
         <div className='Text'>{blog.text[0].content}</div>
-        <Link className='Link' to={`/blog/${blog._id}`}>
+        <Link className='Link' to={`/${blogType}-blog/single-blog/${blog._id}`}>
           <div
             className={`${blogType == 'dev' ? 'Readmorex-Dev' : 'Readmorex-History'}`}
             onClick={() => setCurrentBlog(blog)}

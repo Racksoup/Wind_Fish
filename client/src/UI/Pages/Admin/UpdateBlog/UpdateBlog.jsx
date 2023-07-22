@@ -11,14 +11,14 @@ import {
   selectContentImages,
   selectContentImagesLoaded,
   selectBlogType,
-} from '../../../../../Redux/Blog/blogSlice.js';
+} from '../../../../Redux/Blog/blogSlice.js';
 import {
   loadUser,
   selectIsAuthenticated,
   selectLoading,
-} from '../../../../../Redux/Blog/adminSlice.js';
-import { getTags, addTag, selectTags } from '../../../../../Redux/Blog/tagSlice.js';
-import { selectCategories, getCategories } from '../../../../../Redux/Blog/categorySlice.js';
+} from '../../../../Redux/Blog/adminSlice.js';
+import { getTags, addTag, selectTags } from '../../../../Redux/Blog/tagSlice.js';
+import { selectCategories, getCategories } from '../../../../Redux/Blog/categorySlice.js';
 import Modal from '../Modal/TagModal.jsx';
 import CreateImageModal from '../Modal/CreateImageModal.jsx';
 

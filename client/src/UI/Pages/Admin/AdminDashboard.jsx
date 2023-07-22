@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './AdminDashboard.scss';
-import { loadUser, logout, selectIsAuthenticated } from '../../../../Redux/Blog/adminSlice.js';
+import { loadUser, logout, selectIsAuthenticated } from '../../../Redux/Blog/adminSlice.js';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';

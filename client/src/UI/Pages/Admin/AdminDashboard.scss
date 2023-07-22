@@ -1,11 +1,24 @@
-@import '../../BlogMain.scss';
+// @import '../DevBlogMain.scss';
 
-.BlogPortal {
+.AdminDashboard {
+  width: 50rem;
   margin: 6rem 0 0 0;
-  width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .TitleBox {
+    margin-bottom: 4rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: end;
+    justify-items: center;
+
+    .Link {
+      justify-self: end;
+    }
+  }
 
   .Selection {
     margin: 0;
@@ -32,5 +45,20 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+@mixin Section {
+  width: 70rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 767px) and (max-width: 1150px) {
+    width: 40rem;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0 1rem;
   }
 }

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import './Blogs.scss';
+import { selectBlogs, selectBlogType, setCurrentBlog } from '../../../../../Redux/Blog/blogSlice';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
 // import Footer from '../../Components/Footer/Footer.jsx';
 import BlogsGrid from '../../Components/BlogsGrid/BlogsGrid.jsx';
 import useWindowDimensions from '../../useWindowDimensions';
-
-import { selectBlogs, selectBlogType, setCurrentBlog } from '../../../../../Redux/Blog/blogSlice';
 
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +18,7 @@ const Blogs = () => {
   const OneBlog = ({ blog, i }) => {
     return (
       <div className={`${blogType == 'dev' ? 'Blog-Dev' : 'Blog-History'}`} key={i}>
-        <Link className='Link' to={`/blog/${blog._id}`}>
+        <Link className='Link' to={`/${blogType}-blog/single-blog/${blog._id}`}>
           {(i + 4) % 5 !== 0 && (
             <img
               src={`/api/backend-blog/blogs/image/${blog.image_filename}`}
@@ -44,7 +43,7 @@ const Blogs = () => {
           <div className='BlogCategory'>{blog.category}</div>
         </div>
         <div className='Text'>{blog.text[0].content}</div>
-        <Link className='Link' to={`/blog/${blog._id}`}>
+        <Link className='Link' to={`/${blogType}-blog/single-blog/${blog._id}`}>
           <div
             className={`${blogType == 'dev' ? 'Readmore-Dev' : 'Readmore-History'}`}
             onClick={() => dispatch(setCurrentBlog(blog))}
@@ -94,11 +93,5 @@ const Blogs = () => {
     );
   } else return null;
 };
-
-// const mapStateToProps = (state) => ({
-//   blogs: state.blogs.blogs,
-// });
-
-// export default connect(mapStateToProps, { setView, setCurrentBlog })(Blogs);
 
 export default Blogs;

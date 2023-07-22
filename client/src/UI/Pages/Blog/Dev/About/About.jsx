@@ -38,18 +38,37 @@ const About = () => {
       <div className='App-Background'></div>
       <Navbar />
       <div className='Content'>
-        <div className='Title'>Big Ideas</div>
-        <div className='Top'>
-          <img src={Iphone} alt='Iphone' className='Img' />
-          <div className='Right'>
-            <div className='TopTitle'>Past & Present</div>
-            <div className='TopText'>
-              Software Development is all about thinking big. The sky's the limit. There are lots of
-              new possibilities, some more useful than others. Ideas like the iphone, or making a
-              digital clock out of a sundial.
+        {blogType == 'dev' ? (
+          <>
+            <div className='Title'>Big Ideas</div>
+            <div className='Top'>
+              <img src={Iphone} alt='Iphone' className='Img' />
+              <div className='Right'>
+                <div className='TopTitle'>Past & Present</div>
+                <div className='TopText'>
+                  Software Development is all about thinking big. The sky's the limit. There are
+                  lots of new possibilities, some more useful than others. Ideas like the iphone, or
+                  making a digital clock out of a sundial.
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </>
+        ) : (
+          <>
+            <div className='Title'>History & Tech</div>
+            <div className='Top'>
+              <img src={IndustrialRevolution} alt='Iphone' className='Img' />
+              <div className='Right'>
+                <div className='TopTitle'>Past & Present</div>
+                <div className='TopText'>
+                  History is a very deep and broad topic. This blog focuses on advancing
+                  technologies and there impacts on society. Contrasting past events with current
+                  events, and seeing how new inventions will change outcomes.
+                </div>
+              </div>
+            </div>
+          </>
+        )}
         <hr />
         {blogType == 'dev' ? (
           <div className='Images'>
