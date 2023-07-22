@@ -26,7 +26,6 @@ const AdminBlogs = () => {
     setThisBlog(blog);
     toggleModal(true);
   };
-  //removeBlog(blog)
 
   if (blogs) {
     return (

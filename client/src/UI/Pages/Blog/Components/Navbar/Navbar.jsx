@@ -85,7 +85,7 @@ const Navbar = () => {
             <Link className='Link' to={`/${blogType}-blog/blogs`}>
               <div
                 className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}
-                onClick={() => dispatch(getAllBlogs())}
+                onClick={() => dispatch(getAllBlogs(blogType))}
               >
                 Recent Blogs
               </div>

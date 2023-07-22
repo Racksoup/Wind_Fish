@@ -12,6 +12,9 @@
   @media (min-width: 767px) and (max-width: 1150px) {
     width: 30rem;
   }
+  * {
+    color: black;
+  }
 
   .ProfileImg {
     margin-top: -2rem;
@@ -29,7 +32,6 @@
 
     .SocialLink {
       font-size: 0.8rem;
-      color: black;
 
       .Icon {
         cursor: pointer;
