@@ -1,14 +1,17 @@
 import React from 'react';
 import './BlogsGrid.scss';
 import useWindowDimensions from '../../useWindowDimensions';
+import { selectBlogType } from '../../../../../Redux/Blog/blogSlice';
 
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const BlogsGrid = ({ blogs, setCurrentBlog }) => {
   const { width, height } = useWindowDimensions();
+  const blogType = useSelector(selectBlogType);
   const OneBlog = ({ blog, i }) => {
     return (
-      <div className='Blog' key={i}>
+      <div className={`${blogType == 'dev' ? 'Blog-Devx' : 'Blog-Historyx'}`} key={i}>
         {width > 475 ? (
           <Link className='ImgLink' to={`/blog/${blog._id}`}>
             {(i + 4) % 5 !== 0 && (
@@ -46,7 +49,10 @@ const BlogsGrid = ({ blogs, setCurrentBlog }) => {
         </div>
         <div className='Text'>{blog.text[0].content}</div>
         <Link className='Link' to={`/blog/${blog._id}`}>
-          <div className='Readmorex' onClick={() => setCurrentBlog(blog)}>
+          <div
+            className={`${blogType == 'dev' ? 'Readmorex-Dev' : 'Readmorex-History'}`}
+            onClick={() => setCurrentBlog(blog)}
+          >
             Read More
           </div>
         </Link>

@@ -60,11 +60,19 @@
     object-fit: cover;
   }
 
-  .Readmore {
+  @mixin Readmore() {
     margin-top: 2.2rem;
-    color: $pineGreen;
     font-size: 1.2rem;
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  .Readmore-Dev {
+    @include Readmore;
+    color: $pineGreen;
+  }
+  .Readmore-History {
+    @include Readmore;
+    color: $pineGreen2;
   }
 }

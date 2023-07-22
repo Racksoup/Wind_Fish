@@ -35,9 +35,11 @@ const Navbar = () => {
   pathname.map((x) => {
     if (x == 'dev-blog') {
       dispatch(blogTypeChanged('dev'));
+      // variables.cyanColor = `rgb(0, 255, 234)`;
     }
     if (x == 'history-blog') {
       dispatch(blogTypeChanged('history'));
+      // variables.cyanColor = `rgb(185, 126, 67)`;
     }
   });
 

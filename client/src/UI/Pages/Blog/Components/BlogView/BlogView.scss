@@ -42,17 +42,25 @@
       align-items: start;
       margin-top: 1.3rem;
 
-      .Category {
+      @mixin Category() {
         padding: 0.3rem 0.6rem;
         height: 2.1rem;
         font-size: 1.3rem;
         color: black;
         font-weight: 500;
-        background-color: $tiffanyBlue;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+      }
+
+      .Category-Dev {
+        @include Category;
+        background-color: $tiffanyBlue;
+      }
+      .Category-History {
+        @include Category;
+        background-color: $tiffanyBlue2;
       }
 
       .BlogLinks {
@@ -113,17 +121,26 @@
       }
     }
 
-    .Readmore {
+    @mixin Readmore() {
       width: 9rem;
       height: 2.8rem;
-      border: solid 0.05rem $persianGreen;
-      color: $persianGreen;
       font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
       background-color: rgba(100, 100, 100, 0.1);
       cursor: pointer;
+    }
+
+    .Readmore-Dev {
+      @include Readmore;
+      border: solid 0.05rem $persianGreen;
+      color: $persianGreen;
+    }
+    .Readmore-History {
+      @include Readmore;
+      border: solid 0.05rem $persianGreen2;
+      color: $persianGreen2;
     }
   }
 }

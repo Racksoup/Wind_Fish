@@ -267,23 +267,4 @@ const SingleBlog = () => {
   } else return null;
 };
 
-// const mapStateToProps = (state) => ({
-//   blog: state.blogs.blog,
-//   contentImages: state.blogs.contentImages,
-//   account: state.account.account,
-//   blogLikes: state.likes.blogLikes,
-//   blogComments: state.comments.blogComments,
-// });
-
-// export default connect(mapStateToProps, {
-//   getSingleBlog,
-//   setView,
-//   getBlogImages,
-//   getBlogLikes,
-//   toggleLike,
-//   loadAccount,
-//   updateBlogComments,
-//   getBlogComments,
-// })(SingleBlog);
-
 export default SingleBlog;

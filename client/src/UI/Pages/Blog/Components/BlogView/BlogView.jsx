@@ -1,33 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import './BlogView.scss';
-// import { setCurrBlog, searchBlogs } from '../../../Redux/Actions/blogs';
-// import { getAllBlogLikes } from '../../../Redux/Actions/likes';
-// import { getAllBlogComments } from '../../../Redux/Actions/comments';
-import useWindowDimensions from '../../useWindowDimensions.js';
+import {
+  selectBlogs,
+  setCurrentBlog,
+  searchBlogs,
+  selectBlogType,
+} from '../../../../../Redux/Blog/blogSlice';
+import { selectAllBlogLikes, getAllBlogLikes } from '../../../../../Redux/Blog/likesSlice';
+import { selectAllBlogComments, getAllBlogComments } from '../../../../../Redux/Blog/commentsSlice';
 
 import { Link, Navigate } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShare, faComment } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectBlogs, setCurrentBlog, searchBlogs } from '../../../../../Redux/Blog/blogSlice';
-import { selectAllBlogLikes, getAllBlogLikes } from '../../../../../Redux/Blog/likesSlice';
-import { selectAllBlogComments, getAllBlogComments } from '../../../../../Redux/Blog/commentsSlice';
-
-const BlogView = (
-  {
-    // blogs,
-    // allBlogLikes,
-    // allBlogComments,
-    // setCurrBlog,
-    // searchBlogs,
-    // getAllBlogLikes,
-    // getAllBlogComments,
-  }
-) => {
+const BlogView = () => {
   const dispatch = useDispatch();
-  const { width, height } = useWindowDimensions();
+  const blogType = useSelector(selectBlogType);
   const months = [
     'January',
     'February',
@@ -95,7 +84,10 @@ const BlogView = (
             />
           </Link>
           <div className='TopBox'>
-            <div className='Category' onClick={() => categoryClicked(blog.category)}>
+            <div
+              className={`${blogType == 'dev' ? 'Category-Dev' : 'Category-History'}`}
+              onClick={() => categoryClicked(blog.category)}
+            >
               {blog.category}
             </div>
             <div className='BlogLinks'>
@@ -144,7 +136,10 @@ const BlogView = (
             })}
           </div>
           <Link className='Link' to={`/dev-blog/single-blog/${blog._id}`}>
-            <div className='Readmore' onClick={() => dispatch(setCurrentBlog(blog))}>
+            <div
+              className={`${blogType == 'dev' ? 'Readmore-Dev' : 'Readmore-History'}`}
+              onClick={() => dispatch(setCurrentBlog(blog))}
+            >
               READ MORE
             </div>
           </Link>

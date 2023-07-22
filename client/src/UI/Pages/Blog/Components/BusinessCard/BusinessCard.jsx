@@ -4,8 +4,7 @@ import Signature from '../../../../../images/Signature.png';
 import ProfileImage from '../../../../../images/ProfileImg.jpg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faGithub, faPinterest } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom';
+import { faFacebook, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const BusinessCard = () => {
   return (

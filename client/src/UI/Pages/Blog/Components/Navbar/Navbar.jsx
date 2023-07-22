@@ -1,25 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.scss';
-// import { searchBlogs, getAllBlogs } from '../../../Redux/Actions/blogs';
-// import { getCategories } from '../../../Redux/Actions/blogCategory';
 import useWindowDimensions from '../../useWindowDimensions.js';
-
 import { selectCategories, getCategories } from '../../../../../Redux/Blog/categorySlice';
-import { searchBlogs, getAllBlogs } from '../../../../../Redux/Blog/blogSlice';
+import { searchBlogs, getAllBlogs, selectBlogType } from '../../../../../Redux/Blog/blogSlice';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUser, faHamburger, faSquareShareNodes } from '@fortawesome/free-solid-svg-icons';
-import { connect } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-const Navbar = (
-  {
-    // screen, categories, searchBlogs, getCategories, getAllBlogs
-  }
-) => {
+const Navbar = () => {
   const dispatch = useDispatch();
+  const blogType = useSelector(selectBlogType);
   const { width, height } = useWindowDimensions();
   const screen = window.location.pathname;
   const categories = useSelector(selectCategories);
@@ -44,46 +37,6 @@ const Navbar = (
     return (
       <div className='Blog-Navbar'>
         {searched && <Navigate to='/dev-blog/blogs' />}
-        {/* <div className='TopBar'>
-          <div className='SocialLinks'>
-            <a className='SocialLink Twitter' href='https://twitter.com/MrKruger16' target='_blank'>
-              <FontAwesomeIcon icon={faTwitter} className='Icon' />
-            </a>
-            <a
-              className='SocialLink Facebook'
-              href='https://www.facebook.com/connor.rack/'
-              target='_blank'
-            >
-              <FontAwesomeIcon icon={faFacebook} className='Icon' />
-            </a>
-            <a
-              className='SocialLink Github'
-              href='https://github.com/Racksoup?tab=repositories'
-              target='_blank'
-            >
-              <FontAwesomeIcon icon={faGithub} className='Icon' />
-            </a>
-          </div>
-          <Link to='/' className='Link'>
-            <div className='Title'>Software Dev</div>
-          </Link>
-          <div className='SearchBox'>
-            <div className='search'>
-              <div>
-                <input
-                  type='text'
-                  value={searchText}
-                  placeholder='Search'
-                  onChange={(e) => searchChange(e)}
-                  onKeyDown={(e) => searchKeyDown(e)}
-                />
-              </div>
-            </div>
-            <Link to='/login' className='AccountLink'>
-              <FontAwesomeIcon icon={faUser} className='Icon' />
-            </Link>
-          </div>
-        </div> */}
         <div className='BottomBar'>
           <div className='Left'></div>
           <div className='Center'>
@@ -91,17 +44,26 @@ const Navbar = (
               <div className='LinkTextActive'>Home</div>
             ) : (
               <Link className='Link' to='/dev-blog'>
-                <div className='LinkText'>Home</div>
+                <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
+                  Home
+                </div>
               </Link>
             )}
 
-            <div className='Dropdown LinkText'>
+            <div
+              className={`${
+                blogType == 'dev' ? 'LinkText-Dev Dropdown' : 'LinkText-History Dropdown'
+              }`}
+            >
               Categories
               <div className='DropdownBox'>
                 {categories.map((cat, i) => {
                   return (
                     <Link className='Link' to='/dev-blog/blogs' key={i}>
-                      <div className='DropLink' onClick={() => dispatch(searchBlogs(cat.category))}>
+                      <div
+                        className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}
+                        onClick={() => dispatch(searchBlogs(cat.category))}
+                      >
                         {cat.category}
                       </div>
                     </Link>
@@ -114,12 +76,17 @@ const Navbar = (
               <div className='LinkTextActive'>About</div>
             ) : (
               <Link className='Link' to='/dev-blog/about'>
-                <div className='LinkText'>About</div>
+                <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
+                  About
+                </div>
               </Link>
             )}
 
             <Link className='Link' to='/dev-blog/blogs'>
-              <div className='LinkText' onClick={() => dispatch(getAllBlogs())}>
+              <div
+                className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}
+                onClick={() => dispatch(getAllBlogs())}
+              >
                 Recent Blogs
               </div>
             </Link>
@@ -128,16 +95,19 @@ const Navbar = (
               <div className='LinkTextActive'>Contact</div>
             ) : (
               <Link className='Link' to='/dev-blog/contact'>
-                <div className='LinkText'>Contact</div>
+                <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
+                  Contact
+                </div>
               </Link>
             )}
           </div>
           <div className='Right'>
             <div className='SearchBox'>
               <div className='search'>
-                <div>
+                <div className={`${blogType == 'dev' ? 'Inner-Dev' : 'Inner-History'}`}>
                   <input
                     type='text'
+                    className={`${blogType == 'dev' ? 'SearchInput-Dev' : 'SearchInput-History'}`}
                     value={searchText}
                     placeholder='Search'
                     onChange={(e) => searchChange(e)}
@@ -158,7 +128,9 @@ const Navbar = (
         {searched && <Navigate to='/dev-blog/blogs' />}
         <div className='TopBar'>
           <Link className='Link White' to='/dev-blog/'>
-            <div className='Title'>Software Dev</div>
+            <div className={`${blogType == 'dev' ? 'Title-Dev' : 'Title-History'}`}>
+              Software Dev
+            </div>
           </Link>
           <div className='search'>
             <div>
@@ -209,8 +181,10 @@ const Navbar = (
               <FontAwesomeIcon icon={faHamburger} className='Icon' />
               <div className='DropdownBox'>
                 <Link className='Link' to='/dev-blog/'>
-                  <div className='DropLink'>
-                    <div className='LinkText'>Home</div>
+                  <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
+                    <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
+                      Home
+                    </div>
                   </div>
                 </Link>
 
@@ -233,20 +207,29 @@ const Navbar = (
                 </div>
 
                 <Link className='Link' to='/dev-blog/about'>
-                  <div className='DropLink'>
-                    <div className='LinkText'>About</div>
+                  <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
+                    <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
+                      About
+                    </div>
                   </div>
                 </Link>
 
                 <Link className='Link' to='/dev-blog/blogs'>
-                  <div className='DropLink' onClick={() => dispatch(getAllBlogs())}>
-                    <div className='LinkText'>Recent Blogs</div>
+                  <div
+                    className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}
+                    onClick={() => dispatch(getAllBlogs())}
+                  >
+                    <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
+                      Recent Blogs
+                    </div>
                   </div>
                 </Link>
 
                 <Link className='Link' to='/dev-blog/contact'>
-                  <div className='DropLink'>
-                    <div className='LinkText'>Contact</div>
+                  <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
+                    <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
+                      Contact
+                    </div>
                   </div>
                 </Link>
               </div>
@@ -257,12 +240,5 @@ const Navbar = (
     );
   }
 };
-
-// const mapStateToProps = (state) => ({
-//   screen: state.view.screen,
-//   categories: state.blogCategory.categories,
-// });
-
-// export default connect(mapStateToProps, { searchBlogs, getCategories, getAllBlogs })(Navbar);
 
 export default Navbar;

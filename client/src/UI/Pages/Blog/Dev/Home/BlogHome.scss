@@ -60,17 +60,25 @@
           display: flex;
           flex-wrap: wrap;
 
-          .Tag {
+          @mixin tag() {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: $persianGreen;
             padding: 1rem;
             font-size: 1.1rem;
             line-height: 0.4rem;
             margin: 0 0.3rem 0.3rem 0;
             cursor: pointer;
             color: white;
+          }
+
+          .Tag-Dev {
+            @include tag;
+            background-color: $persianGreen;
+          }
+          .Tag-History {
+            @include tag;
+            background-color: $persianGreen2;
           }
         }
 
@@ -99,18 +107,26 @@
             cursor: pointer;
           }
 
-          .Title {
+          @mixin Title() {
             cursor: pointer;
             position: relative;
             width: 100%;
             height: 2rem;
-            background-color: $lightSeaGreenTran;
             margin-top: -2rem;
             display: flex;
             justify-content: start;
             align-items: center;
             padding: 0 0 0 1rem;
             color: white;
+          }
+
+          .Title-Dev {
+            @include Title();
+            background-color: $lightSeaGreenTran;
+          }
+          .Title-History {
+            @include Title();
+            background-color: $lightSeaGreenTran2;
           }
         }
       }
@@ -167,10 +183,9 @@
         }
       }
 
-      .Newsletter {
+      @mixin Newsletter() {
         margin-top: 3rem;
         width: 20rem;
-        background-color: $cyanColorTran;
         border-radius: 0.4rem;
         display: flex;
         flex-direction: column;
@@ -184,40 +199,49 @@
         @media (max-width: $lowerBreak) {
           width: 80%;
         }
+      }
 
-        .Title {
-          font-size: 1.3rem;
-        }
+      .Newsletter-Dev {
+        @include Newsletter;
+        background-color: $cyanColorTran;
+      }
+      .Newsletter-History {
+        @include Newsletter;
+        background-color: $cyanColorTran2;
+      }
 
-        .Email {
-          margin-top: 0.6rem;
-          width: 100%;
-          height: 2.7rem;
-          border: none;
-          padding: 0 1rem;
-          border-radius: 0.4rem;
-          background-color: white;
-          &:active {
-            outline: none;
-          }
-          &:focus {
-            outline: none;
-          }
-        }
+      .Title {
+        font-size: 1.3rem;
+      }
 
-        .Subscribe {
-          margin-top: 0.8rem;
-          margin-bottom: 0.3rem;
-          width: 50%;
-          font-size: 1rem;
-          height: 2.5rem;
-          border: solid 0.15rem black;
-          border-radius: 0.2rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
+      .Email {
+        margin-top: 0.6rem;
+        width: 100%;
+        height: 2.7rem;
+        border: none;
+        padding: 0 1rem;
+        border-radius: 0.4rem;
+        background-color: white;
+        &:active {
+          outline: none;
         }
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .Subscribe {
+        margin-top: 0.8rem;
+        margin-bottom: 0.3rem;
+        width: 50%;
+        font-size: 1rem;
+        height: 2.5rem;
+        border: solid 0.15rem black;
+        border-radius: 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
       }
     }
   }
@@ -248,9 +272,8 @@
         margin-bottom: 2rem;
       }
 
-      .EndTag {
+      @mixin EndTag() {
         cursor: pointer;
-        background-color: $cyanColor;
         font-weight: 500;
         border-radius: 0.2rem;
         padding: 0.3rem 0.7rem;
@@ -260,6 +283,15 @@
         align-items: center;
         font-size: 1.3rem;
         color: black;
+      }
+
+      .EndTag-Dev {
+        @include EndTag;
+        background-color: $cyanColor;
+      }
+      .EndTag-History {
+        @include EndTag;
+        background-color: $cyanColor2;
       }
     }
   }

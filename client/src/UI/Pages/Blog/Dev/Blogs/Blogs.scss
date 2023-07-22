@@ -28,72 +28,88 @@
       cursor: pointer;
     }
 
-    .Blog {
+    @mixin Blog() {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: solid 0.2rem $pineGreen;
       border-radius: 0.3rem;
       margin-bottom: 2.4rem;
+    }
 
-      .Img {
-        cursor: pointer;
-        width: 100%;
-        height: 13rem;
-        object-fit: cover;
-      }
+    .Blog-Dev {
+      @include Blog;
+      border: solid 0.2rem $pineGreen;
+    }
+    .Blog-History {
+      @include Blog;
+      border: solid 0.2rem $pineGreen2;
+    }
 
-      .BigImg {
-        cursor: pointer;
-        width: 100%;
-        height: 26rem;
-        object-fit: cover;
-      }
+    .Img {
+      cursor: pointer;
+      width: 100%;
+      height: 13rem;
+      object-fit: cover;
+    }
 
-      .Title {
-        margin-top: 1.5rem;
-        font-size: 1.6rem;
-        width: 60%;
-        text-align: center;
-      }
+    .BigImg {
+      cursor: pointer;
+      width: 100%;
+      height: 26rem;
+      object-fit: cover;
+    }
 
-      &Info {
-        margin-top: 0.7rem;
-        font-size: 0.8rem;
-        color: rgba(75, 75, 75.8);
-        display: flex;
-      }
+    .Title {
+      margin-top: 1.5rem;
+      font-size: 1.6rem;
+      width: 60%;
+      text-align: center;
+    }
 
-      hr {
-        margin: 0.13rem 0.5rem 0 0.7rem;
-        background-color: rgba(75, 75, 75.8);
-        height: 1rem;
-        width: 0.1rem;
-        border: none;
-      }
+    &Info {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: rgba(75, 75, 75.8);
+      display: flex;
+    }
 
-      .Text {
-        margin-top: 1.2rem;
-        text-align: center;
-        width: 80%;
-        height: 8rem;
-        overflow: hidden;
-        font-size: 1.2rem;
-      }
+    hr {
+      margin: 0.13rem 0.5rem 0 0.7rem;
+      background-color: rgba(75, 75, 75.8);
+      height: 1rem;
+      width: 0.1rem;
+      border: none;
+    }
 
-      .Readmore {
-        width: 10rem;
-        height: 2.8rem;
-        border-radius: 1rem;
-        background-color: $cyanColor;
-        color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 3rem;
-        cursor: pointer;
-      }
+    .Text {
+      margin-top: 1.2rem;
+      text-align: center;
+      width: 80%;
+      height: 8rem;
+      overflow: hidden;
+      font-size: 1.2rem;
+    }
+
+    @mixin Readmore() {
+      width: 10rem;
+      height: 2.8rem;
+      border-radius: 1rem;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3rem;
+      cursor: pointer;
+    }
+
+    .Readmore-Dev {
+      @include Readmore;
+      background-color: $cyanColor;
+    }
+    .Readmore-History {
+      @include Readmore;
+      background-color: $cyanColor2;
     }
   }
 }

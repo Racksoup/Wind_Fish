@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './BlogHome.scss';
-// import {
-//   getThreeBlogs,
-//   searchBlogs,
-//   setCurrBlog,
-//   getRecentBlogs,
-// } from '../../../Redux/Actions/blogs.js';
-// import { setView } from '../../../Redux/Actions/view.js';
-// import { subToNewsletter, setUnsubbed } from '../../../Redux/Actions/mail.js';
 import Navbar from '../../Components/Navbar/Navbar.jsx';
 import Footer from '../../Components/Footer/Footer.jsx';
 import BlogView from '../../Components/BlogView/BlogView.jsx';
@@ -16,14 +8,9 @@ import BusinessCard from '../../Components/BusinessCard/BusinessCard.jsx';
 import LoadingScreen from '../../Components/LoadingScreen/LoadingScreen.jsx';
 import useWindowDimensions from '../../useWindowDimensions.js';
 import Modal from './Modal/Modal.jsx';
-
 import {
-  selectBlog,
   selectBlogs,
-  selectContentImages,
-  selectContentImagesLoaded,
   selectRecentBlogs,
-  selectSearchedBlogs,
   selectBlogType,
   getThreeBlogs,
   getRecentBlogs,
@@ -38,30 +25,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 
-const BlogHome = (
-  {
-    // blogs,
-    // recentBlogs,
-    // categories,
-    // tags,
-    // setView,
-    // getThreeBlogs,
-    // getCategories,
-    // getTags,
-    // searchBlogs,
-    // setCurrBlog,
-    // getRecentBlogs,
-    // subToNewsletter,
-    // setUnsubbed,
-  }
-) => {
+const BlogHome = () => {
   const dispatch = useDispatch();
-  const blog = useSelector(selectBlog);
   const blogs = useSelector(selectBlogs);
-  const contentImages = useSelector(selectContentImages);
-  const contentImagesLoaded = useSelector(selectContentImagesLoaded);
   const recentBlogs = useSelector(selectRecentBlogs);
-  const searchedBlogs = useSelector(selectSearchedBlogs);
   const tags = useSelector(selectTags);
   const categories = useSelector(selectCategories);
   const blogType = useSelector(selectBlogType);
@@ -169,8 +136,10 @@ const BlogHome = (
               </div>
             </div>
           )}
-          <div className='Newsletter'>
-            <div className='Title'>Subscribe to our newsletter</div>
+          <div className={`${blogType == 'dev' ? 'Newsletter-Dev' : 'Newsletter-History'}`}>
+            <div className={`${blogType == 'dev' ? 'Title-Dev' : 'Title-History'}`}>
+              Subscribe to our newsletter
+            </div>
             <input
               placeholder='Your email here'
               type='text'
@@ -188,7 +157,11 @@ const BlogHome = (
               <div className='Label'>Tags</div>
               <div className='Tags'>
                 {tags.map((tag, i) => (
-                  <div className='Tag' key={i} onClick={() => categoryClicked(tag.tag)}>
+                  <div
+                    className={`${blogType == 'dev' ? 'Tag-Dev' : 'Tag-History'}`}
+                    key={i}
+                    onClick={() => categoryClicked(tag.tag)}
+                  >
                     {tag.tag}
                   </div>
                 ))}
@@ -210,7 +183,9 @@ const BlogHome = (
                       alt='img'
                       className='Img'
                     />
-                    <div className='Title'>{category.category}</div>
+                    <div className={`${blogType == 'dev' ? 'Title-Dev' : 'Title-History'}`}>
+                      {category.category}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -229,7 +204,9 @@ const BlogHome = (
                     alt='img'
                     className='Img'
                   />
-                  <div className='Title'>{category.category}</div>
+                  <div className={`${blogType == 'dev' ? 'Title-Dev' : 'Title-History'}`}>
+                    {category.category}
+                  </div>
                 </div>
               ))}
             </div>
@@ -237,11 +214,13 @@ const BlogHome = (
         </div>
       </div>
       <div className='EndTags'>
-        <div className='Title'>Tags</div>
+        <div className={`${blogType == 'dev' ? 'Title-Dev' : 'Title-History'}`}>Tags</div>
         <div className='Box'>
           {tags.map((tag, i) => (
             <Link className='Link' to='/blogs' key={i}>
-              <div className='EndTag'>{tag.tag}</div>
+              <div className={`${blogType == 'dev' ? 'EndTag-Dev' : 'EndTag-History'}`}>
+                {tag.tag}
+              </div>
             </Link>
           ))}
         </div>

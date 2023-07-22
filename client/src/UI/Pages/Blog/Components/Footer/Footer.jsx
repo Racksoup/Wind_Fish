@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './Footer.scss';
 import Modal from './Modal/Modal.jsx';
-// import { searchBlogs, getAllBlogs } from '../../../Redux/Actions/blogs';
-// import { subToNewsletter } from '../../../Redux/Actions/mail';
+import { selectBlogType } from '../../../../../Redux/Blog/blogSlice';
 
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Footer = ({ categories, searchBlogs, getAllBlogs, subToNewsletter }) => {
+  const blogType = useSelector(selectBlogType);
   const [email, setEmail] = useState('');
   const [modal, toggleModal] = useState(false);
   const [modalText, setModalText] = useState('');
@@ -96,7 +96,10 @@ const Footer = ({ categories, searchBlogs, getAllBlogs, subToNewsletter }) => {
               onKeyDown={(e) => subKeyDown(e)}
             />
             {!subscribed && (
-              <div className='InputBtn' onClick={() => submitSub()}>
+              <div
+                className={`${blogType == 'dev' ? 'InputBtn-Dev' : 'InputBtn-History'}`}
+                onClick={() => submitSub()}
+              >
                 SEND
               </div>
             )}
