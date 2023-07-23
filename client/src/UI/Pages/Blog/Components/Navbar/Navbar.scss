@@ -295,6 +295,10 @@ $mobileIconHeight: 1.8rem;
     width: 2.6rem;
   }
 
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+
   .Center {
     width: 68%;
     height: 100%;
@@ -304,17 +308,17 @@ $mobileIconHeight: 1.8rem;
     align-items: center;
     font-size: 1.2rem;
 
-    @media (min-width: $lowerBreak) and (max-width: $upperBreak) {
+    @media (max-width: $upperBreak) {
       width: 90%;
     }
 
-    @media (max-width: $lowerBreak) {
-      width: 100%;
-      align-items: center;
-      display: flex;
-      height: 50%;
-      justify-content: end;
-    }
+    // @media (max-width: $lowerBreak) {
+    //   width: 100%;
+    //   align-items: center;
+    //   display: flex;
+    //   height: 50%;
+    //   justify-content: end;
+    // }
   }
 
   .LinkText-Dev {

@@ -149,16 +149,4 @@ const BlogView = () => {
   });
 };
 
-// const mapStateToProps = (state) => ({
-//   allBlogLikes: state.likes.allBlogLikes,
-//   allBlogComments: state.comments.allBlogComments,
-// });
-
-// export default connect(mapStateToProps, {
-//   setCurrBlog,
-//   searchBlogs,
-//   getAllBlogLikes,
-//   getAllBlogComments,
-// })(BlogView);
-
 export default BlogView;
