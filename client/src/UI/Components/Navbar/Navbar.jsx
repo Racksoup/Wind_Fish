@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
-import { blogTypeChanged } from '../../../Redux/Blog/blogSlice';
+import { blogTypeChanged, getAllBlogs } from '../../../Redux/Blog/blogSlice';
 
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -42,9 +42,31 @@ const Navbar = () => {
                   <p>Dev</p>
                 </Link>
                 <div className='Drop'>
-                  <p>fdsfds</p>
-                  <p>fdsfds</p>
-                  <p>fdsfds</p>
+                  <Link
+                    to='/dev-blog'
+                    onClick={() => {
+                      dispatch(blogTypeChanged('dev'));
+                    }}
+                  >
+                    <p>Home</p>
+                  </Link>
+                  <Link
+                    to='/dev-blog/blogs'
+                    onClick={() => {
+                      dispatch(blogTypeChanged('dev'));
+                    }}
+                  >
+                    <p>Recent Blogs</p>
+                  </Link>
+                  <Link
+                    to='/dev-blog/about'
+                    onClick={() => {
+                      dispatch(getAllBlogs('dev'));
+                      dispatch(blogTypeChanged('dev'));
+                    }}
+                  >
+                    <p>About</p>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -59,9 +81,31 @@ const Navbar = () => {
                   <p>History</p>
                 </Link>
                 <div className='Drop'>
-                  <p>fdsfds</p>
-                  <p>fdsfds</p>
-                  <p>fdsfds</p>
+                  <Link
+                    to='/history-blog'
+                    onClick={() => {
+                      dispatch(blogTypeChanged('history'));
+                    }}
+                  >
+                    <p>Home</p>
+                  </Link>
+                  <Link
+                    to='/history-blog/blogs'
+                    onClick={() => {
+                      dispatch(getAllBlogs('history'));
+                      dispatch(blogTypeChanged('history'));
+                    }}
+                  >
+                    <p>Recent Blogs</p>
+                  </Link>
+                  <Link
+                    to='/history-blog/about'
+                    onClick={() => {
+                      dispatch(blogTypeChanged('history'));
+                    }}
+                  >
+                    <p>About</p>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -124,6 +168,7 @@ const Navbar = () => {
                           to='/dev-blog/blogs'
                           className='link'
                           onClick={() => {
+                            dispatch(getAllBlogs('dev'));
                             dispatch(blogTypeChanged('dev'));
                           }}
                         >
@@ -170,6 +215,7 @@ const Navbar = () => {
                           to='/history-blog/blogs'
                           className='link'
                           onClick={() => {
+                            dispatch(getAllBlogs('history'));
                             dispatch(blogTypeChanged('history'));
                           }}
                         >
