@@ -98,48 +98,128 @@ const Navbar = () => {
                 <FontAwesomeIcon icon={faHamburger} className='icon'></FontAwesomeIcon>
                 <ul className='submenu'>
                   <li>
-                    <Link to='/dev-blog' className='link'>
+                    <Link
+                      to='/dev-blog'
+                      className='link'
+                      onClick={() => {
+                        dispatch(blogTypeChanged('dev'));
+                      }}
+                    >
                       Dev
                     </Link>
                     <ul className='submenu2'>
                       <li>
-                        <Link to='/dev-blog' className='link'>
+                        <Link
+                          to='/dev-blog'
+                          className='link'
+                          onClick={() => {
+                            dispatch(blogTypeChanged('dev'));
+                          }}
+                        >
                           Home
                         </Link>
                       </li>
                       <li>
-                        <Link to='/dev-blog/blogs' className='link'>
+                        <Link
+                          to='/dev-blog/blogs'
+                          className='link'
+                          onClick={() => {
+                            dispatch(blogTypeChanged('dev'));
+                          }}
+                        >
                           Recent Blogs
                         </Link>
                       </li>
                       <li>
-                        <Link to='/dev-blog/about' className='link'>
+                        <Link
+                          to='/dev-blog/about'
+                          className='link'
+                          onClick={() => {
+                            dispatch(blogTypeChanged('dev'));
+                          }}
+                        >
                           About
                         </Link>
                       </li>
                     </ul>
                   </li>
                   <li>
-                    <Link to='/history-blog' className='link'>
+                    <Link
+                      to='/history-blog'
+                      className='link'
+                      onClick={() => {
+                        dispatch(blogTypeChanged('history'));
+                      }}
+                    >
                       History
                     </Link>
                     <ul className='submenu2'>
                       <li>
-                        <Link to='/history-blog' className='link'>
+                        <Link
+                          to='/history-blog'
+                          className='link'
+                          onClick={() => {
+                            dispatch(blogTypeChanged('history'));
+                          }}
+                        >
                           Home
                         </Link>
                       </li>
                       <li>
-                        <Link to='/history-blog/blogs' className='link'>
+                        <Link
+                          to='/history-blog/blogs'
+                          className='link'
+                          onClick={() => {
+                            dispatch(blogTypeChanged('history'));
+                          }}
+                        >
                           Recent Blogs
                         </Link>
                       </li>
                       <li>
-                        <Link to='/history-blog/about' className='link'>
+                        <Link
+                          to='/history-blog/about'
+                          className='link'
+                          onClick={() => {
+                            dispatch(blogTypeChanged('history'));
+                          }}
+                        >
                           About
                         </Link>
                       </li>
                     </ul>
+                  </li>
+                  <li>
+                    <Link to='/schedule' className='link'>
+                      Schedule
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/bookclub' className='link'>
+                      Book Club
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/contests' className='link'>
+                      Code Contests
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/portfolio' className='link'>
+                      Profile
+                    </Link>
+                    <ul className='submenu2'>
+                      <li>
+                        <Link to='ideo-form' className='link'>
+                          Ideo-Form
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <Link to='/merch' className='link'>
+                      Merch
+                    </Link>
                   </li>
                 </ul>
               </li>
