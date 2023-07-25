@@ -212,4 +212,95 @@
       }
     }
   }
+
+  .Group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu {
+    display: none;
+    margin: 0 1.7rem;
+    @media (max-width: 1020px) {
+      display: block;
+    }
+    .icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    li,
+    .link {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .link {
+      display: block;
+      padding: 10px 1.5rem;
+      transition: background-color 0.22s ease;
+      &:hover {
+        background-color: #113a38;
+      }
+    }
+
+    li {
+      position: relative;
+      &:hover {
+        .submenu {
+          display: block;
+          animation: slideup 0.3s ease;
+        }
+      }
+    }
+  }
+
+  .submenu {
+    position: absolute;
+    background-color: black;
+    width: 140px;
+    right: 0;
+    display: none;
+    li {
+      &:hover {
+        .submenu2 {
+          display: block;
+          animation: slideright 0.3s ease;
+        }
+      }
+    }
+  }
+
+  .submenu2 {
+    position: absolute;
+    right: 100%;
+    width: 160px;
+    top: 0;
+    background-color: black;
+    display: none;
+  }
+
+  @keyframes slideup {
+    0% {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes slideright {
+    0% {
+      opacity: 0;
+      transform: translateX(-18px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }

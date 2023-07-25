@@ -88,47 +88,62 @@ const Navbar = () => {
               <p>Merch</p>
             </div>
           </div>
-          <div className='EndNav'>
-            <button className='Login'>Login</button>
-            <button className='Stream'></button>
-          </div>
-          <div className='hamburger'>
-            <div className='DropOuter'>
-              <FontAwesomeIcon icon={faHamburger} className='icon'></FontAwesomeIcon>
-              <div className='Drop Drop-hamburger'>
-                <Link
-                  to='/dev-blog'
-                  onClick={() => {
-                    dispatch(blogTypeChanged('dev'));
-                  }}
-                >
-                  <p>Dev</p>
-                </Link>
-                <Link
-                  to='/history-blog'
-                  onClick={() => {
-                    dispatch(blogTypeChanged('history'));
-                  }}
-                >
-                  <p>History</p>
-                </Link>
-                <Link to='/schedule'>
-                  <p>Schedule</p>
-                </Link>
-                <Link to='/bookclub'>
-                  <p>Book Club</p>
-                </Link>
-                <Link to='/contests'>
-                  <p>Code Contests</p>
-                </Link>
-                <Link to='/profile'>
-                  <p>Profile</p>
-                </Link>
-                <Link to='/merch'>
-                  <p>Merch</p>
-                </Link>
-              </div>
+          <div className='Group'>
+            <div className='EndNav'>
+              <button className='Login'>Login</button>
+              <button className='Stream'></button>
             </div>
+            <ul className='menu'>
+              <li>
+                <FontAwesomeIcon icon={faHamburger} className='icon'></FontAwesomeIcon>
+                <ul className='submenu'>
+                  <li>
+                    <Link to='/dev-blog' className='link'>
+                      Dev
+                    </Link>
+                    <ul className='submenu2'>
+                      <li>
+                        <Link to='/dev-blog' className='link'>
+                          Home
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to='/dev-blog/blogs' className='link'>
+                          Recent Blogs
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to='/dev-blog/about' className='link'>
+                          About
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <Link to='/history-blog' className='link'>
+                      History
+                    </Link>
+                    <ul className='submenu2'>
+                      <li>
+                        <Link to='/history-blog' className='link'>
+                          Home
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to='/history-blog/blogs' className='link'>
+                          Recent Blogs
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to='/history-blog/about' className='link'>
+                          About
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

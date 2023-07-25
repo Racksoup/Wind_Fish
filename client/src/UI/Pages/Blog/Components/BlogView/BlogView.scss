@@ -39,7 +39,7 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      align-items: start;
+      align-items: center;
       margin-top: 1.3rem;
 
       @mixin Category() {
@@ -52,6 +52,9 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        @media (max-width: 375px) {
+          font-size: 1rem;
+        }
       }
 
       .Category-Dev {
@@ -67,6 +70,12 @@
         display: flex;
         width: 8.5em;
         justify-content: space-between;
+        @media (max-width: 375px) {
+          font-size: 1rem;
+        }
+        * {
+          color: white;
+        }
 
         .ShareBox {
           cursor: pointer;

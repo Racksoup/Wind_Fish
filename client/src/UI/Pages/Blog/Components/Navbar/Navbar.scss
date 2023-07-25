@@ -290,13 +290,12 @@ $mobileIconHeight: 1.8rem;
   height: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1020px) {
+    width: 100%;
+  }
 
   .Left {
     width: 2.6rem;
-  }
-
-  @media (max-width: 1000px) {
-    width: 100%;
   }
 
   .Center {
@@ -308,6 +307,9 @@ $mobileIconHeight: 1.8rem;
     align-items: center;
     font-size: 1.2rem;
 
+    @media (max-width: 1020px) {
+      display: none;
+    }
     @media (max-width: $upperBreak) {
       width: 90%;
     }

@@ -33,7 +33,6 @@ const Navbar = () => {
     }
   };
 
-  // if (width > 767) {
   return (
     <div className='Blog-Navbar'>
       {searched && <Navigate to={`/${blogType}-blog/blogs`} />}
@@ -120,107 +119,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-  // }
-
-  // if (width <= 767) {
-  //   return (
-  //     <div className='Navbar'>
-  //       {searched && <Navigate to={`/${blogType}-blog/blogs`} />}
-  //       <div className='BottomBar'>
-  //         <div className='SearchBox'>
-  //           <Link to={`/${blogType}-blog/login`} className='Pink'>
-  //             <FontAwesomeIcon icon={faUser} className='Icon' />
-  //           </Link>
-
-  //           <div className='Hamburger'>
-  //             <FontAwesomeIcon icon={faSquareShareNodes} className='Icon' />
-  //             <div className='SocialDrop'>
-  //               <a
-  //                 className='SocialLink Twitter'
-  //                 href='https://twitter.com/MrKruger16'
-  //                 target='_blank'
-  //               >
-  //                 <FontAwesomeIcon icon={faTwitter} className='Icon' />
-  //               </a>
-  //               <a
-  //                 className='SocialLink Facebook'
-  //                 href='https://www.facebook.com/connor.rack/'
-  //                 target='_blank'
-  //               >
-  //                 <FontAwesomeIcon icon={faFacebook} className='Icon' />
-  //               </a>
-  //               <a
-  //                 className='SocialLink Github'
-  //                 href='https://github.com/Racksoup?tab=repositories'
-  //                 target='_blank'
-  //               >
-  //                 <FontAwesomeIcon icon={faGithub} className='Icon' />
-  //               </a>
-  //             </div>
-  //           </div>
-
-  //           <div className='Hamburger'>
-  //             <FontAwesomeIcon icon={faHamburger} className='Icon' />
-  //             <div className='DropdownBox'>
-  //               <Link className='Link' to={`/${blogType}-blog/`}>
-  //                 <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
-  //                   <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
-  //                     Home
-  //                   </div>
-  //                 </div>
-  //               </Link>
-
-  //               <div className='DropLink HamburgerCategories  '>
-  //                 Categories
-  //                 <div className='DropdownBoxCategories'>
-  //                   {categories.map((cat, i) => {
-  //                     return (
-  //                       <Link className='Link' to={`/${blogType}-blog/blogs`} key={i}>
-  //                         <div
-  //                           className='DropLinkCategories'
-  //                           onClick={() => dispatch(searchBlogs(cat.category))}
-  //                         >
-  //                           {cat.category}
-  //                         </div>
-  //                       </Link>
-  //                     );
-  //                   })}
-  //                 </div>
-  //               </div>
-
-  //               <Link className='Link' to={`/${blogType}-blog/about`}>
-  //                 <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
-  //                   <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
-  //                     About
-  //                   </div>
-  //                 </div>
-  //               </Link>
-
-  //               <Link className='Link' to={`/${blogType}-blog/blogs`}>
-  //                 <div
-  //                   className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}
-  //                   onClick={() => dispatch(getAllBlogs())}
-  //                 >
-  //                   <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
-  //                     Recent Blogs
-  //                   </div>
-  //                 </div>
-  //               </Link>
-
-  //               <Link className='Link' to={`/${blogType}-blog/contact`}>
-  //                 <div className={`${blogType == 'dev' ? 'DropLink-Dev' : 'DropLink-History'}`}>
-  //                   <div className={`${blogType == 'dev' ? 'LinkText-Dev' : 'LinkText-History'}`}>
-  //                     Contact
-  //                   </div>
-  //                 </div>
-  //               </Link>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 };
 
 export default Navbar;
