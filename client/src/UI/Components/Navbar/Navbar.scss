@@ -15,6 +15,7 @@
   }
 
   .Inner {
+    margin: 0 1rem;
     width: 100%;
     max-width: 1440px;
     height: 3.1rem;
@@ -22,114 +23,196 @@
     align-items: center;
     justify-content: space-between;
 
-    h1 {
-      font-family: SSP1;
-      font-size: 1.75rem;
-      margin-left: 4rem;
-      margin-right: 10rem;
-      cursor: pointer;
+    @media (max-width: 420px) {
+      margin: 0 0.2rem;
+    }
+  }
+  h1 {
+    font-family: SSP1;
+    font-size: 1.75rem;
+    width: 14.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @media (max-width: 1150px) {
+      width: 11rem;
     }
 
-    .Nav {
-      width: 37rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    @media (max-width: 1020px) {
+      width: auto;
+    }
 
-      .Item {
-        position: relative;
-        height: 1.2rem;
+    @media (max-width: 300px) {
+      font-size: 1.2rem;
+    }
+  }
 
-        .DropOuter {
-          position: absolute;
+  .Nav {
+    margin: 0 2rem;
+    width: 37rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
 
-          &:hover {
-            .Drop {
-              position: initial !important;
-            }
-          }
-          .Drop {
-            width: 5rem;
-            position: absolute !important;
-            top: -9999px !important;
-            left: -9999px !important;
-            background-color: black;
-            padding: 0.1rem;
+    @media (max-width: 1020px) {
+      display: none;
+    }
+  }
 
-            p {
-              padding: 0.1rem 0;
-            }
-          }
-        }
+  .Item {
+    position: relative;
+    height: 1.2rem;
 
-        p {
-          font-family: SSP0;
-          font-size: 1rem;
-          cursor: pointer;
+    p {
+      font-family: SSP0;
+      font-size: 1rem;
+      cursor: pointer;
 
-          &:hover {
-            color: #e5ff00;
-          }
-        }
+      &:hover {
+        color: #e5ff00;
+      }
+    }
 
-        &-History {
-          width: 2.4rem;
+    &-History {
+      width: 2.4rem;
 
-          p {
-            &:hover {
-              color: #ffb800;
-            }
-          }
-        }
-
-        &-Dev {
-          width: 1.4rem;
-
-          p {
-            &:hover {
-              color: #00fff0;
-            }
-          }
-        }
-
-        &-Profile {
-          width: 2.3rem;
-
-          p {
-            &:hover {
-              color: #bc74ff;
-            }
-          }
+      p {
+        &:hover {
+          color: #ffb800;
         }
       }
     }
 
-    .EndNav {
-      width: 14.8rem;
+    &-Dev {
+      width: 1.4rem;
+
+      p {
+        &:hover {
+          color: #00fff0;
+        }
+      }
+    }
+
+    &-Profile {
+      width: 2.3rem;
+
+      p {
+        &:hover {
+          color: #bc74ff;
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    position: relative;
+    height: 1.8rem;
+    width: 1.8rem;
+    display: none;
+
+    @media (max-width: 1020px) {
+      display: block;
+    }
+
+    .icon {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+
+  .DropOuter {
+    position: absolute;
+
+    &:hover {
+      .Drop {
+        position: initial !important;
+      }
+    }
+  }
+
+  .Drop {
+    width: 5rem;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    background-color: black;
+    padding: 0.1rem;
+
+    &-hamburger {
+      margin-left: -7rem;
+      width: 10rem;
+    }
+
+    p {
+      padding: 0.1rem 0;
+      width: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: rgb(100, 100, 100);
+      }
+    }
+  }
+
+  .EndNav {
+    width: 14.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 1150px) {
+      width: 11rem;
+    }
+
+    @media (max-width: 420px) {
+      width: 6rem;
 
       .Login {
-        font-family: SSP;
-        width: 4.7rem;
-        height: 1.6rem;
-        background-color: #78e7ff;
-        border-radius: 0.25rem;
-        font-size: 0.85rem;
-        color: black;
+        width: 3rem;
+      }
+      .Stream {
+        width: 4rem;
+      }
+    }
 
-        &:hover {
-          color: rgb(192, 109, 0);
-          border: rgb(192, 109, 0) 0.1rem solid;
-        }
+    .Login {
+      font-family: SSP;
+      width: 4.7rem;
+      height: 1.6rem;
+      background-color: #78e7ff;
+      border-radius: 0.25rem;
+      font-size: 0.85rem;
+      color: black;
+
+      &:hover {
+        color: rgb(192, 109, 0);
+        border: rgb(192, 109, 0) 0.1rem solid;
       }
 
-      .Stream {
-        margin-right: 0.6rem;
-        width: 7rem;
-        height: 2rem;
-        background-color: #ffa1a1;
+      @media (max-width: 1150px) {
+        width: 3.7rem;
+      }
+
+      @media (max-width: 420px) {
+        width: 3rem;
+      }
+    }
+
+    .Stream {
+      margin-right: 0.6rem;
+      width: 7rem;
+      height: 1.5rem;
+      background-color: #ffa1a1;
+
+      @media (max-width: 1150px) {
+        width: 5rem;
+      }
+      @media (max-width: 420px) {
+        width: 1.5rem;
       }
     }
   }

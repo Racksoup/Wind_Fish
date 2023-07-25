@@ -3,6 +3,8 @@ import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
 import { blogTypeChanged } from '../../../Redux/Blog/blogSlice';
 
+import { faHamburger } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
@@ -11,35 +13,13 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const [nav, toggleNav] = useState(true);
 
-  // useEffect(() => {
-  //   const handleScroll = (event) => {
-  //     if (window.scrollY > window.innerHeight) {
-  //       toggleNav(true);
-  //     }
-  //     if (
-  //       window.scrollY <= window.innerHeight &&
-  //       window.location.href !== 'http://localhost:8080/'
-  //     ) {
-  //       toggleNav(false);
-  //     }
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
-
   const pathname = window.location.pathname.split('/');
   pathname.map((x) => {
     if (x == 'dev-blog') {
       dispatch(blogTypeChanged('dev'));
-      // variables.cyanColor = `rgb(0, 255, 234)`;
     }
     if (x == 'history-blog') {
       dispatch(blogTypeChanged('history'));
-      // variables.cyanColor = `rgb(185, 126, 67)`;
     }
   });
 
@@ -111,6 +91,44 @@ const Navbar = () => {
           <div className='EndNav'>
             <button className='Login'>Login</button>
             <button className='Stream'></button>
+          </div>
+          <div className='hamburger'>
+            <div className='DropOuter'>
+              <FontAwesomeIcon icon={faHamburger} className='icon'></FontAwesomeIcon>
+              <div className='Drop Drop-hamburger'>
+                <Link
+                  to='/dev-blog'
+                  onClick={() => {
+                    dispatch(blogTypeChanged('dev'));
+                  }}
+                >
+                  <p>Dev</p>
+                </Link>
+                <Link
+                  to='/history-blog'
+                  onClick={() => {
+                    dispatch(blogTypeChanged('history'));
+                  }}
+                >
+                  <p>History</p>
+                </Link>
+                <Link to='/schedule'>
+                  <p>Schedule</p>
+                </Link>
+                <Link to='/bookclub'>
+                  <p>Book Club</p>
+                </Link>
+                <Link to='/contests'>
+                  <p>Code Contests</p>
+                </Link>
+                <Link to='/profile'>
+                  <p>Profile</p>
+                </Link>
+                <Link to='/merch'>
+                  <p>Merch</p>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
