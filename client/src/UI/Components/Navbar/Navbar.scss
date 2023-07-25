@@ -22,10 +22,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    @media (max-width: 420px) {
-      margin: 0 0.2rem;
-    }
   }
   h1 {
     font-family: SSP1;

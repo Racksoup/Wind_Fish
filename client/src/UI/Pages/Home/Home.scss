@@ -27,193 +27,218 @@
     align-items: center;
     justify-content: space-between;
 
-    .Top {
-      height: 22.22rem;
+    @media (max-width: 1330px) {
+      padding: 0 2rem;
       width: 100%;
+    }
+  }
+
+  .Top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
+
+    .Section {
+      width: 45%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-between;
 
-      .Section {
-        width: 45%;
-        height: 100%;
+      @media (max-width: 800px) {
+        width: 95%;
+        margin: 2rem 0;
+      }
+
+      .Videos {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: 490px) {
+          flex-direction: column;
+        }
+
+        .Video {
+          min-height: 14.5rem;
+          width: 48.5%;
+          background-color: black;
+          border-radius: 0.7rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+          @media (max-width: 490px) {
+            margin: 1rem 0;
+          }
+
+          * {
+            cursor: pointer;
+          }
+
+          &-Right {
+            &:hover {
+              margin-right: 0.25rem;
+              margin-top: -0.25rem;
+              // rotate: -2.5deg;
+            }
+          }
+
+          &-Left {
+            &:hover {
+              margin-left: -0.25rem;
+              margin-top: -0.25rem;
+              // rotate: -2.5deg;
+            }
+          }
+
+          img {
+            margin-top: 0.5rem;
+            width: 95%;
+            height: 9rem;
+            background-color: grey;
+            border-radius: 0.5rem;
+            border: none;
+          }
+
+          .Info {
+            margin-top: 0.6rem;
+            width: 100%;
+            min-height: 3.78rem;
+            padding: 0 0.7rem;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-between;
+
+            h4 {
+              font-size: 0.95rem;
+              color: white;
+              max-height: 2.44rem;
+              overflow: hidden;
+            }
+
+            .Misc {
+              display: flex;
+              align-items: center;
+
+              .Dot {
+                margin: 0 0.5rem;
+                height: 0.15rem;
+                width: 0.15rem;
+                border-radius: 1rem;
+                background-color: #747474;
+              }
+
+              p {
+                font-size: 0.8rem;
+                color: #747474;
+              }
+            }
+          }
+        }
+
+        .History {
+          border: solid 0.1rem #ffb800;
+        }
+
+        .Dev {
+          border: solid 0.1rem #00fff0;
+        }
+      }
+
+      .Blog {
+        margin-top: 1.4rem;
+        width: 100%;
+        height: 5rem;
+        background-color: black;
+        border-radius: 5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        padding: 0.6rem 1.5rem;
 
-        .Videos {
-          height: 66%;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          .Video {
-            height: 100%;
-            width: 48.5%;
-            background-color: black;
-            border-radius: 0.7rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-
-            * {
-              cursor: pointer;
-            }
-
-            &-Right {
-              &:hover {
-                margin-right: 0.25rem;
-                margin-top: -0.25rem;
-                // rotate: -2.5deg;
-              }
-            }
-
-            &-Left {
-              &:hover {
-                margin-left: -0.25rem;
-                margin-top: -0.25rem;
-                // rotate: -2.5deg;
-              }
-            }
-
-            img {
-              margin-top: 0.5rem;
-              width: 16.2rem;
-              height: 9rem;
-              background-color: grey;
-              border-radius: 0.5rem;
-              border: none;
-            }
-
-            .Info {
-              margin-top: 0.6rem;
-              width: 100%;
-              height: 3.78rem;
-              padding: 0 0.7rem;
-              display: flex;
-              flex-direction: column;
-              align-items: start;
-              justify-content: space-between;
-
-              h4 {
-                font-size: 0.95rem;
-                color: white;
-                max-height: 2.44rem;
-                overflow: hidden;
-              }
-
-              .Misc {
-                display: flex;
-                align-items: center;
-
-                .Dot {
-                  margin: 0 0.5rem;
-                  height: 0.15rem;
-                  width: 0.15rem;
-                  border-radius: 1rem;
-                  background-color: #747474;
-                }
-
-                p {
-                  font-size: 0.8rem;
-                  color: #747474;
-                }
-              }
-            }
-          }
-
-          .History {
-            border: solid 0.1rem #ffb800;
-          }
-
-          .Dev {
-            border: solid 0.1rem #00fff0;
-          }
+        &-History {
+          border: solid 0.1rem #7a5800;
         }
 
-        .Blog {
-          width: 100%;
-          height: 25%;
-          background-color: black;
-          border-radius: 5rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0.6rem 1.5rem;
-
-          &-History {
-            border: solid 0.1rem #7a5800;
-          }
-
-          &-Dev {
-            border: solid #00736c 0.1rem;
-          }
-
-          h4 {
-            font-family: Marck;
-            font-size: 1.05rem;
-            text-decoration: underline;
-            color: rgb(225, 225, 225);
-            cursor: pointer;
-          }
-
-          p {
-            font-family: SSP0;
-            margin-bottom: 0.2rem;
-            width: 98%;
-            height: 2rem;
-            overflow: hidden;
-            line-height: 1rem;
-            color: rgb(225, 225, 225);
-            font-size: 0.79rem;
-          }
+        &-Dev {
+          border: solid #00736c 0.1rem;
         }
-      }
-    }
-
-    .Middle {
-      height: 8.78rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .Section {
-        height: 100%;
-        width: 26%;
-        background-color: black;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        padding: 0.5rem 1.8rem;
 
         h4 {
-          margin-bottom: 0.4rem;
-          font-size: 1.15rem;
-          color: white;
-          font-family: Frag;
+          font-family: Marck;
+          font-size: 1.05rem;
+          text-decoration: underline;
+          color: rgb(225, 225, 225);
+          cursor: pointer;
         }
 
         p {
-          margin-top: 0.3rem;
-          width: 100%;
-          padding: 0 0.2rem;
-          font-size: 0.95rem;
-          color: black;
-          background-color: #e5e5e5;
-          font-family: Frag;
+          font-family: SSP0;
+          margin-bottom: 0.2rem;
+          width: 98%;
+          height: 2rem;
+          overflow: hidden;
+          line-height: 1rem;
+          color: rgb(225, 225, 225);
+          font-size: 0.79rem;
+          text-align: center;
         }
       }
     }
+  }
 
-    .Bottom {
-      height: 8.53rem;
-      width: 100%;
+  .Middle {
+    min-height: 8.78rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 780px) {
+      flex-direction: column;
     }
+
+    .Section {
+      height: 100%;
+      width: 26%;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      padding: 0.5rem 1.8rem;
+      @media (max-width: 780px) {
+        width: 90%;
+        margin: 1rem 0;
+      }
+
+      h4 {
+        margin-bottom: 0.4rem;
+        font-size: 1.15rem;
+        color: white;
+        font-family: Frag;
+      }
+
+      p {
+        margin-top: 0.3rem;
+        width: 100%;
+        padding: 0 0.2rem;
+        font-size: 0.95rem;
+        color: black;
+        background-color: #e5e5e5;
+        font-family: Frag;
+      }
+    }
+  }
+
+  .Bottom {
+    height: 8.53rem;
+    width: 100%;
   }
 }
