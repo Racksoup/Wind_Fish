@@ -23,6 +23,7 @@ router.post('/auth', async (req, res) => {
 
   try {
     let item = await axios.post('https://id.twitch.tv/oauth2/token', postItem, config);
+    console.log('auth')
     twitchToken = item.data;
     res.json('success');
   } catch (err) {
@@ -42,6 +43,7 @@ router.get('/online', async (req, res) => {
   };
 
   try {
+    console.log('getOnline')
     let item = await axios.get(`https://api.twitch.tv/helix/streams`, config);
     if (item.data.data.length === 0) {
       res.json(false);
