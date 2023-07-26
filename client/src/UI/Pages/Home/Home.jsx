@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react';
 import './Home.scss';
 import { selectVideos, getYoutube } from '../../../Redux/youtubeSlice';
+import Youtube from '../../../images/youtube.png';
+import Twitter from '../../../images/twitter.png';
+import Twitch from '../../../images/twitch.png';
+import Reddit from '../../../images/reddit.png';
+import Instagram from '../../../images/Instagram.png';
+import Tiktok from '../../../images/Gigi.png';
+import Discord from '../../../images/discord.png';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -16,6 +23,29 @@ const Home = () => {
   return (
     <div className='Home'>
       <div className='Content'>
+        <div className='Links'>
+          <a href='https://www.youtube.com/channel/UCUdf18IaDKXzIROmcYtp4SA' target='_blank'>
+            <img src={Youtube} alt='Youtube' />
+          </a>
+          <a href='https://www.twitch.tv/windxfish' target='_blank'>
+            <img src={Twitch} alt='Twitch' />
+          </a>
+          <a href='https://twitter.com/WindxFish' target='_blank'>
+            <img src={Twitter} alt='Twitter' />
+          </a>
+          <a href='' target='_blank'>
+            <img src={Instagram} alt='Instagram' />
+          </a>
+          <a href='https://www.tiktok.com/@windxfish' target='_blank'>
+            <img src={Tiktok} alt='TikTok' />
+          </a>
+          <a href='https://www.reddit.com/r/WindxuFish/' target='_blank'>
+            <img src={Reddit} alt='Reddit' />
+          </a>
+          <a href='https://discord.gg/Ugpf7E622H' target='_blank'>
+            <img src={Discord} alt='Discord' />
+          </a>
+        </div>
         <div className='Top'>
           <div className='Section'>
             <div className='Videos'>

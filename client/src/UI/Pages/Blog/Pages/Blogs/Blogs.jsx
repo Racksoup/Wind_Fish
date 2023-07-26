@@ -56,7 +56,6 @@ const Blogs = () => {
   };
 
   if (blogs) {
-    console.log(blogs);
     return (
       <div className='ManyBlogs'>
         <div className='App-Background'></div>
