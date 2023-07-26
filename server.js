@@ -45,6 +45,10 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 // console.log(ip.address())
 // console.log(PORT)
 setTimeout(() => {
-  axios.post(`${process.env.RENDER_EXTERNAL_URL}/api/twitch/auth`)
+  try {
+    axios.post(`${process.env.RENDER_EXTERNAL_URL}:${PORT}/api/twitch/auth`)
+  } catch (err) {
+    console.log(err.message)
+  }
 }, 10000)
 // axios.post(`http://wind-fish:${PORT}/api/twitch/auth`)
