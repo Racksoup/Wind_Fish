@@ -2,16 +2,28 @@ import React, { useState, useEffect } from 'react';
 import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
 import { blogTypeChanged, getAllBlogs } from '../../../Redux/Blog/blogSlice';
+import { selectIsOnline, getOnline } from '../../../Redux//twitchSlice';
 
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const [nav, toggleNav] = useState(true);
+  const isOnline = useSelector(selectIsOnline);
+
+  const getOnlineLoop = () => {
+    dispatch(getOnline())
+    setTimeout(() => {
+      getOnlineLoop()
+    }, 30000)
+  }
+  useEffect(() => {
+    getOnlineLoop()
+  }, [])
 
   const pathname = window.location.pathname.split('/');
   pathname.map((x) => {
@@ -135,7 +147,13 @@ const Navbar = () => {
           <div className='Group'>
             <div className='EndNav'>
               <button className='Login'>Login</button>
-              <button className='Stream'></button>
+              <button className={`${isOnline ? 'stream on' : 'stream off'}`}>
+                {isOnline ? (
+                  <p>Online</p>
+                  ) : (
+                  <p>Offline</p>
+                )}
+              </button>
             </div>
             <ul className='menu'>
               <li>

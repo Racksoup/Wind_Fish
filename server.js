@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const path = require('path');
+const axios = require('axios');
 
 dotenv.config();
 
@@ -38,3 +39,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 // axios.get(`http://localhost:${PORT}/api/youtubev3`);
+axios.post(`http://localhost:${PORT}/api/twitch/auth`)

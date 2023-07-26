@@ -198,18 +198,30 @@
       }
     }
 
-    .Stream {
+    .stream {
       margin-right: 0.6rem;
       width: 7rem;
       height: 1.5rem;
-      background-color: #ffa1a1;
-
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        color: black;
+        font-size: 1.2rem;
+      }
+      
       @media (max-width: 1150px) {
         width: 5rem;
       }
       @media (max-width: 420px) {
         width: 1.5rem;
       }
+    }
+    .off {
+      background-color: #ffa1a1;
+    }
+    .on {
+      background-color: #86ec5e;
     }
   }
 

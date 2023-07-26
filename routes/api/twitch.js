@@ -2,7 +2,13 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-router.post('/', async (req, res) => {
+let twitchToken = {
+  access_token: null,
+  expires_in: null,
+  token_type: null,
+};
+
+router.post('/auth', async (req, res) => {
   const postItem = {
     client_id: process.env.TWITCH_CLIENT_ID,
     client_secret: process.env.TWITCH_CLIENT_SECRET,
@@ -16,8 +22,32 @@ router.post('/', async (req, res) => {
   };
 
   try {
-    let res = await axios.post('https://id.twitch.tv/oauth2/token', postItem, config);
-    console.log(res.data);
+    let item = await axios.post('https://id.twitch.tv/oauth2/token', postItem, config);
+    twitchToken = item.data;
+    res.json('success');
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+router.get('/online', async (req, res) => {
+  const config = {
+    params: {
+      user_id: process.env.TWITCH_WINDFISH_ID
+    },
+    headers: {
+      'Client-Id': process.env.TWITCH_CLIENT_ID,
+      'Authorization': `Bearer ${twitchToken.access_token}`,
+    },
+  };
+
+  try {
+    let item = await axios.get(`https://api.twitch.tv/helix/streams`, config);
+    if (item.data.data.length === 0) {
+      res.json(false);
+    } else {
+      res.json(true)
+    }
   } catch (err) {
     console.log(err.message);
   }
