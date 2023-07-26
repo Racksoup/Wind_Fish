@@ -25,6 +25,7 @@ router.post('/auth', async (req, res) => {
     console.log('auth')
     let item = await axios.post('https://id.twitch.tv/oauth2/token', postItem, config);
     twitchToken = item.data;
+    console.log('---maybe---')
     res.json('success');
   } catch (err) {
     console.log(err.message);
