@@ -44,4 +44,5 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 // console.log(process.env)
 // console.log(ip.address())
 // console.log(PORT)
+//...
 axios.post(`http://windfish.dev:${PORT}/api/twitch/auth`)
