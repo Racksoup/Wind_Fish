@@ -42,4 +42,5 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 // axios.get(`http://localhost:${PORT}/api/youtubev3`);
 
 console.log(ip.address())
-axios.post(`https://${ip.address()}:${PORT}/api/twitch/auth`)
+// axios.post(`http://${ip.address()}:${PORT}/api/twitch/auth`)
+axios.post(`http://0.0.0.0:${PORT}/api/twitch/auth`)
