@@ -37,8 +37,6 @@ const Navbar = () => {
     }
   });
 
-  const client_id = '2xoikh4ga35jidcy18lc2jthcqidlk';
-
   if (nav) {
     return (
       <div className='Navbar'>
@@ -307,12 +305,21 @@ const Navbar = () => {
 };
 
 const Modal = () => {
+  const client_id = '2xoikh4ga35jidcy18lc2jthcqidlk';
+  const redirect_uri = 'http://localhost:8080';
+  // const secret = 
+  // const state = 
+  // console.log(state);
+
   return (
     <div className='screen'>
       <div className='modal'>
         <h4>Login With</h4>
         <div className='logins'>
-          <a href='' className='twitch'>
+          <a
+            href={`https://id.twitch.tv/oauth2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=token&scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls&state=c3ab8aa609ea11e793ae92361f002671`}
+            className='twitch'
+          >
             <img src={TwitchImg} alt='Twitch' />
             <p>Twitch</p>
           </a>

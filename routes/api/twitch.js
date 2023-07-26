@@ -72,4 +72,8 @@ router.get('/clips', async (req, res) => {
   }
 });
 
+router.get('/user-auth', async (req, res) => {
+  console.log(req);
+});
+
 module.exports = router;
