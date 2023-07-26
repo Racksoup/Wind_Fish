@@ -41,7 +41,7 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 // axios.get(`http://localhost:${PORT}/api/youtubev3`);
 
-console.log(process.env)
-console.log(ip.address())
-console.log(PORT)
+// console.log(process.env)
+// console.log(ip.address())
+// console.log(PORT)
 axios.post(`http://windfish.dev:${PORT}/api/twitch/auth`)
