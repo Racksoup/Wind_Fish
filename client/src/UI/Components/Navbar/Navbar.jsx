@@ -3,6 +3,7 @@ import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
 import { blogTypeChanged, getAllBlogs } from '../../../Redux/Blog/blogSlice';
 import { selectIsOnline, getOnline } from '../../../Redux//twitchSlice';
+import TwitchImg from '../../../images/twitch.png';
 
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,17 +14,18 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const dispatch = useDispatch();
   const [nav, toggleNav] = useState(true);
+  const [modal, toggleModal] = useState(false);
   const isOnline = useSelector(selectIsOnline);
 
   const getOnlineLoop = () => {
-    dispatch(getOnline())
+    dispatch(getOnline());
     setTimeout(() => {
-      getOnlineLoop()
-    }, 30000)
-  }
+      getOnlineLoop();
+    }, 30000);
+  };
   useEffect(() => {
-    getOnlineLoop()
-  }, [])
+    getOnlineLoop();
+  }, []);
 
   const pathname = window.location.pathname.split('/');
   pathname.map((x) => {
@@ -35,9 +37,12 @@ const Navbar = () => {
     }
   });
 
+  const client_id = '2xoikh4ga35jidcy18lc2jthcqidlk';
+
   if (nav) {
     return (
       <div className='Navbar'>
+        {modal && <Modal />}
         <div className='Inner'>
           <Link to='/'>
             <h1>WIND FISH</h1>
@@ -146,13 +151,19 @@ const Navbar = () => {
           </div>
           <div className='Group'>
             <div className='EndNav'>
-              <button className='Login'>Login</button>
-              <a href='https://www.twitch.tv/windxfish' className={`${isOnline ? 'stream on' : 'stream off'}`}>
-                {isOnline ? (
-                  <p>Online</p>
-                  ) : (
-                  <p>Offline</p>
-                )}
+              <button
+                className='Login'
+                onClick={() => {
+                  toggleModal(!modal);
+                }}
+              >
+                Login
+              </button>
+              <a
+                href='https://www.twitch.tv/windxfish'
+                className={`${isOnline ? 'stream on' : 'stream off'}`}
+              >
+                {isOnline ? <p>Online</p> : <p>Offline</p>}
               </a>
             </div>
             <ul className='menu'>
@@ -293,6 +304,22 @@ const Navbar = () => {
       </div>
     );
   } else return null;
+};
+
+const Modal = () => {
+  return (
+    <div className='screen'>
+      <div className='modal'>
+        <h4>Login With</h4>
+        <div className='logins'>
+          <a href='' className='twitch'>
+            <img src={TwitchImg} alt='Twitch' />
+            <p>Twitch</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;
