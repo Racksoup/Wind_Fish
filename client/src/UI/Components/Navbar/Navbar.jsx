@@ -147,13 +147,13 @@ const Navbar = () => {
           <div className='Group'>
             <div className='EndNav'>
               <button className='Login'>Login</button>
-              <button className={`${isOnline ? 'stream on' : 'stream off'}`}>
+              <a href='https://www.twitch.tv/windxfish' className={`${isOnline ? 'stream on' : 'stream off'}`}>
                 {isOnline ? (
                   <p>Online</p>
                   ) : (
                   <p>Offline</p>
                 )}
-              </button>
+              </a>
             </div>
             <ul className='menu'>
               <li>
