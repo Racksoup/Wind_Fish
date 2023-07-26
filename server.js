@@ -42,5 +42,6 @@ app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 // axios.get(`http://localhost:${PORT}/api/youtubev3`);
 
 console.log(process.env.RENDER_EXTERNAL_URL)
+console.log(ip.address())
 // axios.post(`http://${ip.address()}:${PORT}/api/twitch/auth`)
-axios.post(`https://wind-fish.onrender.com:${PORT}/api/twitch/auth`)
+axios.post(`http://wind-fish.onrender.com:${PORT}/api/twitch/auth`)
