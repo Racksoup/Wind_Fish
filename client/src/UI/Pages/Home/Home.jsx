@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import './Home.scss';
 import { selectVideos, getYoutube } from '../../../Redux/youtubeSlice';
+
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -21,13 +23,14 @@ const Home = () => {
               <VideoWidget type='Dev' index={1} videos={videos} />
             </div>
             <div className='Blog Blog-Dev'>
-              <a href=''>
-                <h4>The First Dev Blog</h4>
-              </a>
+              <Link to='/dev-blog/single-blog/63a38e70dbfb10af243784a5'>
+                <h4>So You Want To Be A Programmer?</h4>
+              </Link>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris.
+                When you start out programming you have no idea what you are going to be doing. All
+                you know is that you want to build apps/programs. You might have an idea to build,
+                but you wont know how to build it. But before you even think of what language(s) you
+                are going to use, you should know some fundamentals.
               </p>
             </div>
           </div>
@@ -37,13 +40,14 @@ const Home = () => {
               <VideoWidget type='History' index={3} videos={videos} />
             </div>
             <div className='Blog Blog-History'>
-              <a href=''>
-                <h4>The First Dev Blog</h4>
-              </a>
+              <Link to='/history-blog/single-blog/64bafeb548ff0218468f5fb2'>
+                <h4>Taiwan History</h4>
+              </Link>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris.
+                I want to describe the situation of the Taiwanese people and their history. Why does
+                Taiwan keep showing up in our news? Who wants something from Taiwan? Why is Taiwan
+                special? I want to give historical context to the geopolitical situation of
+                Taiwanese independence.
               </p>
             </div>
           </div>

@@ -85,6 +85,7 @@
             &:hover {
               margin-right: 0.25rem;
               margin-top: -0.25rem;
+              transition: margin-right 0.05s ease, margin-top 0.05s ease;
               // rotate: -2.5deg;
             }
           }
@@ -93,6 +94,7 @@
             &:hover {
               margin-left: -0.25rem;
               margin-top: -0.25rem;
+              transition: margin-left 0.05s ease, margin-top 0.05s ease;
               // rotate: -2.5deg;
             }
           }
