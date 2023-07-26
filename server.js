@@ -39,18 +39,11 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
-// axios.get(`http://localhost:${PORT}/api/youtubev3`);
-
-// console.log(process.env.RENDER_EXTERNAL_URL)
-// console.log(ip.address())
-// console.log(PORT)
-setTimeout(() => {
-  // console.log(`${process.env.RENDER_EXTERNAL_URL}:${PORT}/api/twitch/auth`)
-  // axios.post(`${process.env.RENDER_EXTERNAL_URL}/api/twitch/auth`)
-  // axios.post(`http://wind-fish.onrender.com/api/twitch/auth`)
-  
-  axios.get(`http://0.0.0.0:${PORT}/api/twitch/auth`)
-
-  // axios.post(`http://0.0.0.0/api/twitch/auth`)
-}, 10000)
-// axios.post(`http://wind-fish:${PORT}/api/twitch/auth`)
+// get twitch auth
+const twitchLoop = () => {
+  axios.post(`http://0.0.0.0:${PORT}/api/twitch/auth`)
+  setTimeout(() => {
+    twitchLoop()
+  }, 86400000)
+}
+twitchLoop()

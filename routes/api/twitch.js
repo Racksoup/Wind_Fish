@@ -8,7 +8,7 @@ let twitchToken = {
   token_type: null,
 };
 
-router.get('/auth', async (req, res) => {
+router.post('/auth', async (req, res) => {
   const postItem = {
     client_id: process.env.TWITCH_CLIENT_ID,
     client_secret: process.env.TWITCH_CLIENT_SECRET,
