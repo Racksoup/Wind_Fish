@@ -19,9 +19,9 @@
   font-family: SSP;
 
   .Content {
-    margin-top: 5.5rem;
+    margin-top: 5rem;
     width: 1260px;
-    height: 50rem;
+    height: 55rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,8 +33,72 @@
     }
   }
 
+  .pre-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .clips {
+    width: 45.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    padding: 0.4rem;
+    border-radius: 1.3rem;
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      overflow: hidden;
+      background-color: rgb(24, 24, 24);
+      border-radius: 1rem;
+      padding: 0.5rem;
+    }
+
+    .clip {
+      width: 6.222rem;
+      height: 3.5rem;
+      margin-right: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      * {
+        cursor: pointer;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(85%);
+        border-radius: 1rem;
+      }
+
+      h4 {
+        position: absolute;
+        width: 95%;
+        font-size: 0.8rem;
+        top: 0.4rem;
+        font-family: SSP0;
+      }
+    }
+  }
+
   .Links {
-    width: 35rem;
+    width: 28rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -48,8 +112,8 @@
     }
 
     a {
-      width: 3.4rem;
-      height: 3.4rem;
+      width: 3rem;
+      height: 3rem;
       padding: 0.2rem;
 
       img {

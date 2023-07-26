@@ -33,7 +33,7 @@ router.post('/auth', async (req, res) => {
 router.get('/online', async (req, res) => {
   const config = {
     params: {
-      user_id: process.env.TWITCH_WINDFISH_ID
+      user_id: process.env.TWITCH_WINDFISH_ID,
     },
     headers: {
       'Client-Id': process.env.TWITCH_CLIENT_ID,
@@ -46,8 +46,27 @@ router.get('/online', async (req, res) => {
     if (item.data.data.length === 0) {
       res.json(false);
     } else {
-      res.json(true)
+      res.json(true);
     }
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+router.get('/clips', async (req, res) => {
+  const config = {
+    params: {
+      broadcaster_id: process.env.TWITCH_WINDFISH_ID,
+    },
+    headers: {
+      'Client-Id': process.env.TWITCH_CLIENT_ID,
+      'Authorization': `Bearer ${twitchToken.access_token}`,
+    },
+  };
+
+  try {
+    let item = await axios.get(`https://api.twitch.tv/helix/clips`, config);
+    res.json(item.data);
   } catch (err) {
     console.log(err.message);
   }
