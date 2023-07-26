@@ -206,6 +206,7 @@
       align-items: center;
       justify-content: center;
       p {
+        cursor: pointer;
         color: black;
         font-size: 1.2rem;
         @media (max-width: 420px) {
