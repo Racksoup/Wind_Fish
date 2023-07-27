@@ -3,6 +3,7 @@ import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
 import { blogTypeChanged, getAllBlogs } from '../../../Redux/Blog/blogSlice';
 import { selectIsOnline, getOnline } from '../../../Redux//twitchSlice';
+import { verifyAuth } from '../../../Redux/userSlice';
 import TwitchImg from '../../../images/twitch.png';
 
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +26,25 @@ const Navbar = () => {
   };
   useEffect(() => {
     getOnlineLoop();
+
+    const url = window.location.href;
+    const urlArr = url.split('/')
+    let token;
+    const reg = /(?<=#access_token=)(.+)/
+    const reg2 = /^.*?(?=&scope)/
+    let isRedirect = false
+    urlArr.map((x) => {
+      if (x.substring(1,13) === 'access_token') {
+        const l = x.match(reg);
+        const r = l[0].match(reg2)
+        token = r[0]
+        dispatch(verifyAuth(token))
+        isRedirect = true
+      }
+    })
+    if (!isRedirect) {
+      dispatch(verifyAuth(false))
+    }
   }, []);
 
   const pathname = window.location.pathname.split('/');

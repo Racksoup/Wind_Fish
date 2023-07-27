@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   isOnline: false,
-  clips: null,
+  clips: null,  
 };
 
 export const selectIsOnline = (state) => state.twitch.isOnline;
@@ -40,5 +40,5 @@ export const getClips = () => async (dispatch) => {
   }
 };
 
-export const { gotOnline, gotClips } = twitchSlice.actions;
+export const { gotOnline, gotClips, authVerified } = twitchSlice.actions;
 export default twitchSlice.reducer;

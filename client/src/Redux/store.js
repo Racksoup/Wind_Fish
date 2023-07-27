@@ -8,6 +8,7 @@ import commentsReducer from './Blog/commentsSlice';
 import adminReducer from './Blog/adminSlice';
 import mailReducer from './Blog/mailSlice';
 import twitchReducer from './twitchSlice';
+import userReducer from './userSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     admin: adminReducer,
     mail: mailReducer,
     twitch: twitchReducer,
+    user: userReducer,
   },
 });

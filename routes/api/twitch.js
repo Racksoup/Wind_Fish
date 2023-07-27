@@ -72,8 +72,19 @@ router.get('/clips', async (req, res) => {
   }
 });
 
-router.get('/user-auth', async (req, res) => {
-  console.log(req);
+router.post('/user-auth', async (req, res) => {
+  const config = {
+    headers: {
+      'Authorization': `OAuth ${req.body.token}`
+    }
+  }
+
+  try {
+    let item = await axios.get('https://id.twitch.tv/oauth2/validate', config);
+    res.json({isAuth: true, ...item.data, token: req.body.token})
+  } catch (err) {
+    console.log(err.message);
+  }
 });
 
 module.exports = router;

@@ -25,8 +25,6 @@ const Home = () => {
 
   //Tough Sincere Duck De Illuminati
 
-  console.log(clips);
-
   return (
     <div className='Home'>
       <div className='Content'>
