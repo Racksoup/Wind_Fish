@@ -24,6 +24,14 @@ const Navbar = () => {
       getOnlineLoop();
     }, 30000);
   };
+
+  const sendAuth = (token) => {
+    dispatch(verifyAuth(token))
+    setTimeout(() => {
+      sendAuth(token)
+    }, 60000 * 60)
+  }
+
   useEffect(() => {
     getOnlineLoop();
 
@@ -38,7 +46,7 @@ const Navbar = () => {
         const l = x.match(reg);
         const r = l[0].match(reg2)
         token = r[0]
-        dispatch(verifyAuth(token))
+        sendAuth(token)
         isRedirect = true
       }
     })
