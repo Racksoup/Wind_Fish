@@ -76,7 +76,7 @@ const Navbar = () => {
   if (nav) {
     return (
       <div className='Navbar'>
-        {modal && <Modal />}
+        {modal && <Modal toggleModal={toggleModal}/>}
         <div className='Inner'>
           <Link to='/'>
             <h1>WIND FISH</h1>
@@ -340,7 +340,7 @@ const Navbar = () => {
   } else return null;
 };
 
-const Modal = () => {
+const Modal = ({toggleModal}) => {
   const client_id = '2xoikh4ga35jidcy18lc2jthcqidlk';
   const redirect_uri = 'http://localhost:8080';
   // const secret = 
@@ -348,7 +348,7 @@ const Modal = () => {
   // console.log(state);
 
   return (
-    <div className='screen'>
+    <div className='screen' onClick={() => toggleModal(false)}>
       <div className='modal'>
         <h4>Login With</h4>
         <div className='logins'>
