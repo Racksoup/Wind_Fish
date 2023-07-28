@@ -81,8 +81,11 @@ router.post('/user-auth', async (req, res) => {
 
   try {
     let item = await axios.get('https://id.twitch.tv/oauth2/validate', config);
-    res.json({isAuth: true, ...item.data, token: req.body.token})
+    if (item.data.client_id === process.env.TWITCH_CLIENT_ID) {
+      res.json({isAuth: true, ...item.data, token: req.body.token})
+    }
   } catch (err) {
+    res.json(false)
     console.log(err.message);
   }
 });

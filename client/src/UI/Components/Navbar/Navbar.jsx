@@ -3,7 +3,7 @@ import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
 import { blogTypeChanged, getAllBlogs } from '../../../Redux/Blog/blogSlice';
 import { selectIsOnline, getOnline } from '../../../Redux//twitchSlice';
-import { verifyAuth } from '../../../Redux/userSlice';
+import { selectIsAuth, verifyAuth } from '../../../Redux/userSlice';
 import TwitchImg from '../../../images/twitch.png';
 
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +17,7 @@ const Navbar = () => {
   const [nav, toggleNav] = useState(true);
   const [modal, toggleModal] = useState(false);
   const isOnline = useSelector(selectIsOnline);
+  const isAuth = useSelector(selectIsAuth);
 
   const getOnlineLoop = () => {
     dispatch(getOnline());
@@ -28,7 +29,9 @@ const Navbar = () => {
   const sendAuth = (token) => {
     dispatch(verifyAuth(token))
     setTimeout(() => {
-      sendAuth(token)
+      if (isAuth) {
+        sendAuth(token)
+      }
     }, 60000 * 60)
   }
 
@@ -51,7 +54,12 @@ const Navbar = () => {
       }
     })
     if (!isRedirect) {
-      dispatch(verifyAuth(false))
+      const currToken = localStorage.getItem('userToken')
+      if (currToken == null) {
+        sendAuth(false)
+      } else {
+        sendAuth(currToken)
+      }
     }
   }, []);
 
