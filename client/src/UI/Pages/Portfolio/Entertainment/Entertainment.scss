@@ -5,20 +5,33 @@
   align-items: center;
   justify-content: center;
   background-color: #f4f4f4;
+  @media (max-width: 1400px) {
+    height: 1600px;
+  }
+  @media (max-width: 1110px) {
+    height: auto;
+  }
 
   .Container {
     height: 100%;
-    width: 1440px;
+    // max-width: 1440px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 9.1rem;
     z-index: 1;
+    @media (max-width: 1400px) {
+      padding: 0;
+    }
 
     h3 {
       font-size: 1.8rem;
       font-weight: 700;
       margin-top: 9rem;
+      @media (max-width: 1110px) {
+        margin-top: 4rem;
+      }
     }
 
     h4 {
@@ -35,19 +48,70 @@
       align-items: center;
       justify-content: space-between;
       z-index: -1;
+      @media (max-width: 1110px) {
+        flex-direction: column;
+        height: 38rem;
+      }
+      @media (max-width: 500px) {
+        margin-top: 1.2rem;
+        height: auto;
+      }
+
 
       .Img-1 {
         position: absolute;
         z-index: -1;
-        margin-left: -1.1rem;
-        margin-top: -5.5rem;
+        left: 0;
+        margin-top: -10rem;
+        @media (max-width: 1110px) {
+          margin-top: -9rem;
+          scale: .95;
+        }
+        @media (max-width: 500px) {
+          margin-top: -6.4rem;
+          left: -4rem;
+          width: 35rem;
+        }
       }
-
+      
       .Img-2 {
         position: absolute;
         z-index: -1;
-        margin-left: 32.6rem;
-        margin-top: -2rem;
+        right: -1.3rem;
+        margin-top: -7rem;
+        @media (max-width: 1110px) {
+          margin-top: -9rem;
+          scale: .95;
+        }
+        @media (max-width: 500px) {
+          margin-top: -5rem;
+          left: -5.5rem;
+          width: 35rem;
+        }
+      }
+      
+      .iframe {
+        background-color: black;
+        @media (max-width: 1290px) {
+          scale: .8;
+        }
+        @media (max-width: 390px) {
+          scale: .6;
+        }
+
+        &-small {
+          display: none;
+          @media (max-width: 1110px){
+            display: block;
+          }
+        }
+
+        &-big {
+          display: block;
+          @media (max-width: 1110px){
+            display: none;
+          }
+        }
       }
 
       .FlavorText {
@@ -55,6 +119,16 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
+        @media (max-width: 1290px) {
+          scale: .8
+        }
+        @media (max-width: 1110px) {
+          margin-top: 4rem;
+        }
+        @media (max-width: 500px) {
+          width: 25rem;
+        }
 
         h5 {
           text-align: center;
@@ -76,11 +150,10 @@
           border-radius: 0.4rem;
         }
 
-        a {
-        }
         .Twitch {
           background-color: #8000ff;
         }
+
         .Youtube {
           background-color: #ff0000;
         }
@@ -95,13 +168,18 @@
       align-items: center;
       justify-content: space-between;
       z-index: -1;
+      position: relative;
+      @media (max-width: 1290px) {
+        scale: .8
+      }
+
 
       .Vector {
         position: absolute;
         z-index: -1;
         margin-left: 0rem;
-        margin-top: -13.5rem;
-        height: 43rem;
+        margin-top: -20.5rem;
+        height: 52rem;
       }
 
       .Blogsx {

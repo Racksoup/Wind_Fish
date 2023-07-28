@@ -14,8 +14,8 @@ const Entertainment = () => {
       <div className='Container'>
         <h3>Stream</h3>
         <div className='Content'>
-          <img src={Vector3} alt='Vector' className='Img-1' />
           <div className='FlavorText'>
+          <img src={Vector3} alt='Vector' className='Img-1' />
             <h5>
               Prime Content, History, News, Politics, Gaming. Giga-Chad Stream. Elephant, Where?
             </h5>
@@ -23,13 +23,13 @@ const Entertainment = () => {
               <button className='Twitch'>Twitch</button>
             </a>
           </div>
-          <iframe width='465' height='331' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
+          <iframe className='iframe' width='465' height='331' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
         </div>
         <h3>Videos</h3>
         <div className='Content'>
-          <img src={Vector2} alt='Vector' className='Img-2' />
-          <iframe width='465' height='331' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
+          <iframe className='iframe iframe-big' width='465' height='331' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
           <div className='FlavorText'>
+          <img src={Vector2} alt='Vector' className='Img-2' />
             <h5>
               Welcome to a destination unknown. Join the club! Stay up to date with my newest
               videos!
@@ -38,6 +38,7 @@ const Entertainment = () => {
               <button className='Youtube'>Youtube</button>
             </a>
           </div>
+          <iframe className='iframe iframe-small' width='465' height='331' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
         </div>
         <h3>Blogs</h3>
         <h4>Relevant history and development topics</h4>
