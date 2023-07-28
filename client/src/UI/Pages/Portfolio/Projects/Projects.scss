@@ -81,6 +81,22 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 8rem;
+      @media (max-width: 1500px) {
+        scale: .9;
+      }
+      @media (max-width: 1340px) {
+        scale: .8;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+      }
+      @media (max-width: 1200px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+      }
 
       .PlaceHolder {
         width: 23.79rem;
