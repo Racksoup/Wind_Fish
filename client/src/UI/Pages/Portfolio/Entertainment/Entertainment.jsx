@@ -40,13 +40,13 @@ const Entertainment = () => {
           </div>
           <iframe className='iframe iframe-small' width='465' height='331' src='https://www.youtube.com/embed/tgbNymZ7vqY'></iframe>
         </div>
-        <h3>Blogs</h3>
-        <h4>Relevant history and development topics</h4>
+        <h3 className='blogtitle'>Blogs</h3>
+        <h4 className='blogsubtitle'>Relevant history and development topics</h4>
         <div className='Blogs'>
           <img src={Vector1} alt='Vector' className='Vector' />
           <div className='Blogsx'>
             <a href='https://www.rackhistory.ca/#/blog/63a242b30a1ea0d32740d12e/' target='_blank'>
-              <div className='Card'>
+              <div className='Card Card-top'>
                 <div className='CardHeader CardHeader-2'>
                   <h4>History Blog</h4>
                 </div>
@@ -79,6 +79,7 @@ const Entertainment = () => {
               </div>
             </a>
           </div>
+        </div>
           <div className='Reddit'>
             <p className='Label'>Check out the subreddit!</p>
             <a href='https://www.reddit.com/r/WindxFish/' target='_blank'>
@@ -97,7 +98,6 @@ const Entertainment = () => {
             </a>
             <p className='Label'>Join the discord!</p>
           </div>
-        </div>
       </div>
     </div>
   );
