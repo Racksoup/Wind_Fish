@@ -6,6 +6,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 660px) {
+    height: 20rem;
+  }
 
   .Content {
     width: 1440px;
@@ -14,6 +17,13 @@
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     align-items: center;
+    @media (max-width: 1440px) {
+      width: 90%;
+    }
+    @media (max-width: 660px) {
+      grid-template-columns: 1fr;
+    }
+
 
     .Portfolio-Contact {
       display: flex;
