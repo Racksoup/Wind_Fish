@@ -41,11 +41,11 @@ const Navbar = () => {
     const url = window.location.href;
     const urlArr = url.split('/')
     let token;
-    const reg = /(?<=#access_token=)(.+)/
+    const reg = /(?<=\?code=)(.+)/
     const reg2 = /^.*?(?=&scope)/
     let isRedirect = false
     urlArr.map((x) => {
-      if (x.substring(1,13) === 'access_token') {
+      if (x.substring(1,5) === 'code') {
         const l = x.match(reg);
         const r = l[0].match(reg2)
         token = r[0]
@@ -353,7 +353,7 @@ const Modal = ({toggleModal}) => {
         <h4>Login With</h4>
         <div className='logins'>
           <a
-            href={`https://id.twitch.tv/oauth2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=token&scope=user%3Aread%3Aemail&state=c3ab8aa609ea11e793ae92361f002671`}
+            href={`https://id.twitch.tv/oauth2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&scope=user%3Aread%3Aemail&state=c3ab8aa609ea11e793ae92361f002671`}
             className='twitch'
           >
             <img src={TwitchImg} alt='Twitch' />
