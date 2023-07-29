@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   isAuth: false,
-  userToken: localStorage.getItem('userToken'),
+  oAuthToken: localStorage.getItem('oAuthToken'),
   name: null,
 };
 
@@ -15,14 +15,14 @@ export const userSlice = createSlice({
   reducers: {
     authVerified: (state, action) => {
       state.isAuth = action.payload.isAuth;
-      localStorage.setItem('userToken', action.payload.token);
-      state.userToken = action.payload.token;
+      localStorage.setItem('oAuthToken', action.payload.token);
+      state.oAuthToken = action.payload.token;
       state.name = action.payload.login;
     },
     authDenied: (state, action) => {
       state.isAuth = false;
-      localStorage.removeItem('userToken');
-      state.userToken = null;
+      localStorage.removeItem('oAuthToken');
+      state.oAuthToken = null;
       state.name = null;
     }
   },

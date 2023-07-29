@@ -54,7 +54,7 @@ const Navbar = () => {
       }
     })
     if (!isRedirect) {
-      const currToken = localStorage.getItem('userToken')
+      const currToken = localStorage.getItem('oAuthToken')
       if (currToken == null) {
         sendAuth(false)
       } else {
@@ -353,7 +353,7 @@ const Modal = ({toggleModal}) => {
         <h4>Login With</h4>
         <div className='logins'>
           <a
-            href={`https://id.twitch.tv/oauth2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=token&scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls&state=c3ab8aa609ea11e793ae92361f002671`}
+            href={`https://id.twitch.tv/oauth2/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=token&scope=user%3Aread%3Aemail&state=c3ab8aa609ea11e793ae92361f002671`}
             className='twitch'
           >
             <img src={TwitchImg} alt='Twitch' />

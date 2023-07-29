@@ -1,6 +1,8 @@
+const User = require('../../models/User');
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const jwt = require('jsonwebtoken');
 
 let twitchToken = {
   access_token: null,
@@ -79,13 +81,52 @@ router.post('/user-auth', async (req, res) => {
     }
   }
 
+
   try {
     let item = await axios.get('https://id.twitch.tv/oauth2/validate', config);
     if (item.data.client_id === process.env.TWITCH_CLIENT_ID) {
-      // check if user exists
-      // if they do login (here)
-      // else create account (route)
-      res.json({isAuth: true, ...item.data, token: req.body.token})
+      // get twitch user data for email
+      const config2 = {
+        params: {
+          'id': item.data.user_id
+        },
+        headers: {
+          'Authorization': `Bearer ${req.body.token}`,
+          'Client-Id': process.env.TWITCH_CLIENT_ID
+        }
+      }
+      let twitchUser = await axios.get('https://api.twitch.tv/helix/users', config2);
+      const email = twitchUser.data.data[0].email
+
+      // try to login
+      const regex = new RegExp(['^', email, '$'].join(''), 'i');
+      let user = await User.findOne({ email: regex });
+
+      // if user doesnt exist then create account (route)
+      if (!user) {
+        let name;
+        if (!item.data.login) {name = item.data.display_name} else {name = item.data.login};
+        user = new User({
+          email,
+          name,
+          authProvider: 'twitch',
+          comemnts: [],
+          likes: [],
+        })
+        await user.save();
+      } 
+
+      // get user token
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      };
+      jwt.sign(payload, process.env.USER_SECRET, { expiresIn: '7d' }, (err, token) => {
+        if (err) throw err;
+        res.json({isAuth: true, ...item.data, token: req.body.token,})
+      });
+
     }
   } catch (err) {
     res.json(false)

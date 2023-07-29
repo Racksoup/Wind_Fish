@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import setAuthToken from '../Utils/setAuthToken';
+import setAuthToken from './Utils/setAuthToken';
 
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   loading: true,
-  user: null,
+  admin: null,
 };
 
 export const selectToken = (state) => state.admin.token;
 export const selectIsAuthenticated = (state) => state.admin.isAuthenticated;
 export const selectLoading = (state) => state.admin.loading;
-export const selectUser = (state) => state.admin.user;
+export const selectAdmin = (state) => state.admin.admin;
 
 export const adminSlice = createSlice({
   name: 'admin',
@@ -23,23 +23,23 @@ export const adminSlice = createSlice({
       state.isAuthenticated = true;
       state.loading = false;
     },
-    userLoaded: (state, action) => {
+    adminLoaded: (state, action) => {
       state.isAuthenticated = true;
       state.loading = false;
-      state.user = action.payload;
+      state.admin = action.payload;
     },
     authError: (state, action) => {
       state.token = null;
       state.isAuthenticated = false;
       state.loading = false;
-      state.user = null;
+      state.admin = null;
     },
-    userLoggedOut: (state, action) => {
+    adminLoggedOut: (state, action) => {
       localStorage.removeItem('token');
       state.token = null;
       state.isAuthenticated = false;
       state.loading = false;
-      state.user = null;
+      state.admin = null;
     },
     setLoading: (state, action) => {
       state.loading = true;
@@ -53,8 +53,8 @@ export const loadUser = () => async (dispatch) => {
   }
   try {
     if (localStorage.token) {
-      const res = await axios.get('/api/backend-blog/auth');
-      dispatch(userLoaded(res.data));
+      const res = await axios.get('/api/backend/admin');
+      dispatch(adminLoaded(res.data));
     }
   } catch (err) {
     dispatch(authError());
@@ -70,7 +70,7 @@ export const login = (username, password) => async (dispatch) => {
   };
   const body = JSON.stringify({ username, password });
   try {
-    const res = await axios.post('/api/backend-blog/auth', body, config);
+    const res = await axios.post('/api/backend/admin', body, config);
     dispatch(loginSuccess(res.data));
     dispatch(loadUser());
   } catch (err) {
@@ -80,9 +80,9 @@ export const login = (username, password) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  dispatch(userLoggedOut());
+  dispatch(adminLoggedOut());
 };
 
-export const { loginSuccess, userLoaded, authError, userLoggedOut, setLoading } =
+export const { loginSuccess, adminLoaded, authError, adminLoggedOut, setLoading } =
   adminSlice.actions;
 export default adminSlice.reducer;

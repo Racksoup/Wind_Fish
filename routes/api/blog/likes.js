@@ -1,13 +1,13 @@
 const Like = require('../../../models/Like');
-const Account = require('../../../models/Account');
-const accountAuth = require('../../../middleware/accountAuth');
-const auth = require('../../../middleware/auth');
+const User = require('../../../models/User');
+const userAuth = require('../../../middleware/userAuth');
+const auth = require('../../../middleware/adminAuth');
 
 const express = require('express');
 const router = express.Router();
 
 //  Delete all likes from one account on all blog-likes
-router.delete('/account', accountAuth, async (req, res) => {
+router.delete('/account', userAuth, async (req, res) => {
   try {
     let likes = await Like.find({ likes: [req.account.id] });
     likes = likes.map((blogLike) => {
@@ -42,7 +42,7 @@ router.post('/', auth, async (req, res) => {
 });
 
 // Update Likes on blog-likes
-router.put('/', accountAuth, async (req, res) => {
+router.put('/', userAuth, async (req, res) => {
   const accountId = req.account.id;
   const { blogId } = req.body;
   try {
@@ -77,12 +77,12 @@ router.put('/', accountAuth, async (req, res) => {
 });
 
 //  Update likes on account
-router.put('/account', accountAuth, async (req, res) => {
+router.put('/account', userAuth, async (req, res) => {
   const accountId = req.account.id;
   const { blogId } = req.body;
   try {
     // Update account.likes
-    let account = await Account.findOne({ _id: accountId });
+    let account = await User.findOne({ _id: accountId });
     let inlikes = false;
     if (account.likes.length > 0) {
       account.likes.map((id) => {
@@ -96,7 +96,7 @@ router.put('/account', accountAuth, async (req, res) => {
     } else {
       account.likes = account.likes.filter((id) => id !== blogId);
     }
-    const item = await Account.findOneAndUpdate({ _id: accountId }, account, { new: true });
+    const item = await User.findOneAndUpdate({ _id: accountId }, account, { new: true });
     res.json(item);
   } catch (error) {
     console.log(error);

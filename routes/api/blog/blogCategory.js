@@ -1,5 +1,5 @@
 const BlogCategory = require('../../../models/BlogCategory');
-const auth = require('../../../middleware/auth');
+const auth = require('../../../middleware/adminAuth');
 const db = process.env.MONGOURI;
 
 const express = require('express');

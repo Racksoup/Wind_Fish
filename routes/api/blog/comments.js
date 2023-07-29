@@ -1,13 +1,13 @@
 const Comment = require('../../../models/Comment');
-const Account = require('../../../models/Account');
-const accountAuth = require('../../../middleware/accountAuth');
-const auth = require('../../../middleware/auth');
+const User = require('../../../models/User');
+const userAuth = require('../../../middleware/userAuth');
+const auth = require('../../../middleware/adminAuth');
 
 const express = require('express');
 const router = express.Router();
 
 //  Delete all Comments from account
-router.delete('/account', accountAuth, async (req, res) => {
+router.delete('/account', userAuth, async (req, res) => {
   try {
     let comments = await Comment.find({ 'comments.accountId': req.account.id });
     comments = comments.map((blogComment) => {
@@ -23,7 +23,7 @@ router.delete('/account', accountAuth, async (req, res) => {
   }
 });
 
-router.put('/name-change', accountAuth, async (req, res) => {
+router.put('/name-change', userAuth, async (req, res) => {
   console.log('hit');
   try {
     let comments = await Comment.find({ 'comments.accountId': req.account.id });
@@ -65,7 +65,7 @@ router.post('/', auth, async (req, res) => {
 });
 
 //  Update Comments on Blog-Comments, adds blogId to account if not there
-router.put('/', accountAuth, async (req, res) => {
+router.put('/', userAuth, async (req, res) => {
   const accountId = req.account.id;
   const { blogId, commentText, accountName } = req.body;
   try {
@@ -94,7 +94,7 @@ router.put('/', accountAuth, async (req, res) => {
     // -------------------
     // -------------------
     // Update account.comments
-    let account = await Account.findOne({ _id: accountId });
+    let account = await User.findOne({ _id: accountId });
     let inComments = false;
     if (account.comments.length > 0) {
       account.comments.map((id) => {
@@ -105,7 +105,7 @@ router.put('/', accountAuth, async (req, res) => {
     }
     if (!inComments) {
       account.comments.push(blogId);
-      await Account.findOneAndUpdate({ _id: accountId }, account);
+      await User.findOneAndUpdate({ _id: accountId }, account);
     }
     // -------------------
 
@@ -139,12 +139,12 @@ router.get('/:blogID', async (req, res) => {
   }
 });
 
-// Remove blogId from Account Comments
-router.put('/remove-account-comment', accountAuth, async (req, res) => {
+// Remove blogId from User Comments
+router.put('/remove-account-comment', userAuth, async (req, res) => {
   try {
-    let account = await Account.findOne({ _id: req.account.id });
+    let account = await User.findOne({ _id: req.account.id });
     account.comments = account.comments.filter((blogId) => blogId !== req.body.blogId);
-    const item = await Account.findOneAndUpdate({ _id: req.account.id }, account, {
+    const item = await User.findOneAndUpdate({ _id: req.account.id }, account, {
       new: true,
     });
     res.json(item);
@@ -154,7 +154,7 @@ router.put('/remove-account-comment', accountAuth, async (req, res) => {
 });
 
 // Remove comment from Blog-Comments
-router.put('/remove-blog-comment', accountAuth, async (req, res) => {
+router.put('/remove-blog-comment', userAuth, async (req, res) => {
   try {
     let blogComments = await Comment.findOne({ blogId: req.body.blogId });
     blogComments.comments = blogComments.comments.filter(

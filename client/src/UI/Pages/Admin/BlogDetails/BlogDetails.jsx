@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './BlogDetails.scss';
 import { selectTags, getTags, addTag, deleteTag } from '../../../../Redux/Blog/tagSlice';
-import { selectIsAuthenticated, loadUser } from '../../../../Redux/Blog/adminSlice';
+import { selectIsAuthenticated, loadUser } from '../../../../Redux/adminSlice';
 import {
   selectCategories,
   getCategories,

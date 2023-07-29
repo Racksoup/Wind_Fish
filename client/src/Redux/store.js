@@ -5,9 +5,9 @@ import tagReducer from './Blog/tagSlice';
 import categoryReducer from './Blog/categorySlice';
 import likesReducer from './Blog/likesSlice';
 import commentsReducer from './Blog/commentsSlice';
-import adminReducer from './Blog/adminSlice';
 import mailReducer from './Blog/mailSlice';
 import twitchReducer from './twitchSlice';
+import adminReducer from './adminSlice';
 import userReducer from './userSlice';
 
 export const store = configureStore({

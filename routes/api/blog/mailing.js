@@ -1,4 +1,4 @@
-// const auth = require('../../../middleware/auth');
+// const auth = require('../../../middleware/adminAuth');
 
 // const express = require('express');
 // const router = express.Router();

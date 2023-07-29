@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './LoginAdmin.scss';
-import { login, selectUser, loadUser } from '../../../../Redux/Blog/adminSlice';
+import { login, selectAdmin, loadUser } from '../../../../Redux/adminSlice';
 
 import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 const LoginAdmin = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const admin = useSelector(selectAdmin);
   const [formInput, setFormInput] = useState({
     username: '',
     password: '',
@@ -32,7 +32,7 @@ const LoginAdmin = () => {
     dispatch(login(username, password));
   };
 
-  if (user) {
+  if (admin) {
     return <Navigate to='/admin' />;
   }
 
