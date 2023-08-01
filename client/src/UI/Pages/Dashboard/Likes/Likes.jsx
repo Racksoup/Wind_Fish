@@ -21,10 +21,10 @@ const Likes = ({ user }) => {
       allBlogLikes.map((blog) => {
         blog.likes.map((id) => {
           if (id === user._id) {
-            let accountLike = {};
-            accountLike.blogName = blog.blogName;
-            accountLike.blogId = blog.blogId;
-            theLikes.push(accountLike);
+            let userLike = {};
+            userLike.blogName = blog.blogName;
+            userLike.blogId = blog.blogId;
+            theLikes.push(userLike);
           }
         });
       });
@@ -37,11 +37,11 @@ const Likes = ({ user }) => {
       <div className='Title'>All Likes</div>
       <div className='AllLikes'>
         {myLikes &&
-          myLikes.map((accountLike, i) => {
+          myLikes.map((userLike, i) => {
             return (
               <div className='Like' key={i}>
-                <div className='BlogName'>Blog: {accountLike.blogName}</div>
-                <div className='Btn Delete' onClick={() => toggleLike(accountLike.blogId)}>
+                <div className='BlogName'>Blog: {userLike.blogName}</div>
+                <div className='Btn Delete' onClick={() => dispatch(toggleLike(userLike.blogId))}>
                   Unlike
                 </div>
               </div>

@@ -20,7 +20,7 @@ export const userSlice = createSlice({
   reducers: {
     authVerifiedTwitch: (state, action) => {
       localStorage.setItem('token', action.payload);
-      state.token = action.payload
+      state.token = action.payload;
     },
     authDenied: (state, action) => {
       localStorage.removeItem('token');
@@ -42,36 +42,38 @@ export const userSlice = createSlice({
       state.user = null;
       localStorage.removeItem('token');
       state.token = null;
-    }
+    },
+    updatedUser: (state, action) => {
+      console.log('here');
+      state.user = action.payload;
+    },
   },
 });
-
 
 export const twitchLogin = (code) => async (dispatch) => {
   if (!code) {
     dispatch(authDenied());
   }
-  
+
   const data = {
-    code
-  } 
-  
+    code,
+  };
+
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
-  
-  
+
   try {
-    const res = await axios.post('/api/twitch/user-auth', data, config)
+    const res = await axios.post('/api/twitch/user-auth', data, config);
     dispatch(authVerifiedTwitch(res.data));
-    window.location.href = 'http://localhost:8080'
+    window.location.href = 'http://localhost:8080';
   } catch (err) {
     // dispatch(authDenied())
-    console.log(err.message)
+    console.log(err.message);
   }
-}
+};
 
 export const getUser = () => async (dispatch) => {
   if (localStorage.token) {
@@ -82,45 +84,48 @@ export const getUser = () => async (dispatch) => {
     if (localStorage.token) {
       const res = await axios.get('/api/user');
 
-      dispatch(gotUser(res.data))
+      dispatch(gotUser(res.data));
     }
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
-}
+};
 
 export const twitchLogout = () => async (dispatch) => {
-  // setAuthToken(localStorage.getItem('token'));
-
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
-  
+
   try {
-    const res = await axios.post('/api/twitch/logout', {}, config)
-    dispatch(loggedoutTwitch(res.data))
+    const res = await axios.post('/api/twitch/logout', {}, config);
+    dispatch(loggedoutTwitch(res.data));
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
-  // setAuthToken(false);
-}
+  setAuthToken(false);
+};
 
 export const deleteUser = () => async (dispatch) => {
   try {
     dispatch(deleteAccountLikes());
     dispatch(deleteAccountComments());
     const res = await axios.delete(`/api/user`);
-    dispatch(twitchLogout())
+    dispatch(twitchLogout());
     dispatch(userDeleted(res.data));
-    setAuthToken(false)
+    setAuthToken(false);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const { authVerifiedTwitch, authDenied, gotUser, loggedoutTwitch, userDeleted } = userSlice.actions;
+export const {
+  authVerifiedTwitch,
+  authDenied,
+  gotUser,
+  loggedoutTwitch,
+  userDeleted,
+  updatedUser,
+} = userSlice.actions;
 export default userSlice.reducer;
-
-//http://localhost:8080/#access_token=nu3qgpwok3p4har5dw6v73kwq1a6go&scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls&state=c3ab8aa609ea11e793ae92361f002671&token_type=bearer

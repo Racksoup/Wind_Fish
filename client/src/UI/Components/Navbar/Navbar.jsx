@@ -21,9 +21,9 @@ const Navbar = () => {
 
   const getOnlineLoop = () => {
     dispatch(getOnline());
-    setTimeout(() => {
-      getOnlineLoop();
-    }, 30000);
+    // setTimeout(() => {
+    //   getOnlineLoop();
+    // }, 30000);
   };
 
   useEffect(() => {
@@ -168,10 +168,7 @@ const Navbar = () => {
           <div className='Group'>
             <div className='EndNav'>
               {isAuth ? (
-                <Link
-                  to='/dashboard'
-                  className='Login'
-                >
+                <Link to='/dashboard' className='Login'>
                   Account
                 </Link>
               ) : (

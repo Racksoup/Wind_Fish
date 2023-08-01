@@ -82,7 +82,7 @@ router.put('/user', userAuth, async (req, res) => {
   const { blogId } = req.body;
   try {
     // Update user.likes
-    let user = await User.findOne({ _id: userId });
+    let user = await User.findOne({ _id: userId }).select('-token');
     let inlikes = false;
     if (user.likes.length > 0) {
       user.likes.map((id) => {
@@ -96,7 +96,7 @@ router.put('/user', userAuth, async (req, res) => {
     } else {
       user.likes = user.likes.filter((id) => id !== blogId);
     }
-    const item = await User.findOneAndUpdate({ _id: userId }, user, { new: true });
+    const item = await User.findOneAndUpdate({ _id: userId }, user, { new: true }).select('-token');
     res.json(item);
   } catch (error) {
     console.log(error);

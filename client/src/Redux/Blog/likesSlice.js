@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { updatedUser } from '../userSlice';
 
 const initialState = {
   blogLikes: null,
@@ -28,7 +29,6 @@ export const tagSlice = createSlice({
     deletedBlogLikes: (state, action) => {
       state.blogLikes = {};
     },
-    updatedUserLikes: (state, action) => {},
   },
 });
 
@@ -118,7 +118,7 @@ export const updateUserLikes = (blogId) => async (dispatch) => {
 
   try {
     const res = await axios.put('/api/backend-blog/likes/user', body, config);
-    dispatch(updatedUserLikes(res.data));
+    dispatch(updatedUser(res.data));
   } catch (error) {
     console.log(error.message);
   }
@@ -139,6 +139,5 @@ export const {
   gotBlogLikes,
   updatedBlogLikes,
   deletedBlogLikes,
-  updatedUserLikes,
 } = tagSlice.actions;
 export default tagSlice.reducer;
