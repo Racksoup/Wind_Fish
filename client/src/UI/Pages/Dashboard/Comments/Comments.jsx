@@ -3,7 +3,7 @@ import './Comments.scss';
 import {
   getAllBlogComments,
   updateBlogComments,
-  removeComment,
+  deleteComment,
   selectAllBlogComments,
 } from '../../../../Redux/Blog/commentsSlice';
 import DeleteModal from '../Modal/DeleteModal.jsx';
@@ -30,10 +30,14 @@ const Comments = ({ user }) => {
       let theComments = [];
       allBlogComments.map((blog) => {
         blog.comments.map((userComment) => {
-          if (userComment.accountId === user._id) {
-            userComment.blogName = blog.blogName;
-            userComment.blogId = blog.blogId;
-            theComments.push(userComment);
+          if (userComment.userId === user._id) {
+            const newComment = {
+              blogName: blog.blogName,
+              blogId: blog.blogId,
+              comment: userComment.comment,
+              userId: userComment.userId,
+            };
+            theComments.push(newComment);
           }
         });
       });
@@ -50,6 +54,8 @@ const Comments = ({ user }) => {
     toggleDeleteModal(true);
   };
 
+  console.log(allBlogComments, myComments);
+
   return (
     <div className='Comments'>
       {deleteModal && (
@@ -57,7 +63,7 @@ const Comments = ({ user }) => {
           state={comment}
           toggleModal={toggleDeleteModal}
           account={user}
-          Func={removeComment}
+          Func={deleteComment}
         />
       )}
       {updateModal && (
@@ -71,19 +77,19 @@ const Comments = ({ user }) => {
       <div className='Title'>All Comments</div>
       <div className='AllComments'>
         {myComments &&
-          myComments.map((accountComment, i) => {
+          myComments.map((userComment, i) => {
             return (
               <div className='Comment' key={i}>
                 {i < myComments.length - 1 && <div className='Border'></div>}
                 <div className='Info'>
-                  <div className='BlogName'>Blog: {accountComment.blogName}</div>
-                  <div className='Text'>{accountComment.comment}</div>
+                  <div className='BlogName'>Blog: {userComment.blogName}</div>
+                  <div className='Text'>{userComment.comment}</div>
                 </div>
                 <div className='Btns'>
-                  <div className='Btn Update' onClick={() => updateCommentClicked(accountComment)}>
+                  <div className='Btn Update' onClick={() => updateCommentClicked(userComment)}>
                     Update
                   </div>
-                  <div className='Btn Delete' onClick={() => deleteCommentClicked(accountComment)}>
+                  <div className='Btn Delete' onClick={() => deleteCommentClicked(userComment)}>
                     Delete
                   </div>
                 </div>

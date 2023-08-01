@@ -19,6 +19,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShare, faComment } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectUser } from '../../../../../Redux/userSlice';
 
 const SingleBlog = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const SingleBlog = () => {
   const [commentText, setCommentText] = useState('');
   const [commentBox, toggleCommentBox] = useState(false);
   const [hasLiked, setHasLiked] = useState(false);
-  const account = null;
+  const user = useSelector(selectUser);
 
   let { id } = useParams();
   useEffect(() => {
@@ -46,10 +47,10 @@ const SingleBlog = () => {
   }, [blog]);
 
   useEffect(() => {
-    if (account && blogComments) {
-      blogComments.comments.map((accountComment) => {
-        if (accountComment.accountId === account._id) {
-          setCommentText(accountComment.comment);
+    if (user && blogComments) {
+      blogComments.comments.map((userComment) => {
+        if (userComment.userId === user._id) {
+          setCommentText(userComment.comment);
         }
       });
     }
@@ -57,9 +58,9 @@ const SingleBlog = () => {
 
   useEffect(() => {
     let inLikes = false;
-    if (blogLikes && account) {
+    if (blogLikes && user) {
       blogLikes.likes.map((id) => {
-        if (id === account._id) {
+        if (id === user._id) {
           inLikes = true;
         }
       });
@@ -203,7 +204,7 @@ const SingleBlog = () => {
             })}
           </div>
         </div>
-        {account && (
+        {user && (
           <div className='CommentSection' id='CommentSection'>
             <div className='BlogLinks'>
               <div className='ButtonBox' onClick={() => toggleCommentBox(!commentBox)}>
@@ -242,7 +243,7 @@ const SingleBlog = () => {
                 ></textarea>
                 <div
                   className='Btn'
-                  onClick={() => dispatch(updateBlogComments(blog._id, commentText, account.name))}
+                  onClick={() => dispatch(updateBlogComments(blog._id, commentText, user.name))}
                 >
                   Submit
                 </div>
@@ -251,10 +252,10 @@ const SingleBlog = () => {
             {blogComments && blogComments.comments.length > 0 && (
               <div className='Comments'>
                 <div className='Title'>Comments</div>
-                {blogComments.comments.map((accountComment, i) => (
+                {blogComments.comments.map((userComment, i) => (
                   <div className='Comment' key={i}>
-                    <div className='Name'>- {accountComment.accountName}</div>
-                    <div className='Text'>{accountComment.comment}</div>
+                    <div className='Name'>- {userComment.userName}</div>
+                    <div className='Text'>{userComment.comment}</div>
                   </div>
                 ))}
               </div>

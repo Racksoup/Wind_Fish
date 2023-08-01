@@ -3,13 +3,15 @@ import './Modal.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
 
 const UpdateModal = ({ state, toggleModal, account, Func }) => {
+  const dispatch = useDispatch();
   const [comment, setComment] = useState(state.comment);
 
   const submitClicked = (e) => {
     e.stopPropagation();
-    Func(state.blogId, comment, account.name);
+    dispatch(Func(state.blogId, comment, account.name));
     toggleModal(false);
   };
 

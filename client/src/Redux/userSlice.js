@@ -44,7 +44,6 @@ export const userSlice = createSlice({
       state.token = null;
     },
     updatedUser: (state, action) => {
-      console.log('here');
       state.user = action.payload;
     },
   },

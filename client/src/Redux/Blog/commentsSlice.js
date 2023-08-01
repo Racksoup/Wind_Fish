@@ -39,7 +39,7 @@ export const commentsSlice = createSlice({
 
 export const deleteAccountComments = () => async (dispatch) => {
   try {
-    await axios.delete(`api/backend-blog/comments/account`);
+    await axios.delete(`api/backend-blog/comments/user`);
     dispatch(deletedBlogComments());
   } catch (error) {
     console.log(error);
@@ -88,23 +88,23 @@ export const getBlogComments = (blogId) => async (dispatch) => {
   }
 };
 
-export const updateBlogComments = (blogId, commentText, accountName) => async (dispatch) => {
+export const updateBlogComments = (blogId, commentText, userName) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
-  const body = JSON.stringify({ blogId, commentText, accountName });
+  const body = JSON.stringify({ blogId, commentText, userName });
 
   try {
     const res = await axios.put('/api/backend-blog/comments', body, config);
-    dispatch(updateBlogComments(res.data));
+    dispatch(updatedBlogComments(res.data));
   } catch (error) {
     console.log(error);
   }
 };
 
-export const removeComment = (blogId) => async (dispatch) => {
+export const deleteComment = (blogId) => async (dispatch) => {
   try {
     dispatch(removeBlogIDFromAccountComments(blogId));
     dispatch(removeCommentFromBlogComments(blogId));
@@ -138,7 +138,7 @@ export const removeBlogIDFromAccountComments = (blogId) => async (dispatch) => {
   const body = JSON.stringify({ blogId });
 
   try {
-    const res = await axios.put('/api/backend-blog/comments/remove-account-comment', body, config);
+    const res = await axios.put('/api/backend-blog/comments/remove-user-comment', body, config);
     // dispatch({ type: ACCOUNT_LOADED, payload: res.data });
   } catch (error) {
     console.log(error);
@@ -147,7 +147,7 @@ export const removeBlogIDFromAccountComments = (blogId) => async (dispatch) => {
 
 export const deleteBlogComments = (blogId) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/backend-blog/comments/${blogId}/${accountID}`);
+    const res = await axios.delete(`/api/backend-blog/comments/${blogId}/${userID}`);
     dispatch(deletedBlogComments(res.data));
   } catch (error) {
     console.log(error);
