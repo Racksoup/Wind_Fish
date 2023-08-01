@@ -3,7 +3,7 @@ import './Navbar.scss';
 import WindFishFavicon2 from '../../../images/WindFishFavicon2.png';
 import { blogTypeChanged, getAllBlogs } from '../../../Redux/Blog/blogSlice';
 import { selectIsOnline, getOnline } from '../../../Redux//twitchSlice';
-import { selectIsAuth, verifyAuth } from '../../../Redux/userSlice';
+import { selectIsAuth, twitchLogin, getUser } from '../../../Redux/userSlice';
 import TwitchImg from '../../../images/twitch.png';
 
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
@@ -26,41 +26,24 @@ const Navbar = () => {
     }, 30000);
   };
 
-  const sendAuth = (token) => {
-    dispatch(verifyAuth(token))
-    setTimeout(() => {
-      if (isAuth) {
-        sendAuth(token)
-      }
-    }, 60000 * 60)
-  }
-
   useEffect(() => {
     getOnlineLoop();
 
+
     const url = window.location.href;
     const urlArr = url.split('/')
-    let token;
+    let code;
     const reg = /(?<=\?code=)(.+)/
     const reg2 = /^.*?(?=&scope)/
-    let isRedirect = false
     urlArr.map((x) => {
       if (x.substring(1,5) === 'code') {
         const l = x.match(reg);
         const r = l[0].match(reg2)
-        token = r[0]
-        sendAuth(token)
-        isRedirect = true
+        code = r[0]
+        dispatch(twitchLogin(code))
       }
     })
-    if (!isRedirect) {
-      const currToken = localStorage.getItem('oAuthToken')
-      if (currToken == null) {
-        sendAuth(false)
-      } else {
-        sendAuth(currToken)
-      }
-    }
+    dispatch(getUser())
   }, []);
 
   const pathname = window.location.pathname.split('/');

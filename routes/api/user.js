@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
 //  Desc    Get User
 router.get('/', userAuth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findById(req.user.id).select('-token');
     res.json(user);
   } catch (err) {
     console.error(err.message);
