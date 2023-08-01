@@ -6,12 +6,12 @@ const auth = require('../../../middleware/adminAuth');
 const express = require('express');
 const router = express.Router();
 
-//  Delete all likes from one account on all blog-likes
-router.delete('/account', userAuth, async (req, res) => {
+//  Delete all likes from one user on all blog-likes
+router.delete('/user', userAuth, async (req, res) => {
   try {
-    let likes = await Like.find({ likes: [req.account.id] });
+    let likes = await Like.find({ likes: [req.user.id] });
     likes = likes.map((blogLike) => {
-      let x = blogLike.likes.filter((id) => id !== req.account.id);
+      let x = blogLike.likes.filter((id) => id !== req.user.id);
       blogLike.likes = x;
       return blogLike;
     });
@@ -43,27 +43,27 @@ router.post('/', auth, async (req, res) => {
 
 // Update Likes on blog-likes
 router.put('/', userAuth, async (req, res) => {
-  const accountId = req.account.id;
+  const userId = req.user.id;
   const { blogId } = req.body;
   try {
-    let accountIDFound = false;
+    let userIDFound = false;
     // Get Like
     let item = await Like.findOne({ blogId: blogId });
-    // check if accountId is in item.likes
+    // check if userId is in item.likes
     item.likes.forEach((id) => {
-      if (id === accountId) {
-        accountIDFound = true;
+      if (id === userId) {
+        userIDFound = true;
       }
     });
     // if id is in item.likes remove it
     item.likes = item.likes.filter((id) => {
-      if (id !== accountId) {
+      if (id !== userId) {
         return id;
       }
     });
     // if id was not found, add it
-    if (!accountIDFound) {
-      item.likes.push(accountId);
+    if (!userIDFound) {
+      item.likes.push(userId);
     }
 
     // findoneandupdate
@@ -76,27 +76,27 @@ router.put('/', userAuth, async (req, res) => {
   }
 });
 
-//  Update likes on account
-router.put('/account', userAuth, async (req, res) => {
-  const accountId = req.account.id;
+//  Update likes on user
+router.put('/user', userAuth, async (req, res) => {
+  const userId = req.user.id;
   const { blogId } = req.body;
   try {
-    // Update account.likes
-    let account = await User.findOne({ _id: accountId });
+    // Update user.likes
+    let user = await User.findOne({ _id: userId });
     let inlikes = false;
-    if (account.likes.length > 0) {
-      account.likes.map((id) => {
+    if (user.likes.length > 0) {
+      user.likes.map((id) => {
         if (blogId === id) {
           inlikes = true;
         }
       });
     }
     if (!inlikes) {
-      account.likes.push(blogId);
+      user.likes.push(blogId);
     } else {
-      account.likes = account.likes.filter((id) => id !== blogId);
+      user.likes = user.likes.filter((id) => id !== blogId);
     }
-    const item = await User.findOneAndUpdate({ _id: accountId }, account, { new: true });
+    const item = await User.findOneAndUpdate({ _id: userId }, user, { new: true });
     res.json(item);
   } catch (error) {
     console.log(error);

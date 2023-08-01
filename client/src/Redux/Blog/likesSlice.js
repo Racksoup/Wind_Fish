@@ -33,7 +33,7 @@ export const tagSlice = createSlice({
 
 export const deleteAccountLikes = () => async (dispatch) => {
   try {
-    await axios.delete(`/api/backend-blog/likes/account`);
+    await axios.delete(`/api/backend-blog/likes/user`);
     dispatch(deletedBlogLikes());
   } catch (error) {
     console.log(error);
@@ -42,7 +42,7 @@ export const deleteAccountLikes = () => async (dispatch) => {
 
 export const getAllBlogLikes = (blogIDs) => async (dispatch) => {
   try {
-    let reses = blogIDs.map((id, i) => {
+    let reses = blogIDs.map((id) => {
       return axios.get(`/api/backend-blog/likes/${id}`);
     });
 
@@ -116,7 +116,7 @@ export const updateAccountLikes = (blogId) => async (dispatch) => {
   const body = JSON.stringify({ blogId });
 
   try {
-    const res = await axios.put('/api/backend-blog/likes/account', body, config);
+    const res = await axios.put('/api/backend-blog/likes/user', body, config);
     // dispatch({ type: ACCOUNT_LOADED, payload: res.data });
   } catch (error) {}
 };
