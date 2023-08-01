@@ -1,0 +1,47 @@
+@import '../Dashboard.scss';
+
+.Settings {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 33rem;
+
+  @media (max-width: $lowerBreak) {
+    width: 18rem;
+  }
+
+  .Item {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .Label {
+      font-size: 1.2rem;
+    }
+
+    .Delete {
+      background-color: red;
+    }
+
+    .Btn {
+      width: 4rem;
+    }
+
+    .Input {
+      width: 15rem;
+      height: 2.4rem;
+      border: solid 0.1rem black;
+      outline: none;
+      border-radius: 0.3rem;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+
+      @media (max-width: $lowerBreak) {
+        width: 7rem;
+        margin: 0 0.5rem;
+      }
+    }
+  }
+}

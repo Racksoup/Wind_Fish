@@ -28,6 +28,7 @@ export const tagSlice = createSlice({
     deletedBlogLikes: (state, action) => {
       state.blogLikes = {};
     },
+    updatedUserLikes: (state, action) => {},
   },
 });
 
@@ -85,7 +86,7 @@ export const getBlogLikes = (blogId) => async (dispatch) => {
 export const toggleLike = (blogId) => async (dispatch) => {
   try {
     dispatch(updateBlogLikes(blogId));
-    dispatch(updateAccountLikes(blogId));
+    dispatch(updateUserLikes(blogId));
   } catch (error) {
     console.log(error);
   }
@@ -107,7 +108,7 @@ export const updateBlogLikes = (blogId) => async (dispatch) => {
   }
 };
 
-export const updateAccountLikes = (blogId) => async (dispatch) => {
+export const updateUserLikes = (blogId) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -117,8 +118,10 @@ export const updateAccountLikes = (blogId) => async (dispatch) => {
 
   try {
     const res = await axios.put('/api/backend-blog/likes/user', body, config);
-    // dispatch({ type: ACCOUNT_LOADED, payload: res.data });
-  } catch (error) {}
+    dispatch(updatedUserLikes(res.data));
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 export const deleteBlogLikes = (blogId) => async (dispatch) => {
@@ -136,5 +139,6 @@ export const {
   gotBlogLikes,
   updatedBlogLikes,
   deletedBlogLikes,
+  updatedUserLikes,
 } = tagSlice.actions;
 export default tagSlice.reducer;
