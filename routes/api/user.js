@@ -1,5 +1,5 @@
 const User = require('../../models/User');
-const userAuth = require('../../middleware/userAuth');
+const auth = require('../../middleware/userAuth');
 
 const express = require('express');
 const router = express.Router();
@@ -50,7 +50,7 @@ router.post('/', async (req, res) => {
 });
 
 //  Desc    Get User
-router.get('/', userAuth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-token');
     res.json(user);
@@ -60,35 +60,44 @@ router.get('/', userAuth, async (req, res) => {
   }
 });
 
-//  Desc    Get User Auth
-router.post(
-  '/auth',
-  async (req, res) => {
-    const { email } = req.body;
-
-    try {
-      const regex = new RegExp(['^', email, '$'].join(''), 'i');
-      let user = await User.findOne({ email: regex });
-
-      if (!user) {
-        return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
-      }
-
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      jwt.sign(payload, process.env.ACCOUNT_SECRET, { expiresIn: '7d' }, (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      });
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server error');
-    }
+router.delete('/', auth, async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.user.id);
+    res.json(user);
+  } catch (error) {
+    console.log(error);
   }
-);
+})
+
+//  Desc    Get User Auth
+// router.post(
+//   '/auth',
+//   async (req, res) => {
+//     const { email } = req.body;
+
+//     try {
+//       const regex = new RegExp(['^', email, '$'].join(''), 'i');
+//       let user = await User.findOne({ email: regex });
+
+//       if (!user) {
+//         return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+//       }
+
+//       const payload = {
+//         user: {
+//           id: user.id,
+//         },
+//       };
+
+//       jwt.sign(payload, process.env.ACCOUNT_SECRET, { expiresIn: '7d' }, (err, token) => {
+//         if (err) throw err;
+//         res.json({ token });
+//       });
+//     } catch (err) {
+//       console.error(err.message);
+//       res.status(500).send('Server error');
+//     }
+//   }
+// );
 
 module.exports = router;

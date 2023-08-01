@@ -3,6 +3,7 @@ import './App.scss';
 import { store } from './Redux/store';
 import Home from './UI/Pages/Home/Home.jsx';
 import Portfolio from './UI/Pages/Portfolio/Portfolio.jsx';
+import Dashboard from './UI/Pages/Dashboard/Dashboard.jsx';
 import BlogHome from './UI/Pages/Blog/Pages/Home/BlogHome.jsx';
 import About from './UI/Pages/Blog/Pages/About/About.jsx';
 import Contact from './UI/Pages/Blog/Pages/Contact/Contact.jsx';
@@ -29,6 +30,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/portfolio' element={<Portfolio />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/dev-blog' element={<BlogHome />} />
             <Route path='/dev-blog/single-blog/:id' element={<SingleBlog />} />
             <Route path='/dev-blog/blogs' element={<Blogs />} />

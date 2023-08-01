@@ -1,49 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import './Dashboard.scss';
-import {
-  loadAccount,
-  logoutAccount,
-  deleteAccount,
-  changeAccountName,
-} from '../../../Redux/Actions/account';
-import {
-  getAllBlogComments,
-  updateBlogComments,
-  removeComment,
-} from '../../../Redux/Actions/comments';
-import { getAllBlogLikes, toggleLike } from '../../../Redux/Actions/likes';
+import { getAllBlogComments, updateBlogComments, removeComment, selectAllBlogComments } from '../../../Redux/Blog/commentsSlice';
+import { getUser, selectUser, twitchLogout, deleteUser } from '../../../Redux/userSlice';
+import { getAllBlogLikes, toggleLike, selectAllBlogLikes } from '../../../Redux/Blog/likesSlice';
+
 import DeleteModal from './Modal/DeleteModal.jsx';
 import UpdateModal from './Modal/UpdateModal.jsx';
 import DeleteAccountModal from './Modal/DeleteAccountModal.jsx';
 
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Dashboard = ({
-  account,
-  allBlogComments,
-  allBlogLikes,
-  logoutAccount,
-  getAllBlogComments,
-  loadAccount,
-  updateBlogComments,
-  removeComment,
-  getAllBlogLikes,
-  toggleLike,
-  deleteAccount,
-  changeAccountName,
-}) => {
+const Dashboard = (
+//   {
+//   account,
+//   allBlogComments,
+//   allBlogLikes,
+//   logoutAccount,
+//   getAllBlogComments,
+//   loadAccount,
+//   updateBlogComments,
+//   removeComment,
+//   getAllBlogLikes,
+//   toggleLike,
+//   changeAccountName,
+// }
+) => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const allBlogLikes = useSelector(selectAllBlogLikes);
+  const allBlogComments = useSelector(selectAllBlogComments);
   useEffect(() => {
-    loadAccount();
+    dispatch(getUser());
   }, []);
   const [accountName, setAccountName] = useState('');
   useEffect(() => {
-    if (account) {
-      getAllBlogComments(account.comments);
-      getAllBlogLikes(account.likes);
-      setAccountName(account.name);
+    if (user) {
+      dispatch(getAllBlogComments(user.comments));
+      dispatch(getAllBlogLikes(user.likes));
+      setAccountName(user.name);
     }
-  }, [account]);
+  }, [user]);
 
   const [myComments, setMyComments] = useState([]);
   useEffect(() => {
@@ -113,10 +110,10 @@ const Dashboard = ({
         />
       )}
       {deleteAccountModal && (
-        <DeleteAccountModal toggleModal={toggleDeleteAccountModal} Func={deleteAccount} />
+        <DeleteAccountModal toggleModal={toggleDeleteAccountModal} Func={dispatch(deleteUser())} />
       )}
       <div className='HeaderTitle'>Dashboard</div>
-      <div className='Btn Logout' onClick={() => logoutAccount()}>
+      <div className='Btn Logout' onClick={() => dispatch(twitchLogout())}>
         Logout
       </div>
       <Link className='Link Btn Back' to='/'>
@@ -223,7 +220,9 @@ const Dashboard = ({
               onChange={(e) => setAccountName(e.target.value)}
               value={accountName}
             />
-            <div className='Btn' onClick={() => changeAccountName(accountName)}>
+            <div className='Btn' 
+            // onClick={() => changeAccountName(accountName)}
+            >
               Update
             </div>
           </div>
@@ -233,20 +232,4 @@ const Dashboard = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  account: state.account.account,
-  allBlogComments: state.comments.allBlogComments,
-  allBlogLikes: state.likes.allBlogLikes,
-});
-
-export default connect(mapStateToProps, {
-  logoutAccount,
-  getAllBlogComments,
-  loadAccount,
-  updateBlogComments,
-  removeComment,
-  getAllBlogLikes,
-  toggleLike,
-  deleteAccount,
-  changeAccountName,
-})(Dashboard);
+export default Dashboard;

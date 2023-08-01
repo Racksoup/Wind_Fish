@@ -183,6 +183,9 @@
       border-radius: 0.25rem;
       font-size: 0.85rem;
       color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &:hover {
         color: rgb(192, 109, 0);

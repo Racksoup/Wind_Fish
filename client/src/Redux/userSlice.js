@@ -1,5 +1,7 @@
 import setAuthToken from './Utils/setAuthToken';
 import { createSlice } from '@reduxjs/toolkit';
+import { deleteAccountLikes } from './Blog/likesSlice';
+import { deleteAccountComments } from './Blog/commentsSlice';
 import axios from 'axios';
 
 const initialState = {
@@ -10,6 +12,7 @@ const initialState = {
 
 export const selectIsAuth = (state) => state.user.isAuth;
 export const selectToken = (state) => state.user.token;
+export const selectUser = (state) => state.user.user;
 
 export const userSlice = createSlice({
   name: 'user',
@@ -29,6 +32,12 @@ export const userSlice = createSlice({
       state.user = action.payload;
     },
     loggedoutTwitch: (state, action) => {
+      state.isAuth = false;
+      state.user = null;
+      localStorage.removeItem('token');
+      state.token = null;
+    },
+    userDeleted: (state, action) => {
       state.isAuth = false;
       state.user = null;
       localStorage.removeItem('token');
@@ -98,7 +107,20 @@ export const twitchLogout = () => async (dispatch) => {
   // setAuthToken(false);
 }
 
-export const { authVerifiedTwitch, authDenied, gotUser, loggedoutTwitch } = userSlice.actions;
+export const deleteUser = () => async (dispatch) => {
+  try {
+    dispatch(deleteAccountLikes());
+    dispatch(deleteAccountComments());
+    const res = await axios.delete(`/api/user`);
+    dispatch(twitchLogout())
+    dispatch(userDeleted(res.data));
+    setAuthToken(false)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const { authVerifiedTwitch, authDenied, gotUser, loggedoutTwitch, userDeleted } = userSlice.actions;
 export default userSlice.reducer;
 
 //http://localhost:8080/#access_token=nu3qgpwok3p4har5dw6v73kwq1a6go&scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls&state=c3ab8aa609ea11e793ae92361f002671&token_type=bearer

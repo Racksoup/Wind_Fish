@@ -29,21 +29,20 @@ const Navbar = () => {
   useEffect(() => {
     getOnlineLoop();
 
-
     const url = window.location.href;
-    const urlArr = url.split('/')
+    const urlArr = url.split('/');
     let code;
-    const reg = /(?<=\?code=)(.+)/
-    const reg2 = /^.*?(?=&scope)/
+    const reg = /(?<=\?code=)(.+)/;
+    const reg2 = /^.*?(?=&scope)/;
     urlArr.map((x) => {
-      if (x.substring(1,5) === 'code') {
+      if (x.substring(1, 5) === 'code') {
         const l = x.match(reg);
-        const r = l[0].match(reg2)
-        code = r[0]
-        dispatch(twitchLogin(code))
+        const r = l[0].match(reg2);
+        code = r[0];
+        dispatch(twitchLogin(code));
       }
-    })
-    dispatch(getUser())
+    });
+    dispatch(getUser());
   }, []);
 
   const pathname = window.location.pathname.split('/');
@@ -59,7 +58,7 @@ const Navbar = () => {
   if (nav) {
     return (
       <div className='Navbar'>
-        {modal && <Modal toggleModal={toggleModal}/>}
+        {modal && <Modal toggleModal={toggleModal} />}
         <div className='Inner'>
           <Link to='/'>
             <h1>WIND FISH</h1>
@@ -168,14 +167,23 @@ const Navbar = () => {
           </div>
           <div className='Group'>
             <div className='EndNav'>
-              <button
-                className='Login'
-                onClick={() => {
-                  toggleModal(!modal);
-                }}
-              >
-                Login
-              </button>
+              {isAuth ? (
+                <Link
+                  to='/dashboard'
+                  className='Login'
+                >
+                  Account
+                </Link>
+              ) : (
+                <button
+                  className='Login'
+                  onClick={() => {
+                    toggleModal(!modal);
+                  }}
+                >
+                  Login
+                </button>
+              )}
               <a
                 href='https://www.twitch.tv/windxfish'
                 className={`${isOnline ? 'stream on' : 'stream off'}`}
@@ -323,11 +331,11 @@ const Navbar = () => {
   } else return null;
 };
 
-const Modal = ({toggleModal}) => {
+const Modal = ({ toggleModal }) => {
   const client_id = '2xoikh4ga35jidcy18lc2jthcqidlk';
   const redirect_uri = 'http://localhost:8080';
-  // const secret = 
-  // const state = 
+  // const secret =
+  // const state =
   // console.log(state);
 
   return (
