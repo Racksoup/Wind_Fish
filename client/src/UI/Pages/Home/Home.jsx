@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './Home.scss';
 import { selectVideos, getYoutube } from '../../../Redux/youtubeSlice';
 import { getClips, selectClips } from '../../../Redux/twitchSlice';
+import { twitchLogout } from '../../../Redux/userSlice';
 import Youtube from '../../../images/youtube.png';
 import Twitter from '../../../images/twitter.png';
 import Twitch from '../../../images/twitch.png';
@@ -65,6 +66,7 @@ const Home = () => {
             <a href='https://discord.gg/Ugpf7E622H' target='_blank'>
               <img src={Discord} alt='Discord' />
             </a>
+            <button onClick={() => {dispatch(twitchLogout())}}>X</button>
           </div>
         </div>
         <div className='Top'>

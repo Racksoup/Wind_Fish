@@ -27,6 +27,12 @@ export const userSlice = createSlice({
     gotUser: (state, action) => {
       state.isAuth = true;
       state.user = action.payload;
+    },
+    loggedoutTwitch: (state, action) => {
+      state.isAuth = false;
+      state.user = null;
+      localStorage.removeItem('token');
+      state.token = null;
     }
   },
 });
@@ -74,7 +80,25 @@ export const getUser = () => async (dispatch) => {
   }
 }
 
-export const { authVerifiedTwitch, authDenied, gotUser } = userSlice.actions;
+export const twitchLogout = () => async (dispatch) => {
+  // setAuthToken(localStorage.getItem('token'));
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  
+  try {
+    const res = await axios.post('/api/twitch/logout', {}, config)
+    dispatch(loggedoutTwitch(res.data))
+  } catch (error) {
+    console.log(error.message)
+  }
+  // setAuthToken(false);
+}
+
+export const { authVerifiedTwitch, authDenied, gotUser, loggedoutTwitch } = userSlice.actions;
 export default userSlice.reducer;
 
 //http://localhost:8080/#access_token=nu3qgpwok3p4har5dw6v73kwq1a6go&scope=channel%3Amanage%3Apolls+channel%3Aread%3Apolls&state=c3ab8aa609ea11e793ae92361f002671&token_type=bearer

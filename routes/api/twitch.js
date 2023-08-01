@@ -1,4 +1,4 @@
-const auth = require('../../middleware/userAuth');
+const userAuth = require('../../middleware/userAuth');
 const User = require('../../models/User');
 const express = require('express');
 const router = express.Router();
@@ -94,7 +94,7 @@ router.post('/user-auth', async (req, res) => {
 
     // try to login
     const regex = new RegExp(['^', email, '$'].join(''), 'i');
-    let user = await User.findOne({ email: regex });
+    let user = await User.findOne({ email: regex, authProvider: 'twitch' });
 
     // if user exist update token
     if (user) {
@@ -133,18 +133,20 @@ router.post('/user-auth', async (req, res) => {
 });
 
 // revoke twitch token
-router.post('/logout', auth, async (req, res) => {
-  config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  }
+router.post('/logout', userAuth, async (req, res) => {
+  // const config = {
+  //   headers: {
+  //     'Content-Type': 'application/x-www-form-urlencoded'
+  //   }
+  // }
 
   try {
-    const user = await User.findOneAndUpdate({_id: req.user._id}, {$set: {token: null}})
+    const user = await User.findById(req.user.id)
 
-    const logout = await axios.post(`https://id.twitch.tv/oauth2/revoke?client_id=${process.env.TWITCH_CLIENT_ID}&token=${user.data.token}`)
-    console.log(logout.data);
+    const logout = await axios.post(`https://id.twitch.tv/oauth2/revoke?client_id=${process.env.TWITCH_CLIENT_ID}&token=${user.token.access_token}`)
+
+    console.log(logout.data)
+    res.json(logout.data)
   } catch (error) {
     console.log(error.message);
   }
