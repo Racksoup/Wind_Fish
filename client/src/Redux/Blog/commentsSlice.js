@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { updatedUser } from '../userSlice';
 
 const initialState = {
   blogComments: null,
@@ -106,7 +107,7 @@ export const updateBlogComments = (blogId, commentText, userName) => async (disp
 
 export const deleteComment = (blogId) => async (dispatch) => {
   try {
-    dispatch(removeBlogIDFromAccountComments(blogId));
+    dispatch(removeBlogIDFromUserComments(blogId));
     dispatch(removeCommentFromBlogComments(blogId));
   } catch (error) {
     console.log(error);
@@ -129,7 +130,7 @@ export const removeCommentFromBlogComments = (blogId) => async (dispatch) => {
   }
 };
 
-export const removeBlogIDFromAccountComments = (blogId) => async (dispatch) => {
+export const removeBlogIDFromUserComments = (blogId) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -139,7 +140,7 @@ export const removeBlogIDFromAccountComments = (blogId) => async (dispatch) => {
 
   try {
     const res = await axios.put('/api/backend-blog/comments/remove-user-comment', body, config);
-    // dispatch({ type: ACCOUNT_LOADED, payload: res.data });
+    dispatch(updatedUser(res.data));
   } catch (error) {
     console.log(error);
   }

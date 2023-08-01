@@ -145,7 +145,7 @@ router.put('/remove-user-comment', userAuth, async (req, res) => {
     user.comments = user.comments.filter((blogId) => blogId !== req.body.blogId);
     const item = await User.findOneAndUpdate({ _id: req.user.id }, user, {
       new: true,
-    });
+    }).select('-token');
     res.json(item);
   } catch (error) {
     console.log(error);
