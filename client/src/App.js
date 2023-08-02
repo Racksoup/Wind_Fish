@@ -17,6 +17,8 @@ import UpdateBlog from './UI/Pages/Admin/UpdateBlog/UpdateBlog.jsx';
 import BlogDetails from './UI/Pages/Admin/BlogDetails/BlogDetails.jsx';
 import EditBlogs from './UI/Pages/Admin/EditBlogs/EditBlogs.jsx';
 import BlogPortal from './UI/Pages/Admin/BlogPortal/BlogPortal.jsx';
+import Ideoform from './UI/Pages/Ideoform/Ideoform.jsx';
+import Club from './UI/Pages/Club/Club.jsx';
 
 import { Provider } from 'react-redux';
 import { Routes, BrowserRouter as Router, Route } from 'react-router-dom';
@@ -31,6 +33,9 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/portfolio' element={<Portfolio />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/ideoform' element={<Ideoform />} />
+            <Route path='/book-club' element={<Club />} />
+            <Route path='/code-contests' element={<Club />} />
             <Route path='/dev-blog' element={<BlogHome />} />
             <Route path='/dev-blog/single-blog/:id' element={<SingleBlog />} />
             <Route path='/dev-blog/blogs' element={<Blogs />} />

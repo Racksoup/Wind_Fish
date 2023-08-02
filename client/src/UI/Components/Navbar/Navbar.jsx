@@ -146,10 +146,14 @@ const Navbar = () => {
               <p>Schedule</p>
             </div>
             <div className='Item'>
-              <p>Book Club</p>
+              <Link to='/book-club'>
+                <p>Book Club</p>
+              </Link>
             </div>
             <div className='Item'>
-              <p>Code Contests</p>
+              <Link to='/code-contests'>
+                <p>Code Contests</p>
+              </Link>
             </div>
             <div className='Item Item-Profile'>
               <div className='DropOuter'>
@@ -157,7 +161,9 @@ const Navbar = () => {
                   <p>Profile</p>
                 </Link>
                 <div className='Drop'>
-                  <p>Ideo-Form</p>
+                  <Link to='ideoform'>
+                    <p>Ideo-Form</p>
+                  </Link>
                 </div>
               </div>
             </div>
